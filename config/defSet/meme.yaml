@@ -1,0 +1,5 @@
+# 是否强制使用#触发
+forceSharp: false
+
+# 头像缓存
+cache: true

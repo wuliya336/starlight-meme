@@ -1,0 +1,74 @@
+# <center>starlight-meme</center>
+
+![星点表情](https://count.kjchmc.cn/get/@starlight-meme?theme=moebooru)<br>
+[![Github](https://img.shields.io/badge/Github-星点表情-black?style=flat-square&logo=github)](https://github.com/wuliya336/starlight-meme)[![云崽bot](https://img.shields.io/badge/云崽-v3.0.0-black?style=flat-square&logo=dependabot)](https://gitee.com/Le-niao/Yunzai-Bot)[![Q群](https://img.shields.io/badge/group-272040396-blue)](https://gitee.com/Le-niao/Yunzai-Bot)<br>
+`starlight-meme`是一个`Yunzai-Bot` | `Karin`的扩展插件，提供表情包合成等功能<br>
+
+---
+
+如有问题请提交`issue`或加入Q群: `272040396`<br>
+
+## 安装与更新
+
+### `Yunzai-Bot`
+
+#### 使用`Github`
+
+```bash
+git clone --depth=1 https://github.com/wuliya336/starlight-meme ./plugins/starlight-meme/
+```
+
+#### 使用`Github`镜像
+
+```bash
+git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/starlight-meme ./plugins/starlight-meme/
+```
+
+### `手工安装`
+
+**手工下载安装包，解压后将`starlight-meme-master`更名为`starlight-meme`，然后放置在`Yunzai`的`plugins`目录内<br>**
+
+**虽然此方式能够使用，不利于后续升级，故不推荐使用<br>**
+
+### `Karin`
+
+### 使用`Github`
+
+```bash
+git clone --depth=1 https://github.com/wuliya336/starlight-meme ./plugins/karin-plugin-starlight-meme/
+```
+
+### 使用`Github`镜像
+
+```bash
+git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/starlight-meme ./plugins/karin-plugin-starlight-meme/
+```
+
+### `手工安装`
+
+**手工下载安装包，解压后将`starlight-meme-master`更名为`karin-plugin-starlight-meme`，然后放置在`Karin`的`plugins`目录内<br>**
+
+**虽然此方式能够使用，不利于后续升级，故不推荐使用<br>**
+
+## 安装依赖
+```bash
+pnpm install --filter=starlight-meme
+```
+
+## 使用帮助
+其他内容请查看[官方文档](https://docs.wuliya.cn)
+<mark>文档暂未完工</mark>
+
+## 更新计划
+
+- [x] 支持手动输入QQ获取头像
+- [ ] 参数支持
+- [ ] 锅巴兼容
+
+
+# 资源
+
+- [Miao-Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai) : 喵版Yunzai [Gitee](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
+  / [Github](https://github.com/yoimiya-kokomi/Miao-Yunzai)
+- [Yunzai-V3](https://github.com/yoimiya-kokomi/Yunzai-Bot) ：Yunzai V3 - 喵喵维护版（使用 icqq）
+- [Yunzai-V3](https://gitee.com/Le-niao/Yunzai-Bot) ：Yunzai V3 - 乐神原版（使用 oicq）

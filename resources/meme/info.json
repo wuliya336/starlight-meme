@@ -1,0 +1,8456 @@
+{
+  "5000choyen": {
+    "date_created": "2022-10-29T00:00:00",
+    "date_modified": "2024-11-02T00:00:00",
+    "key": "5000choyen",
+    "keywords": [
+      "5000兆"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我去",
+        "洛天依"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "ace_attorney_dialog": {
+    "date_created": "2024-05-03T00:00:00",
+    "date_modified": "2024-05-03T00:00:00",
+    "key": "ace_attorney_dialog",
+    "keywords": [
+      "逆转裁判气泡"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "表情包制作"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "acg_entrance": {
+    "date_created": "2023-03-30T00:00:00",
+    "date_modified": "2023-03-30T00:00:00",
+    "key": "acg_entrance",
+    "keywords": [
+      "二次元入口"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "走，跟我去二次元吧"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "add_chaos": {
+    "date_created": "2023-06-21T00:00:00",
+    "date_modified": "2023-06-21T00:00:00",
+    "key": "add_chaos",
+    "keywords": [
+      "添乱",
+      "给社会添乱"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "addiction": {
+    "date_created": "2022-08-17T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "addiction",
+    "keywords": [
+      "上瘾",
+      "毒瘾发作"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "alike": {
+    "date_created": "2022-01-02T00:00:00",
+    "date_modified": "2023-02-22T00:00:00",
+    "key": "alike",
+    "keywords": [
+      "一样"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "alipay": {
+    "date_created": "2024-10-30T00:00:00",
+    "date_modified": "2024-10-30T00:00:00",
+    "key": "alipay",
+    "keywords": [
+      "支付宝支付"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "message": {
+              "default": "",
+              "description": "二维码内容",
+              "title": "Message",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "message",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "二维码内容",
+            "names": [
+              "-m",
+              "--message"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "always": {
+    "date_created": "2021-12-02T00:00:00",
+    "date_modified": "2024-08-09T00:00:00",
+    "key": "always",
+    "keywords": [
+      "一直"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "mode": "normal",
+            "user_infos": []
+          },
+          {
+            "mode": "circle",
+            "user_infos": []
+          },
+          {
+            "mode": "loop",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "mode": {
+              "default": "normal",
+              "description": "生成模式，包含 normal、loop、circle",
+              "enum": [
+                "normal",
+                "loop",
+                "circle"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "mode",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "生成模式，包含 normal、loop、circle",
+            "names": [
+              "--mode"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "circle"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": "套娃模式",
+            "names": [
+              "--circle",
+              "套娃"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "loop"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": "循环模式",
+            "names": [
+              "--loop",
+              "循环"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "--loop"
+        ],
+        "humanized": null,
+        "key": "一直一直"
+      }
+    ],
+    "tags": []
+  },
+  "always_like": {
+    "date_created": "2022-03-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "always_like",
+    "keywords": [
+      "我永远喜欢"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 6,
+      "max_texts": 6,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "anti_kidnap": {
+    "date_created": "2022-07-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "anti_kidnap",
+    "keywords": [
+      "防诱拐"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "anya_suki": {
+    "date_created": "2022-05-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "anya_suki",
+    "keywords": [
+      "阿尼亚喜欢"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "阿尼亚喜欢这个"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "阿尼亚·福杰",
+      "间谍过家家"
+    ]
+  },
+  "applaud": {
+    "date_created": "2023-01-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "applaud",
+    "keywords": [
+      "鼓掌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "artifact": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:38:30.059801",
+    "key": "artifact",
+    "keywords": [
+      "圣遗物",
+      "原神圣遗物"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "名称;属性，使用分号分隔"
+      ],
+      "max_images": 1,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "ascension": {
+    "date_created": "2022-10-17T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "ascension",
+    "keywords": [
+      "升天"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "学的是机械"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "ask": {
+    "date_created": "2022-02-23T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "ask",
+    "keywords": [
+      "问问"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "atri_pillow": {
+    "date_created": "2024-08-12T00:00:00",
+    "date_modified": "2024-08-15T00:00:00",
+    "key": "atri_pillow",
+    "keywords": [
+      "亚托莉枕头"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "mode": "yes",
+            "user_infos": []
+          },
+          {
+            "mode": "no",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "mode": {
+              "default": "random",
+              "description": "yes or no",
+              "enum": [
+                "yes",
+                "no",
+                "random"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": "yes"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": null,
+            "names": [
+              "-y",
+              "--yes"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "no"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": null,
+            "names": [
+              "-n",
+              "--no"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "ATRI"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "萝卜子",
+      "ATRI",
+      "亚托莉"
+    ]
+  },
+  "back_to_work": {
+    "date_created": "2022-03-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "back_to_work",
+    "keywords": [
+      "继续干活",
+      "打工人"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "bad_news": {
+    "date_created": "2022-10-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "bad_news",
+    "keywords": [
+      "悲报"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "喜报"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "beat_head": {
+    "date_created": "2023-03-08T00:00:00",
+    "date_modified": "2023-03-08T00:00:00",
+    "key": "beat_head",
+    "keywords": [
+      "拍头"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "怎么说话的你"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "beat_up": {
+    "date_created": "2024-04-09T00:00:00",
+    "date_modified": "2024-04-09T00:00:00",
+    "key": "beat_up",
+    "keywords": [
+      "揍"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "汤姆",
+      "猫和老鼠",
+      "杰瑞"
+    ]
+  },
+  "behead": {
+    "date_created": "2023-07-01T00:00:00",
+    "date_modified": "2023-07-01T00:00:00",
+    "key": "behead",
+    "keywords": [
+      "砍头",
+      "斩首"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "bite": {
+    "date_created": "2022-02-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "bite",
+    "keywords": [
+      "啃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "blamed_mahiro": {
+    "date_created": "2024-08-26T00:00:00",
+    "date_modified": "2024-08-26T00:00:00",
+    "key": "blamed_mahiro",
+    "keywords": [
+      "真寻挨骂"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "傻逼"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "别当欧尼酱了",
+      "绪山真寻"
+    ]
+  },
+  "blood_pressure": {
+    "date_created": "2022-08-22T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "blood_pressure",
+    "keywords": [
+      "高血压"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "bluearchive": {
+    "date_created": "2023-10-14T00:00:00",
+    "date_modified": "2024-11-02T00:00:00",
+    "key": "bluearchive",
+    "keywords": [
+      "蔚蓝档案标题",
+      "batitle"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "Blue",
+        "Archive"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [],
+    "tags": [
+      "蔚蓝档案",
+      "碧蓝档案"
+    ]
+  },
+  "bocchi_draft": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "bocchi_draft",
+    "keywords": [
+      "波奇手稿"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "孤独摇滚",
+      "后藤一里",
+      "后藤独",
+      "波奇酱"
+    ]
+  },
+  "bronya_holdsign": {
+    "date_created": "2022-10-27T00:00:00",
+    "date_modified": "2023-03-30T00:00:00",
+    "key": "bronya_holdsign",
+    "keywords": [
+      "布洛妮娅举牌",
+      "大鸭鸭举牌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "V我50"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "米哈游",
+      "布洛妮娅·扎伊切克",
+      "崩坏3"
+    ]
+  },
+  "bubble_tea": {
+    "date_created": "2022-08-22T00:00:00",
+    "date_modified": "2023-03-10T00:00:00",
+    "key": "bubble_tea",
+    "keywords": [
+      "奶茶"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "position": "right",
+            "user_infos": []
+          },
+          {
+            "position": "left",
+            "user_infos": []
+          },
+          {
+            "position": "both",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "position": {
+              "default": "right",
+              "description": "奶茶的位置，包含 right、left、both",
+              "enum": [
+                "right",
+                "left",
+                "both"
+              ],
+              "title": "Position",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "position",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "奶茶的位置，包含 right、left、both",
+            "names": [
+              "-p",
+              "--position"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右手"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左手"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "both"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--both",
+              "双手"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "call_110": {
+    "date_created": "2022-08-26T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "call_110",
+    "keywords": [
+      "遇到困难请拨打"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "can_can_need": {
+    "date_created": "2023-03-16T00:00:00",
+    "date_modified": "2023-03-16T00:00:00",
+    "key": "can_can_need",
+    "keywords": [
+      "看看你的"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "capoo_draw": {
+    "date_created": "2023-03-31T00:00:00",
+    "date_modified": "2023-04-28T00:00:00",
+    "key": "capoo_draw",
+    "keywords": [
+      "咖波画"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_point": {
+    "date_created": "2024-10-24T00:00:00",
+    "date_modified": "2024-10-24T00:00:00",
+    "key": "capoo_point",
+    "keywords": [
+      "咖波指"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_rip": {
+    "date_created": "2023-04-17T00:00:00",
+    "date_modified": "2023-04-28T00:00:00",
+    "key": "capoo_rip",
+    "keywords": [
+      "咖波撕"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_rub": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "capoo_rub",
+    "keywords": [
+      "咖波蹭",
+      "咖波贴"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_say": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-30T00:00:00",
+    "key": "capoo_say",
+    "keywords": [
+      "咖波说"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "寄"
+      ],
+      "max_images": 0,
+      "max_texts": 10,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_stew": {
+    "date_created": "2024-08-23T00:00:00",
+    "date_modified": "2024-08-23T00:00:00",
+    "key": "capoo_stew",
+    "keywords": [
+      "咖波炖"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "capoo_strike": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "capoo_strike",
+    "keywords": [
+      "咖波撞",
+      "咖波头槌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫猫虫",
+      "咖波"
+    ]
+  },
+  "captain": {
+    "date_created": "2022-10-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "captain",
+    "keywords": [
+      "舰长"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 5,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "舰长",
+      "米哈游",
+      "休伯利安号",
+      "崩坏3"
+    ]
+  },
+  "caused_by_this": {
+    "date_created": "2024-11-18T00:00:00",
+    "date_modified": "2024-11-18T00:00:00",
+    "key": "caused_by_this",
+    "keywords": [
+      "这个引起的"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "心脏病 高血压 心律不齐 心肌梗塞 失眠 脱发 呼吸困难 胸闷气短 缺氧 躁郁 焦虑 脑供血不足 心慌心悸 心脑血管炸裂"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{text}"
+        ],
+        "humanized": "你的xx主要都是由这个引起的",
+        "key": "你的(?P\u003ctext\u003e.+?)(?:主要)?都?是由?这个引起的"
+      }
+    ],
+    "tags": []
+  },
+  "celebrate_the_new_year": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:37:05.782293",
+    "key": "celebrate_the_new_year",
+    "keywords": [
+      "贺新春"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "certificate": {
+    "date_created": "2023-12-03T00:00:00",
+    "date_modified": "2023-12-03T00:00:00",
+    "key": "certificate",
+    "keywords": [
+      "奖状",
+      "证书"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "time": {
+              "default": "",
+              "description": "指定时间",
+              "title": "Time",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "time",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "指定时间",
+            "names": [
+              "-t",
+              "--time"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "小王",
+        "优秀学生",
+        "一年一班"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 3
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "chanshenzi": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "chanshenzi",
+    "keywords": [
+      "馋身子"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你那叫喜欢吗？",
+        "你那是馋她身子",
+        "你下贱！"
+      ],
+      "max_images": 0,
+      "max_texts": 3,
+      "min_images": 0,
+      "min_texts": 3
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "charpic": {
+    "date_created": "2022-07-21T00:00:00",
+    "date_modified": "2024-11-01T00:00:00",
+    "key": "charpic",
+    "keywords": [
+      "字符画"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "chase_train": {
+    "date_created": "2023-01-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "chase_train",
+    "keywords": [
+      "追列车",
+      "追火车"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "china_flag": {
+    "date_created": "2022-03-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "china_flag",
+    "keywords": [
+      "国旗"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "clauvio_twist": {
+    "date_created": "2024-08-31T00:00:00",
+    "date_modified": "2024-08-31T00:00:00",
+    "key": "clauvio_twist",
+    "keywords": [
+      "鼠鼠搓"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "clown": {
+    "date_created": "2023-10-14T00:00:00",
+    "date_modified": "2023-10-14T00:00:00",
+    "key": "clown",
+    "keywords": [
+      "小丑"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "person": false,
+            "user_infos": []
+          },
+          {
+            "person": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "person": {
+              "default": false,
+              "description": "是否使用爷爷头轮廓",
+              "title": "Person",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否使用爷爷头轮廓",
+            "names": [
+              "--person",
+              "爷"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "clown_mask": {
+    "date_created": "2024-09-20T00:00:00",
+    "date_modified": "2024-09-20T00:00:00",
+    "key": "clown_mask",
+    "keywords": [
+      "小丑面具"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "mode": "front",
+            "user_infos": []
+          },
+          {
+            "mode": "behind",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "mode": {
+              "default": "front",
+              "description": "小丑在前/后，front/behind",
+              "enum": [
+                "front",
+                "behind"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "mode",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "小丑在前/后，front/behind",
+            "names": [
+              "--mode"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "front"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": "小丑在前",
+            "names": [
+              "--front",
+              "前"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "behind"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "mode",
+            "help_text": "小丑在后",
+            "names": [
+              "--behind",
+              "后"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "confuse": {
+    "date_created": "2022-09-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "confuse",
+    "keywords": [
+      "迷惑"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "coupon": {
+    "date_created": "2022-03-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "coupon",
+    "keywords": [
+      "兑换券"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "cover_face": {
+    "date_created": "2022-03-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "cover_face",
+    "keywords": [
+      "捂脸"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "crawl": {
+    "date_created": "2021-05-05T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "crawl",
+    "keywords": [
+      "爬"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "number": {
+              "default": 0,
+              "description": "图片编号，范围为 1~92",
+              "title": "Number",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "number",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "图片编号，范围为 1~92",
+            "names": [
+              "-n",
+              "--number"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "cyan": {
+    "date_created": "2022-03-18T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "cyan",
+    "keywords": [
+      "群青"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "daynight": {
+    "date_created": "2023-10-03T00:00:00",
+    "date_modified": "2023-10-03T00:00:00",
+    "key": "daynight",
+    "keywords": [
+      "白天黑夜",
+      "白天晚上"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "decent_kiss": {
+    "date_created": "2022-04-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "decent_kiss",
+    "keywords": [
+      "像样的亲亲"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dianzhongdian": {
+    "date_created": "2022-03-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "dianzhongdian",
+    "keywords": [
+      "入典",
+      "典中典",
+      "黑白草图"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "救命啊"
+      ],
+      "max_images": 1,
+      "max_texts": 2,
+      "min_images": 1,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dinosaur": {
+    "date_created": "2023-01-06T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "dinosaur",
+    "keywords": [
+      "恐龙",
+      "小恐龙"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "distracted": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "distracted",
+    "keywords": [
+      "注意力涣散"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "明日方舟"
+    ]
+  },
+  "divorce": {
+    "date_created": "2023-01-07T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "divorce",
+    "keywords": [
+      "离婚协议",
+      "离婚申请"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "do": {
+    "date_created": "2023-03-07T00:00:00",
+    "date_modified": "2023-03-07T00:00:00",
+    "key": "do",
+    "keywords": [
+      "撅",
+      "狠狠地撅"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dog_dislike": {
+    "date_created": "2023-11-16T00:00:00",
+    "date_modified": "2023-11-16T00:00:00",
+    "key": "dog_dislike",
+    "keywords": [
+      "狗都不玩"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "circle": false,
+            "user_infos": []
+          },
+          {
+            "circle": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "circle": {
+              "default": false,
+              "description": "是否将图片变为圆形",
+              "title": "Circle",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为圆形",
+            "names": [
+              "--circle",
+              "圆"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dog_of_vtb": {
+    "date_created": "2023-04-18T00:00:00",
+    "date_modified": "2023-04-18T00:00:00",
+    "key": "dog_of_vtb",
+    "keywords": [
+      "管人痴"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dont_go_near": {
+    "date_created": "2022-01-02T00:00:00",
+    "date_modified": "2023-04-20T00:00:00",
+    "key": "dont_go_near",
+    "keywords": [
+      "不要靠近"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dont_press": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:37:05.782293",
+    "key": "dont_press",
+    "keywords": [
+      "不要按"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "世界毁灭"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "dont_touch": {
+    "date_created": "2023-04-27T00:00:00",
+    "date_modified": "2023-04-27T00:00:00",
+    "key": "dont_touch",
+    "keywords": [
+      "别碰"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "douyin": {
+    "date_created": "2022-10-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "douyin",
+    "keywords": [
+      "douyin"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "douyin"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "eat": {
+    "date_created": "2022-02-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "eat",
+    "keywords": [
+      "吃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "empathy": {
+    "date_created": "2023-04-27T00:00:00",
+    "date_modified": "2023-04-27T00:00:00",
+    "key": "empathy",
+    "keywords": [
+      "换位思考"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "emperor_dragon": {
+    "date_created": "2024-10-30T00:00:00",
+    "date_modified": "2024-10-30T00:00:00",
+    "key": "emperor_dragon",
+    "keywords": [
+      "皇帝龙图"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "erised_mirror": {
+    "date_created": "2024-08-31T00:00:00",
+    "date_modified": "2024-08-31T00:00:00",
+    "key": "erised_mirror",
+    "keywords": [
+      "意若思镜"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "哈利·波特"
+    ]
+  },
+  "fade_away": {
+    "date_created": "2024-08-20T00:00:00",
+    "date_modified": "2024-08-21T00:00:00",
+    "key": "fade_away",
+    "keywords": [
+      "灰飞烟灭"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "fanatic": {
+    "date_created": "2021-12-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "fanatic",
+    "keywords": [
+      "狂爱",
+      "狂粉"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "洛天依"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "fast_do": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:38:49.193811",
+    "key": "fast_do",
+    "keywords": [
+      "狠撅",
+      "狠狠地撅"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "father_work": {
+    "date_created": "2024-05-12T00:00:00",
+    "date_modified": "2024-05-16T00:00:00",
+    "key": "father_work",
+    "keywords": [
+      "闭嘴",
+      "我爸爸"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "此处添加文字"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "fencing": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "fencing",
+    "keywords": [
+      "击剑",
+      "🤺"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "fight_with_sunuo": {
+    "date_created": "2024-04-03T00:00:00",
+    "date_modified": "2024-05-25T00:00:00",
+    "key": "fight_with_sunuo",
+    "keywords": [
+      "我打宿傩",
+      "我打宿傩吗"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "咒术回战",
+      "两面宿傩"
+    ]
+  },
+  "fill_head": {
+    "date_created": "2023-06-03T00:00:00",
+    "date_modified": "2023-06-03T00:00:00",
+    "key": "fill_head",
+    "keywords": [
+      "满脑子"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{name}"
+        ],
+        "humanized": "满脑子都是xx",
+        "key": "满脑子都是(?P\u003cname\u003e\\S+)"
+      }
+    ],
+    "tags": []
+  },
+  "find_chips": {
+    "date_created": "2022-10-26T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "find_chips",
+    "keywords": [
+      "整点薯条"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我们要飞向何方",
+        "我打算待会去码头整点薯条",
+        "我说的是归根结底，活着是为了什么",
+        "为了待会去码头整点薯条"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "firefly_holdsign": {
+    "date_created": "2024-05-05T00:00:00",
+    "date_modified": "2024-05-06T00:00:00",
+    "key": "firefly_holdsign",
+    "keywords": [
+      "流萤举牌"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "number": {
+              "default": 0,
+              "description": "图片编号，范围为 1~21",
+              "title": "Number",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "number",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "图片编号，范围为 1~21",
+            "names": [
+              "-n",
+              "--number"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "我超爱你"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "崩坏：星穹铁道",
+      "流萤",
+      "米哈游"
+    ]
+  },
+  "flash_blind": {
+    "date_created": "2023-05-05T00:00:00",
+    "date_modified": "2023-05-05T00:00:00",
+    "key": "flash_blind",
+    "keywords": [
+      "闪瞎"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "闪瞎你们的狗眼"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "fleshlight": {
+    "date_created": "2023-04-29T00:00:00",
+    "date_modified": "2023-04-29T00:00:00",
+    "key": "fleshlight",
+    "keywords": [
+      "飞机杯"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "flush": {
+    "date_created": "2024-09-03T00:00:00",
+    "date_modified": "2024-09-03T00:00:00",
+    "key": "flush",
+    "keywords": [
+      "红温"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "follow": {
+    "date_created": "2022-03-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "follow",
+    "keywords": [
+      "关注"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "forbid": {
+    "date_created": "2023-03-12T00:00:00",
+    "date_modified": "2023-03-12T00:00:00",
+    "key": "forbid",
+    "keywords": [
+      "禁止",
+      "禁"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "frieren_take": {
+    "date_created": "2024-01-18T00:00:00",
+    "date_modified": "2024-08-09T00:00:00",
+    "key": "frieren_take",
+    "keywords": [
+      "芙莉莲拿"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "所谓的男人啊，只要送他们这种东西就会很开心"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "芙莉莲",
+      "葬送的芙莉莲"
+    ]
+  },
+  "funny_mirror": {
+    "date_created": "2022-03-13T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "funny_mirror",
+    "keywords": [
+      "哈哈镜"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "garbage": {
+    "date_created": "2022-04-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "garbage",
+    "keywords": [
+      "垃圾",
+      "垃圾桶"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "genshin_eat": {
+    "date_created": "2024-08-06T00:00:00",
+    "date_modified": "2024-08-10T00:00:00",
+    "key": "genshin_eat",
+    "keywords": [
+      "原神吃"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "character": 1,
+            "user_infos": []
+          },
+          {
+            "character": 2,
+            "user_infos": []
+          },
+          {
+            "character": 3,
+            "user_infos": []
+          },
+          {
+            "character": 4,
+            "user_infos": []
+          },
+          {
+            "character": 5,
+            "user_infos": []
+          },
+          {
+            "character": 6,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "character": {
+              "default": 0,
+              "description": "角色编号：1、八重神子，2、胡桃，3、妮露，4、可莉，5、刻晴，6、钟离",
+              "title": "Character",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "character",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "角色编号：1、八重神子，2、胡桃，3、妮露，4、可莉，5、刻晴，6、钟离",
+            "names": [
+              "-c",
+              "--character",
+              "角色"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "--character",
+          "1"
+        ],
+        "humanized": "八重神子吃",
+        "key": "(?:八重神子|神子|八重)吃"
+      },
+      {
+        "args": [
+          "--character",
+          "2"
+        ],
+        "humanized": null,
+        "key": "胡桃吃"
+      },
+      {
+        "args": [
+          "--character",
+          "3"
+        ],
+        "humanized": null,
+        "key": "妮露吃"
+      },
+      {
+        "args": [
+          "--character",
+          "4"
+        ],
+        "humanized": null,
+        "key": "可莉吃"
+      },
+      {
+        "args": [
+          "--character",
+          "5"
+        ],
+        "humanized": null,
+        "key": "刻晴吃"
+      },
+      {
+        "args": [
+          "--character",
+          "6"
+        ],
+        "humanized": null,
+        "key": "钟离吃"
+      }
+    ],
+    "tags": [
+      "米哈游",
+      "妮露",
+      "原神",
+      "胡桃",
+      "钟离",
+      "刻晴",
+      "可莉",
+      "八重神子"
+    ]
+  },
+  "genshin_start": {
+    "date_created": "2023-07-01T00:00:00",
+    "date_modified": "2023-07-01T00:00:00",
+    "key": "genshin_start",
+    "keywords": [
+      "原神启动"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "原神，启动！"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{text}"
+        ],
+        "humanized": "xx启动",
+        "key": "(?P\u003ctext\u003e\\S+启动[!！]?)"
+      }
+    ],
+    "tags": []
+  },
+  "good_news": {
+    "date_created": "2021-12-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "good_news",
+    "keywords": [
+      "喜报"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "悲报"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "google": {
+    "date_created": "2022-10-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "google",
+    "keywords": [
+      "google"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "Google"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "google_captcha": {
+    "date_created": "2024-08-15T00:00:00",
+    "date_modified": "2024-08-15T00:00:00",
+    "key": "google_captcha",
+    "keywords": [
+      "谷歌验证码"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "gorilla_throw": {
+    "date_created": "2024-11-16T00:00:00",
+    "date_modified": "2024-11-16T00:00:00",
+    "key": "gorilla_throw",
+    "keywords": [
+      "猩猩扔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "grab": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "grab",
+    "keywords": [
+      "抓"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "guichu": {
+    "date_created": "2023-07-19T00:00:00",
+    "date_modified": "2023-07-19T00:00:00",
+    "key": "guichu",
+    "keywords": [
+      "鬼畜"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "direction": "left",
+            "user_infos": []
+          },
+          {
+            "direction": "right",
+            "user_infos": []
+          },
+          {
+            "direction": "top",
+            "user_infos": []
+          },
+          {
+            "direction": "bottom",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "direction": {
+              "default": "left",
+              "description": "鬼畜对称方向，包含 left、right、top、bottom",
+              "enum": [
+                "left",
+                "right",
+                "top",
+                "bottom"
+              ],
+              "title": "Direction",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "direction",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "鬼畜对称方向，包含 left、right、top、bottom",
+            "names": [
+              "-d",
+              "--direction"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "top"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--top",
+              "上"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "bottom"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--bottom",
+              "下"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "gun": {
+    "date_created": "2022-08-22T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "gun",
+    "keywords": [
+      "手枪"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "position": "left",
+            "user_infos": []
+          },
+          {
+            "position": "right",
+            "user_infos": []
+          },
+          {
+            "position": "both",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "position": {
+              "default": "left",
+              "description": "枪的位置，包含 left、right、both",
+              "enum": [
+                "left",
+                "right",
+                "both"
+              ],
+              "title": "Position",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "position",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "枪的位置，包含 left、right、both",
+            "names": [
+              "-p",
+              "--position"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左手"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右手"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "both"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--both",
+              "双手"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hammer": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hammer",
+    "keywords": [
+      "锤"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "haruhi_raise": {
+    "date_created": "2024-11-13T00:00:00",
+    "date_modified": "2024-11-13T00:00:00",
+    "key": "haruhi_raise",
+    "keywords": [
+      "凉宫春日举"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "凉宫春日"
+    ]
+  },
+  "high_EQ": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2024-08-12T00:00:00",
+    "key": "high_EQ",
+    "keywords": [
+      "高低情商",
+      "低高情商"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "高情商",
+        "低情商"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{low}",
+          "{high}"
+        ],
+        "humanized": "低情商xx高情商xx",
+        "key": "低情商[\\s:：]*(?P\u003clow\u003e\\S+)\\s*高情商[\\s:：]*(?P\u003chigh\u003e\\S+)"
+      },
+      {
+        "args": [
+          "{low}",
+          "{high}"
+        ],
+        "humanized": "高情商xx低情商xx",
+        "key": "高情商[\\s:：]*(?P\u003chigh\u003e\\S+)\\s*低情商[\\s:：]*(?P\u003clow\u003e\\S+)"
+      }
+    ],
+    "tags": []
+  },
+  "hit_screen": {
+    "date_created": "2022-09-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hit_screen",
+    "keywords": [
+      "打穿",
+      "打穿屏幕"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hold_grudge": {
+    "date_created": "2021-12-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hold_grudge",
+    "keywords": [
+      "记仇"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "群友不发涩图"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hold_tight": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hold_tight",
+    "keywords": [
+      "抱紧"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hug": {
+    "date_created": "2024-08-06T00:00:00",
+    "date_modified": "2024-08-06T00:00:00",
+    "key": "hug",
+    "keywords": [
+      "抱",
+      "抱抱"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hug_leg": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hug_leg",
+    "keywords": [
+      "抱大腿"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "hutao_bite": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "hutao_bite",
+    "keywords": [
+      "胡桃啃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "胡桃",
+      "米哈游",
+      "原神"
+    ]
+  },
+  "imprison": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "imprison",
+    "keywords": [
+      "坐牢"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我发涩图被抓起来了"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "incivilization": {
+    "date_created": "2022-10-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "incivilization",
+    "keywords": [
+      "不文明"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你刚才说的话不是很礼貌！"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "intel_inside": {
+    "date_created": "2024-10-29T00:00:00",
+    "date_modified": "2024-10-29T00:00:00",
+    "key": "intel_inside",
+    "keywords": [
+      "inside"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "intel"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{text}"
+        ],
+        "humanized": "xx inside",
+        "key": "(?P\u003ctext\u003e\\S{1,10})\\s+inside"
+      }
+    ],
+    "tags": []
+  },
+  "interview": {
+    "date_created": "2022-03-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "interview",
+    "keywords": [
+      "采访"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "采访大佬经验"
+      ],
+      "max_images": 2,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jerk_off": {
+    "date_created": "2024-08-04T00:00:00",
+    "date_modified": "2024-08-04T00:00:00",
+    "key": "jerk_off",
+    "keywords": [
+      "打胶"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jerry_stare": {
+    "date_created": "2024-08-09T00:00:00",
+    "date_modified": "2024-08-09T00:00:00",
+    "key": "jerry_stare",
+    "keywords": [
+      "杰瑞盯"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "杰瑞",
+      "猫和老鼠"
+    ]
+  },
+  "jiamianqishi": {
+    "date_created": "2024-10-30T00:00:00",
+    "date_modified": "2024-10-30T00:00:00",
+    "key": "jiamianqishi",
+    "keywords": [
+      "假面骑士"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "哦～",
+        "（飞扑）",
+        "一直想看你这幅表情",
+        "这幅嫉妒我的表情"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jiji_king": {
+    "date_created": "2022-10-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "jiji_king",
+    "keywords": [
+      "急急国王"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "circle": false,
+            "user_infos": []
+          },
+          {
+            "circle": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "circle": {
+              "default": false,
+              "description": "是否将图片变为圆形",
+              "title": "Circle",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为圆形",
+            "names": [
+              "--circle",
+              "圆"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 11,
+      "max_texts": 11,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jinhsi": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:38:49.193811",
+    "key": "jinhsi",
+    "keywords": [
+      "汐汐",
+      "今汐"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "汐汐"
+      ],
+      "max_images": 0,
+      "max_texts": 8,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jiujiu": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "jiujiu",
+    "keywords": [
+      "啾啾"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "jump": {
+    "date_created": "2024-07-14T00:00:00",
+    "date_modified": "2024-07-14T00:00:00",
+    "key": "jump",
+    "keywords": [
+      "跳"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "kaleidoscope": {
+    "date_created": "2023-01-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "kaleidoscope",
+    "keywords": [
+      "万花筒",
+      "万花镜"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "circle": false,
+            "user_infos": []
+          },
+          {
+            "circle": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "circle": {
+              "default": false,
+              "description": "是否将图片变为圆形",
+              "title": "Circle",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为圆形",
+            "names": [
+              "--circle",
+              "圆"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "karyl_point": {
+    "date_created": "2022-11-16T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "karyl_point",
+    "keywords": [
+      "凯露指"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "凯露",
+      "公主连结"
+    ]
+  },
+  "keep_away": {
+    "date_created": "2022-05-31T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "keep_away",
+    "keywords": [
+      "远离"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "如何提高社交质量 : \n远离以下头像的人"
+      ],
+      "max_images": 8,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "kick_ball": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "kick_ball",
+    "keywords": [
+      "踢球"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "kirby_hammer": {
+    "date_created": "2022-11-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "kirby_hammer",
+    "keywords": [
+      "卡比锤",
+      "卡比重锤"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "circle": false,
+            "user_infos": []
+          },
+          {
+            "circle": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "circle": {
+              "default": false,
+              "description": "是否将图片变为圆形",
+              "title": "Circle",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为圆形",
+            "names": [
+              "--circle",
+              "圆"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "星之卡比"
+    ]
+  },
+  "kiss": {
+    "date_created": "2021-06-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "kiss",
+    "keywords": [
+      "亲",
+      "亲亲"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "klee_eat": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "klee_eat",
+    "keywords": [
+      "可莉吃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "米哈游",
+      "可莉",
+      "原神"
+    ]
+  },
+  "knock": {
+    "date_created": "2022-04-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "knock",
+    "keywords": [
+      "敲"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "鲨鲨",
+      "噶呜·古拉",
+      "Gawr Gura"
+    ]
+  },
+  "kokona_seal": {
+    "date_created": "2024-11-05T00:00:00",
+    "date_modified": "2024-11-05T00:00:00",
+    "key": "kokona_seal",
+    "keywords": [
+      "心奈印章"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "number": {
+              "default": 0,
+              "description": "图片编号，范围为 1~12",
+              "title": "Number",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "number",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "图片编号，范围为 1~12",
+            "names": [
+              "-n",
+              "--number"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "满分"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "蔚蓝档案",
+      "碧蓝档案",
+      "心奈"
+    ]
+  },
+  "konata_watch": {
+    "date_created": "2024-08-18T00:00:00",
+    "date_modified": "2024-08-19T00:00:00",
+    "key": "konata_watch",
+    "keywords": [
+      "泉此方看"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "泉此方",
+      "幸运星"
+    ]
+  },
+  "lash": {
+    "date_created": "2024-07-23T00:00:00",
+    "date_modified": "2024-07-23T00:00:00",
+    "key": "lash",
+    "keywords": [
+      "鞭笞",
+      "鞭打",
+      "鞭挞",
+      "鞭策"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "learn": {
+    "date_created": "2022-12-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "learn",
+    "keywords": [
+      "偷学"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "偷学群友数理基础"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "left_right_jump": {
+    "date_created": "2024-07-14T00:00:00",
+    "date_modified": "2024-07-14T00:00:00",
+    "key": "left_right_jump",
+    "keywords": [
+      "左右横跳"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "direction": "left_right",
+            "user_infos": []
+          },
+          {
+            "direction": "right_left",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "direction": {
+              "default": "left_right",
+              "description": "跑动方向，包含 left_right、right_left",
+              "enum": [
+                "left_right",
+                "right_left"
+              ],
+              "title": "Direction",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "direction",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "跑动方向，包含 left_right、right_left",
+            "names": [
+              "-d",
+              "--direction"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left_right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--left_right",
+              "左右"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right_left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--right_left",
+              "右左"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "let_me_in": {
+    "date_created": "2024-07-18T00:00:00",
+    "date_modified": "2024-07-18T00:00:00",
+    "key": "let_me_in",
+    "keywords": [
+      "让我进去"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "lick_candy": {
+    "date_created": "2024-08-14T00:00:00",
+    "date_modified": "2024-08-14T00:00:00",
+    "key": "lick_candy",
+    "keywords": [
+      "舔糖",
+      "舔棒棒糖"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "lim_x_0": {
+    "date_created": "2023-01-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "lim_x_0",
+    "keywords": [
+      "等价无穷小"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "listen_music": {
+    "date_created": "2022-03-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "listen_music",
+    "keywords": [
+      "听音乐"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "little_angel": {
+    "date_created": "2022-01-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "little_angel",
+    "keywords": [
+      "小天使"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "little_do": {
+    "date_created": "2024-07-12T00:00:00",
+    "date_modified": "2024-07-12T00:00:00",
+    "key": "little_do",
+    "keywords": [
+      "小撅",
+      "轻撅",
+      "滑稽撅"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "loading": {
+    "date_created": "2021-12-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "loading",
+    "keywords": [
+      "加载中"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "look_flat": {
+    "date_created": "2022-10-06T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "look_flat",
+    "keywords": [
+      "看扁"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "ratio": {
+              "default": 2,
+              "description": "图片“压扁”比例，默认为 2",
+              "title": "Ratio",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "ratio",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "图片“压扁”比例，默认为 2",
+            "names": [
+              "-r",
+              "--ratio"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "可恶...被人看扁了"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "look_this_icon": {
+    "date_created": "2022-10-07T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "look_this_icon",
+    "keywords": [
+      "看图标"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "朋友\n先看看这个图标再说话"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "loop": {
+    "date_created": "2024-07-14T00:00:00",
+    "date_modified": "2024-08-15T00:00:00",
+    "key": "loop",
+    "keywords": [
+      "循环"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "direction": "left",
+            "user_infos": []
+          },
+          {
+            "direction": "right",
+            "user_infos": []
+          },
+          {
+            "direction": "top",
+            "user_infos": []
+          },
+          {
+            "direction": "bottom",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "direction": {
+              "default": "top",
+              "description": "循环方向，包含 left、right、top、bottom",
+              "enum": [
+                "left",
+                "right",
+                "top",
+                "bottom"
+              ],
+              "title": "Direction",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "direction",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "循环方向，包含 left、right、top、bottom",
+            "names": [
+              "-d",
+              "--direction"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "top"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--top",
+              "上"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "bottom"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--bottom",
+              "下"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "lost_dog": {
+    "date_created": "2024-01-19T00:00:00",
+    "date_modified": "2024-01-20T00:00:00",
+    "key": "lost_dog",
+    "keywords": [
+      "寻狗启事"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "米哈游",
+      "原神",
+      "神里绫华"
+    ]
+  },
+  "love_you": {
+    "date_created": "2022-03-13T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "love_you",
+    "keywords": [
+      "永远爱你"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "luoyonghao_say": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "luoyonghao_say",
+    "keywords": [
+      "罗永浩说"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "又不是不能用"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "luxun_say": {
+    "date_created": "2021-12-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "luxun_say",
+    "keywords": [
+      "鲁迅说",
+      "鲁迅说过"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我没有说过这句话"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "mahiro_readbook": {
+    "date_created": "2024-08-18T00:00:00",
+    "date_modified": "2024-08-18T00:00:00",
+    "key": "mahiro_readbook",
+    "keywords": [
+      "真寻看书"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "绪山真寻",
+      "别当欧尼酱了"
+    ]
+  },
+  "maikease": {
+    "date_created": "2023-07-30T00:00:00",
+    "date_modified": "2023-07-30T00:00:00",
+    "key": "maikease",
+    "keywords": [
+      "麦克阿瑟说"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "美国前五星上将麦克阿瑟",
+        "曾这样评价道",
+        "如果让我去阻止xxx",
+        "那么我宁愿去阻止上帝"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "maimai_awaken": {
+    "date_created": "2023-07-19T00:00:00",
+    "date_modified": "2023-07-19T00:00:00",
+    "key": "maimai_awaken",
+    "keywords": [
+      "旅行伙伴觉醒"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "舞萌"
+    ]
+  },
+  "maimai_join": {
+    "date_created": "2023-07-19T00:00:00",
+    "date_modified": "2023-07-19T00:00:00",
+    "key": "maimai_join",
+    "keywords": [
+      "旅行伙伴加入"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "舞萌"
+    ]
+  },
+  "make_friend": {
+    "date_created": "2022-03-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "make_friend",
+    "keywords": [
+      "交个朋友"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "maki": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:37:58.674596",
+    "key": "maki",
+    "keywords": [
+      "真纪"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "兄弟，你好香"
+      ],
+      "max_images": 0,
+      "max_texts": 20,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "marriage": {
+    "date_created": "2022-05-31T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "marriage",
+    "keywords": [
+      "结婚申请",
+      "结婚登记"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "meteor": {
+    "date_created": "2022-10-21T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "meteor",
+    "keywords": [
+      "流星"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我要对象"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "mihoyo": {
+    "date_created": "2023-05-06T00:00:00",
+    "date_modified": "2023-05-06T00:00:00",
+    "key": "mihoyo",
+    "keywords": [
+      "米哈游"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "ming_ku": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:38:30.059801",
+    "key": "ming_ku",
+    "keywords": [
+      "命苦"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "mourning": {
+    "date_created": "2023-07-29T00:00:00",
+    "date_modified": "2023-07-29T00:00:00",
+    "key": "mourning",
+    "keywords": [
+      "上香"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "black": false,
+            "user_infos": []
+          },
+          {
+            "black": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "black": {
+              "default": false,
+              "description": "是否将图片变为黑白",
+              "title": "Black",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为黑白",
+            "names": [
+              "--black",
+              "黑白"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "murmur": {
+    "date_created": "2021-12-31T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "murmur",
+    "keywords": [
+      "低语"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你的假期余额不足"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "my_friend": {
+    "date_created": "2022-03-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "my_friend",
+    "keywords": [
+      "我朋友说"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "name": {
+              "default": "",
+              "description": "指定名字",
+              "title": "Name",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "name",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "指定名字",
+            "names": [
+              "-n",
+              "--name"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "让我康康"
+      ],
+      "max_images": 1,
+      "max_texts": 10,
+      "min_images": 1,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "my_opinion": {
+    "date_created": "2024-07-14T00:00:00",
+    "date_modified": "2024-07-14T00:00:00",
+    "key": "my_opinion",
+    "keywords": [
+      "我的意见如下",
+      "我的意见是"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "东方Project"
+    ]
+  },
+  "my_wife": {
+    "date_created": "2022-07-29T00:00:00",
+    "date_modified": "2024-08-12T00:00:00",
+    "key": "my_wife",
+    "keywords": [
+      "我老婆",
+      "这是我老婆"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "name": {
+              "default": "老婆",
+              "description": "称呼，默认为“老婆”",
+              "title": "Name",
+              "type": "string"
+            },
+            "pronoun": {
+              "default": "我",
+              "description": "人称代词，默认为“我”",
+              "title": "Pronoun",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "pronoun",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": "pronoun",
+            "help_text": "人称代词，默认为“我”",
+            "names": [
+              "-p",
+              "--pron"
+            ]
+          },
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "name",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": "name",
+            "help_text": "称呼，默认为“老婆”",
+            "names": [
+              "-n",
+              "--name"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "nahida_bite": {
+    "date_created": "2023-06-23T00:00:00",
+    "date_modified": "2024-08-10T00:00:00",
+    "key": "nahida_bite",
+    "keywords": [
+      "纳西妲啃",
+      "草神啃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "米哈游",
+      "纳西妲",
+      "草神",
+      "原神"
+    ]
+  },
+  "name_generator": {
+    "date_created": "2023-02-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "name_generator",
+    "keywords": [
+      "亚文化取名机",
+      "亚名"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "need": {
+    "date_created": "2022-03-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "need",
+    "keywords": [
+      "需要",
+      "你可能需要"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "nekoha_holdsign": {
+    "date_created": "2023-03-30T00:00:00",
+    "date_modified": "2023-03-30T00:00:00",
+    "key": "nekoha_holdsign",
+    "keywords": [
+      "猫羽雫举牌",
+      "猫猫举牌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "V我50"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": [
+      "猫羽雫"
+    ]
+  },
+  "nihaosaoa": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "nihaosaoa",
+    "keywords": [
+      "你好骚啊"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "既然追求刺激",
+        "就贯彻到底了",
+        "你好骚啊"
+      ],
+      "max_images": 0,
+      "max_texts": 3,
+      "min_images": 0,
+      "min_texts": 3
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "nijika_holdsign": {
+    "date_created": "2023-06-20T00:00:00",
+    "date_modified": "2023-06-20T00:00:00",
+    "key": "nijika_holdsign",
+    "keywords": [
+      "伊地知虹夏举牌",
+      "虹夏举牌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你可少看点二次元吧"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "no_response": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "no_response",
+    "keywords": [
+      "无响应"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "nokia": {
+    "date_created": "2021-12-15T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "nokia",
+    "keywords": [
+      "诺基亚",
+      "有内鬼"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "无内鬼，继续交易"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "not_call_me": {
+    "date_created": "2022-11-16T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "not_call_me",
+    "keywords": [
+      "不喊我"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "开银趴不喊我是吧"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "note_for_leave": {
+    "date_created": "2023-04-27T00:00:00",
+    "date_modified": "2023-04-27T00:00:00",
+    "key": "note_for_leave",
+    "keywords": [
+      "请假条"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "name": {
+              "default": "",
+              "description": "指定名字",
+              "title": "Name",
+              "type": "string"
+            },
+            "time": {
+              "default": "",
+              "description": "指定时间",
+              "title": "Time",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "time",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "指定时间",
+            "names": [
+              "-t",
+              "--time"
+            ]
+          },
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "name",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "指定名字",
+            "names": [
+              "-n",
+              "--name"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "想玩原神"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "operator_generator": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "operator_generator",
+    "keywords": [
+      "合成大干员"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "oshi_no_ko": {
+    "date_created": "2023-06-01T00:00:00",
+    "date_modified": "2023-06-23T00:00:00",
+    "key": "oshi_no_ko",
+    "keywords": [
+      "我推的网友"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "网友"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{name}"
+        ],
+        "humanized": "我推的xx",
+        "key": "我推的(?P\u003cname\u003e\\S+)"
+      }
+    ],
+    "tags": [
+      "我推的孩子"
+    ]
+  },
+  "osu": {
+    "date_created": "2023-07-27T00:00:00",
+    "date_modified": "2023-07-27T00:00:00",
+    "key": "osu",
+    "keywords": [
+      "osu"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "hso!"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "out": {
+    "date_created": "2024-04-26T00:00:00",
+    "date_modified": "2024-04-26T00:00:00",
+    "key": "out",
+    "keywords": [
+      "out"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "overtime": {
+    "date_created": "2023-01-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "overtime",
+    "keywords": [
+      "加班"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "p5letter": {
+    "date_created": "2024-11-13T00:00:00",
+    "date_modified": "2024-11-13T00:00:00",
+    "key": "p5letter",
+    "keywords": [
+      "女神异闻录5预告信",
+      "P5预告信"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "TAKEYOURHEART"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "paint": {
+    "date_created": "2022-03-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "paint",
+    "keywords": [
+      "这像画吗"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "painter": {
+    "date_created": "2022-06-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "painter",
+    "keywords": [
+      "小画家"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "格蕾修",
+      "米哈游",
+      "崩坏3"
+    ]
+  },
+  "panda_dragon_figure": {
+    "date_created": "2024-10-30T00:00:00",
+    "date_modified": "2024-10-30T00:00:00",
+    "key": "panda_dragon_figure",
+    "keywords": [
+      "熊猫龙图"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "name": {
+              "default": "",
+              "description": "龙图名字",
+              "title": "Name",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "name",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "龙图名字",
+            "names": [
+              "-n",
+              "--name"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "我要玩原神"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "--name",
+          "{name}龙",
+          "{text}"
+        ],
+        "humanized": "xx龙：xx",
+        "key": "(?P\u003cname\u003e\\S{1,10})龙[\\s:：]+(?P\u003ctext\u003e\\S+)"
+      }
+    ],
+    "tags": []
+  },
+  "pass_the_buck": {
+    "date_created": "2023-03-31T00:00:00",
+    "date_modified": "2023-04-18T00:00:00",
+    "key": "pass_the_buck",
+    "keywords": [
+      "推锅",
+      "甩锅"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你写!"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pat": {
+    "date_created": "2021-12-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "pat",
+    "keywords": [
+      "拍"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pepe_raise": {
+    "date_created": "2024-08-18T00:00:00",
+    "date_modified": "2024-08-18T00:00:00",
+    "key": "pepe_raise",
+    "keywords": [
+      "佩佩举"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "明日方舟"
+    ]
+  },
+  "perfect": {
+    "date_created": "2022-03-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "perfect",
+    "keywords": [
+      "完美"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "petpet": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2023-02-11T00:00:00",
+    "key": "petpet",
+    "keywords": [
+      "摸",
+      "摸摸",
+      "摸头",
+      "rua"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "circle": false,
+            "user_infos": []
+          },
+          {
+            "circle": true,
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "circle": {
+              "default": false,
+              "description": "是否将图片变为圆形",
+              "title": "Circle",
+              "type": "boolean"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": {
+              "type": 0,
+              "value": true
+            },
+            "args": null,
+            "compact": false,
+            "default": false,
+            "dest": null,
+            "help_text": "是否将图片变为圆形",
+            "names": [
+              "--circle",
+              "圆"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pinch": {
+    "date_created": "2023-11-18T00:00:00",
+    "date_modified": "2023-11-18T00:00:00",
+    "key": "pinch",
+    "keywords": [
+      "捏",
+      "捏脸"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pixelate": {
+    "date_created": "2024-08-12T00:00:00",
+    "date_modified": "2024-08-12T00:00:00",
+    "key": "pixelate",
+    "keywords": [
+      "像素化"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "number": {
+              "default": 10,
+              "description": "像素化大小，默认为 10",
+              "title": "Number",
+              "type": "integer"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "number",
+                "value": "int"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "像素化大小，默认为 10",
+            "names": [
+              "-n",
+              "--number"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "plana_eat": {
+    "date_created": "2024-11-21T00:00:00",
+    "date_modified": "2024-11-21T00:00:00",
+    "key": "plana_eat",
+    "keywords": [
+      "普拉娜吃",
+      "普拉娜舔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "碧蓝档案",
+      "普拉娜",
+      "蔚蓝档案"
+    ]
+  },
+  "play": {
+    "date_created": "2021-10-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "play",
+    "keywords": [
+      "顶",
+      "玩"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "play_game": {
+    "date_created": "2022-01-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "play_game",
+    "keywords": [
+      "玩游戏"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "来玩休闲游戏啊"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "play_together": {
+    "date_created": "2024-07-26T00:00:00",
+    "date_modified": "2024-07-26T00:00:00",
+    "key": "play_together",
+    "keywords": [
+      "一起玩"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "碧蓝档案",
+      "蔚蓝档案"
+    ]
+  },
+  "police": {
+    "date_created": "2022-02-23T00:00:00",
+    "date_modified": "2024-09-06T00:00:00",
+    "key": "police",
+    "keywords": [
+      "出警"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "平安名すみれ"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "police1": {
+    "date_created": "2022-03-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "police1",
+    "keywords": [
+      "警察"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pornhub": {
+    "date_created": "2022-10-27T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "pornhub",
+    "keywords": [
+      "ph",
+      "pornhub"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "You",
+        "Tube"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "potato": {
+    "date_created": "2023-01-19T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "potato",
+    "keywords": [
+      "土豆"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pound": {
+    "date_created": "2022-03-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "pound",
+    "keywords": [
+      "捣"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "printing": {
+    "date_created": "2023-01-26T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "printing",
+    "keywords": [
+      "打印"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "prpr": {
+    "date_created": "2022-03-05T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "prpr",
+    "keywords": [
+      "舔",
+      "舔屏",
+      "prpr"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "psyduck": {
+    "date_created": "2022-06-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "psyduck",
+    "keywords": [
+      "可达鸭"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "来份",
+        "涩图"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "punch": {
+    "date_created": "2022-03-18T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "punch",
+    "keywords": [
+      "打拳"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "pyramid": {
+    "date_created": "2024-08-16T00:00:00",
+    "date_modified": "2024-08-18T00:00:00",
+    "key": "pyramid",
+    "keywords": [
+      "四棱锥",
+      "金字塔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 4,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "qi": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:37:58.674596",
+    "key": "qi",
+    "keywords": [
+      "骑",
+      "狠狠地骑"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "qiegewala": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "qiegewala",
+    "keywords": [
+      "切格瓦拉"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "没有钱啊 肯定要做的啊",
+        "不做的话没有钱用",
+        "那你不会去打工啊",
+        "有手有脚的",
+        "打工是不可能打工的",
+        "这辈子不可能打工的"
+      ],
+      "max_images": 0,
+      "max_texts": 6,
+      "min_images": 0,
+      "min_texts": 6
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "raise_image": {
+    "date_created": "2023-08-09T00:00:00",
+    "date_modified": "2023-08-09T00:00:00",
+    "key": "raise_image",
+    "keywords": [
+      "举"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "raise_sign": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "raise_sign",
+    "keywords": [
+      "举牌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "大佬带带我"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "read_book": {
+    "date_created": "2022-08-22T00:00:00",
+    "date_modified": "2023-10-25T00:00:00",
+    "key": "read_book",
+    "keywords": [
+      "看书"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "エロ本"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "repeat": {
+    "date_created": "2022-06-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "repeat",
+    "keywords": [
+      "复读"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "救命啊"
+      ],
+      "max_images": 5,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "rip": {
+    "date_created": "2021-05-05T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "rip",
+    "keywords": [
+      "撕"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "rip_angrily": {
+    "date_created": "2022-10-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "rip_angrily",
+    "keywords": [
+      "怒撕"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "rise_dead": {
+    "date_created": "2022-11-08T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "rise_dead",
+    "keywords": [
+      "诈尸",
+      "秽土转生"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "roll": {
+    "date_created": "2022-01-04T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "roll",
+    "keywords": [
+      "滚"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "rotate_3d": {
+    "date_created": "2024-04-30T00:00:00",
+    "date_modified": "2024-04-30T00:00:00",
+    "key": "rotate_3d",
+    "keywords": [
+      "三维旋转"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "rub": {
+    "date_created": "2021-06-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "rub",
+    "keywords": [
+      "贴",
+      "贴贴",
+      "蹭",
+      "蹭蹭"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 2,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "run": {
+    "date_created": "2022-10-17T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "run",
+    "keywords": [
+      "快跑"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "快跑"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "run_away": {
+    "date_created": "2024-07-23T00:00:00",
+    "date_modified": "2024-07-23T00:00:00",
+    "key": "run_away",
+    "keywords": [
+      "快逃"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "初音未来"
+    ]
+  },
+  "safe_sense": {
+    "date_created": "2022-03-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "safe_sense",
+    "keywords": [
+      "安全感"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你给我的安全感\n远不及{ta}的万分之一"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "scratch_head": {
+    "date_created": "2023-01-07T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "scratch_head",
+    "keywords": [
+      "挠头"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "scratchcard": {
+    "date_created": "2022-10-05T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "scratchcard",
+    "keywords": [
+      "刮刮乐"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "谢谢参与"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "scroll": {
+    "date_created": "2022-01-19T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "scroll",
+    "keywords": [
+      "滚屏"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你们说话啊"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shake_head": {
+    "date_created": "2024-10-31T00:00:00",
+    "date_modified": "2024-10-31T00:00:00",
+    "key": "shake_head",
+    "keywords": [
+      "晃脑"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shiroko_pero": {
+    "date_created": "2024-08-10T00:00:00",
+    "date_modified": "2024-08-10T00:00:00",
+    "key": "shiroko_pero",
+    "keywords": [
+      "白子舔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "碧蓝档案",
+      "砂狼白子",
+      "蔚蓝档案"
+    ]
+  },
+  "shishilani": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "shishilani",
+    "keywords": [
+      "食屎啦你"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "穿西装打领带",
+        "拿大哥大有什么用",
+        "跟着这样的大哥",
+        "食屎啦你"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shock": {
+    "date_created": "2022-03-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "shock",
+    "keywords": [
+      "震惊"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shoot": {
+    "date_created": "2024-08-19T00:00:00",
+    "date_modified": "2024-08-19T00:00:00",
+    "key": "shoot",
+    "keywords": [
+      "射",
+      "🐍"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shuifandui": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "shuifandui",
+    "keywords": [
+      "谁反对"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我话说完了",
+        "谁赞成",
+        "谁反对",
+        "我反对"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "shutup": {
+    "date_created": "2022-01-19T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "shutup",
+    "keywords": [
+      "别说了"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "你不要再说了"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "sit_still": {
+    "date_created": "2022-12-03T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "sit_still",
+    "keywords": [
+      "坐得住",
+      "坐的住"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "slap": {
+    "date_created": "2022-01-19T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "slap",
+    "keywords": [
+      "一巴掌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "slogan": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "slogan",
+    "keywords": [
+      "口号"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我们是谁？",
+        "浙大人！",
+        "到浙大来做什么？",
+        "混！",
+        "将来毕业后要做什么样的人？",
+        "混混！"
+      ],
+      "max_images": 0,
+      "max_texts": 6,
+      "min_images": 0,
+      "min_texts": 6
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "smash": {
+    "date_created": "2022-11-29T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "smash",
+    "keywords": [
+      "砸"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "sold_out": {
+    "date_created": "2024-11-18T00:00:00",
+    "date_modified": "2024-11-18T00:00:00",
+    "key": "sold_out",
+    "keywords": [
+      "卖掉了"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "speechless": {
+    "date_created": "2024-11-12T00:00:00",
+    "date_modified": "2024-11-12T00:00:00",
+    "key": "speechless",
+    "keywords": [
+      "无语"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{text}"
+        ],
+        "humanized": "典型的xx思维",
+        "key": "(?P\u003ctext\u003e典型的\\S+思维)"
+      }
+    ],
+    "tags": []
+  },
+  "steam_message": {
+    "date_created": "2024-08-21T00:00:00",
+    "date_modified": "2024-08-21T00:00:00",
+    "key": "steam_message",
+    "keywords": [
+      "steam消息"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "name": {
+              "default": "",
+              "description": "指定名字",
+              "title": "Name",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "name",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "指定名字",
+            "names": [
+              "-n",
+              "--name"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "黑神话：悟空"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 1
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "--name",
+          "{name}",
+          "{game}"
+        ],
+        "humanized": "xx正在玩xx",
+        "key": "(?P\u003cname\u003e\\S+)正在玩(?P\u003cgame\u003e\\S+)"
+      }
+    ],
+    "tags": []
+  },
+  "step_on": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "step_on",
+    "keywords": [
+      "踩"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "stew": {
+    "date_created": "2024-01-19T00:00:00",
+    "date_modified": "2024-01-19T00:00:00",
+    "key": "stew",
+    "keywords": [
+      "炖"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "stretch": {
+    "date_created": "2023-03-28T00:00:00",
+    "date_modified": "2023-03-28T00:00:00",
+    "key": "stretch",
+    "keywords": [
+      "双手",
+      "伸展"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "subject3": {
+    "date_created": "2024-04-17T00:00:00",
+    "date_modified": "2024-04-17T00:00:00",
+    "key": "subject3",
+    "keywords": [
+      "科目三"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "suck": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "suck",
+    "keywords": [
+      "吸",
+      "嗦"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "support": {
+    "date_created": "2021-05-05T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "support",
+    "keywords": [
+      "精神支柱"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "swirl_turn": {
+    "date_created": "2024-05-07T00:00:00",
+    "date_modified": "2024-05-07T00:00:00",
+    "key": "swirl_turn",
+    "keywords": [
+      "回旋转",
+      "旋风转"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "symmetric": {
+    "date_created": "2022-03-14T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "symmetric",
+    "keywords": [
+      "对称"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "direction": "left",
+            "user_infos": []
+          },
+          {
+            "direction": "right",
+            "user_infos": []
+          },
+          {
+            "direction": "top",
+            "user_infos": []
+          },
+          {
+            "direction": "bottom",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "direction": {
+              "default": "left",
+              "description": "对称方向，包含 left、right、top、bottom",
+              "enum": [
+                "left",
+                "right",
+                "top",
+                "bottom"
+              ],
+              "title": "Direction",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "direction",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "对称方向，包含 left、right、top、bottom",
+            "names": [
+              "-d",
+              "--direction"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "top"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--top",
+              "上"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "bottom"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "direction",
+            "help_text": null,
+            "names": [
+              "--bottom",
+              "下"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "tankuku_raisesign": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "tankuku_raisesign",
+    "keywords": [
+      "唐可可举牌"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "唐可可",
+      "LoveLive!Superstar!!"
+    ]
+  },
+  "taunt": {
+    "date_created": "2023-07-19T00:00:00",
+    "date_modified": "2023-07-19T00:00:00",
+    "key": "taunt",
+    "keywords": [
+      "嘲讽"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "teach": {
+    "date_created": "2022-08-16T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "teach",
+    "keywords": [
+      "讲课",
+      "敲黑板"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我老婆"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "莉可丽丝",
+      "井之上泷奈"
+    ]
+  },
+  "tease": {
+    "date_created": "2023-06-27T00:00:00",
+    "date_modified": "2023-06-27T00:00:00",
+    "key": "tease",
+    "keywords": [
+      "拿捏",
+      "戏弄"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "碧蓝档案",
+      "蔚蓝档案"
+    ]
+  },
+  "telescope": {
+    "date_created": "2024-01-18T00:00:00",
+    "date_modified": "2024-01-18T00:00:00",
+    "key": "telescope",
+    "keywords": [
+      "望远镜"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "thermometer_gun": {
+    "date_created": "2024-09-03T00:00:00",
+    "date_modified": "2024-09-03T00:00:00",
+    "key": "thermometer_gun",
+    "keywords": [
+      "体温枪"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "笨蛋"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "think_what": {
+    "date_created": "2022-05-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "think_what",
+    "keywords": [
+      "想什么"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "this_chicken": {
+    "date_created": "2023-11-12T00:00:00",
+    "date_modified": "2024-01-18T00:00:00",
+    "key": "this_chicken",
+    "keywords": [
+      "这是鸡",
+      "🐔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "这是十二生肖中的鸡"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "throw": {
+    "date_created": "2021-05-05T00:00:00",
+    "date_modified": "2023-03-30T00:00:00",
+    "key": "throw",
+    "keywords": [
+      "丢",
+      "扔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "throw_gif": {
+    "date_created": "2022-03-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "throw_gif",
+    "keywords": [
+      "抛",
+      "掷"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "thump": {
+    "date_created": "2022-03-30T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "thump",
+    "keywords": [
+      "捶"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "thump_wildly": {
+    "date_created": "2023-03-31T00:00:00",
+    "date_modified": "2023-03-31T00:00:00",
+    "key": "thump_wildly",
+    "keywords": [
+      "捶爆",
+      "爆捶"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "明日方舟"
+    ]
+  },
+  "tightly": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "tightly",
+    "keywords": [
+      "紧贴",
+      "紧紧贴着"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "time_to_go": {
+    "date_created": "2024-09-04T00:00:00",
+    "date_modified": "2024-09-04T00:00:00",
+    "key": "time_to_go",
+    "keywords": [
+      "该走了"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "说完了吗？该走了"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "together": {
+    "date_created": "2022-10-13T00:00:00",
+    "date_modified": "2023-03-29T00:00:00",
+    "key": "together",
+    "keywords": [
+      "一起"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "一起玩{name}吧！"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "tom_tease": {
+    "date_created": "2024-01-19T00:00:00",
+    "date_modified": "2024-01-19T00:00:00",
+    "key": "tom_tease",
+    "keywords": [
+      "汤姆嘲笑"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "汤姆",
+      "猫和老鼠"
+    ]
+  },
+  "tomb_yeah": {
+    "date_created": "2023-11-12T00:00:00",
+    "date_modified": "2023-11-12T00:00:00",
+    "key": "tomb_yeah",
+    "keywords": [
+      "上坟",
+      "坟前比耶"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 2,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "top_notch": {
+    "date_created": "2024-08-17T00:00:00",
+    "date_modified": "2024-08-17T00:00:00",
+    "key": "top_notch",
+    "keywords": [
+      "顶尖"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "运营"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "trance": {
+    "date_created": "2022-12-11T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "trance",
+    "keywords": [
+      "恍惚"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "trump_vote": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-01T21:38:30.059801",
+    "key": "trump_vote",
+    "keywords": [
+      "特朗普投票",
+      "特朗普选举"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "turn": {
+    "date_created": "2022-01-01T00:00:00",
+    "date_modified": "2024-09-30T00:00:00",
+    "key": "turn",
+    "keywords": [
+      "转"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "twist": {
+    "date_created": "2022-03-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "twist",
+    "keywords": [
+      "搓"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "universal": {
+    "date_created": "2022-04-20T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "universal",
+    "keywords": [
+      "万能表情",
+      "空白表情"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "在此处添加文字"
+      ],
+      "max_images": 1,
+      "max_texts": 10,
+      "min_images": 1,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "upside_down": {
+    "date_created": "2024-10-12T00:00:00",
+    "date_modified": "2024-10-12T00:00:00",
+    "key": "upside_down",
+    "keywords": [
+      "反了"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我看你们是反了！"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "vibrate": {
+    "date_created": "2023-08-28T00:00:00",
+    "date_modified": "2023-08-28T00:00:00",
+    "key": "vibrate",
+    "keywords": [
+      "震动"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wakeup": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wakeup",
+    "keywords": [
+      "好起来了"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "好"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{text}"
+        ],
+        "humanized": "xx 起来了",
+        "key": "(?P\u003ctext\u003e\\S{1,4})\\s+起来了"
+      }
+    ],
+    "tags": []
+  },
+  "wallpaper": {
+    "date_created": "2022-03-09T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wallpaper",
+    "keywords": [
+      "墙纸"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "瑞克和莫蒂",
+      "瑞克·桑切斯"
+    ]
+  },
+  "walnut_pad": {
+    "date_created": "2022-08-07T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "walnut_pad",
+    "keywords": [
+      "胡桃平板"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "胡桃",
+      "莉可丽丝"
+    ]
+  },
+  "walnut_zoom": {
+    "date_created": "2022-10-01T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "walnut_zoom",
+    "keywords": [
+      "胡桃放大"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "胡桃",
+      "莉可丽丝"
+    ]
+  },
+  "wangjingze": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wangjingze",
+    "keywords": [
+      "王境泽"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我就是饿死",
+        "死外边 从这里跳下去",
+        "不会吃你们一点东西",
+        "真香"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "washer": {
+    "date_created": "2024-01-18T00:00:00",
+    "date_modified": "2024-01-18T00:00:00",
+    "key": "washer",
+    "keywords": [
+      "洗衣机"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wave": {
+    "date_created": "2022-10-26T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wave",
+    "keywords": [
+      "波纹"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wechat_pay": {
+    "date_created": "2024-10-30T00:00:00",
+    "date_modified": "2024-10-30T00:00:00",
+    "key": "wechat_pay",
+    "keywords": [
+      "微信支付"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "message": {
+              "default": "",
+              "description": "二维码内容",
+              "title": "Message",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "message",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "二维码内容",
+            "names": [
+              "-m",
+              "--message"
+            ]
+          }
+        ]
+      },
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "weisuoyuwei": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "weisuoyuwei",
+    "keywords": [
+      "为所欲为"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "好啊",
+        "就算你是一流工程师",
+        "就算你出报告再完美",
+        "我叫你改报告你就要改",
+        "毕竟我是客户",
+        "客户了不起啊",
+        "Sorry 客户真的了不起",
+        "以后叫他天天改报告",
+        "天天改 天天改"
+      ],
+      "max_images": 0,
+      "max_texts": 9,
+      "min_images": 0,
+      "min_texts": 9
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "what_I_want_to_do": {
+    "date_created": "2023-07-19T00:00:00",
+    "date_modified": "2023-07-19T00:00:00",
+    "key": "what_I_want_to_do",
+    "keywords": [
+      "我想上的"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "what_he_wants": {
+    "date_created": "2023-05-20T00:00:00",
+    "date_modified": "2023-05-20T00:00:00",
+    "key": "what_he_wants",
+    "keywords": [
+      "最想要的东西"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "今年520"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "why_at_me": {
+    "date_created": "2022-04-14T00:00:00",
+    "date_modified": "2023-05-03T00:00:00",
+    "key": "why_at_me",
+    "keywords": [
+      "为什么@我"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "东方Project"
+    ]
+  },
+  "why_have_hands": {
+    "date_created": "2023-05-18T00:00:00",
+    "date_modified": "2023-05-18T00:00:00",
+    "key": "why_have_hands",
+    "keywords": [
+      "为什么要有手"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "windmill_turn": {
+    "date_created": "2022-12-13T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "windmill_turn",
+    "keywords": [
+      "风车转"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wish_fail": {
+    "date_created": "2022-10-21T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wish_fail",
+    "keywords": [
+      "许愿失败"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "我要对象"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wooden_fish": {
+    "date_created": "2022-11-16T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wooden_fish",
+    "keywords": [
+      "木鱼"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "worship": {
+    "date_created": "2022-02-10T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "worship",
+    "keywords": [
+      "膜",
+      "膜拜"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wujing": {
+    "date_created": "2022-06-12T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wujing",
+    "keywords": [
+      "吴京中国"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "不买华为不是",
+        "人"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [
+      {
+        "args": [
+          "{left}",
+          "{right}"
+        ],
+        "humanized": "吴京xx中国xx",
+        "key": "吴京[\\s:：]*(?P\u003cleft\u003e\\S*)中国(?P\u003cright\u003e\\S*)"
+      }
+    ],
+    "tags": []
+  },
+  "wunian": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "wunian",
+    "keywords": [
+      "五年怎么过的"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "五年",
+        "你知道我这五年是怎么过的吗",
+        "我每天躲在家里玩贪玩蓝月",
+        "你知道有多好玩吗"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "yalidaye": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "yalidaye",
+    "keywords": [
+      "压力大爷"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "外界都说我们压力大",
+        "我觉得吧压力也没有那么大",
+        "主要是28岁了还没媳妇儿"
+      ],
+      "max_images": 0,
+      "max_texts": 3,
+      "min_images": 0,
+      "min_texts": 3
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "yeshu": {
+    "date_created": "2024-11-05T00:00:00",
+    "date_modified": "2024-11-05T00:00:00",
+    "key": "yeshu",
+    "keywords": [
+      "椰树椰汁"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "椰子特产在海南",
+        "正宗",
+        "椰树",
+        "29年",
+        "坚持在海南岛",
+        "用新鲜椰子肉",
+        "鲜榨",
+        "不用椰浆\n不加香精当生榨"
+      ],
+      "max_images": 0,
+      "max_texts": 8,
+      "min_images": 0,
+      "min_texts": 8
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "you_should_call": {
+    "date_created": "2024-07-26T00:00:00",
+    "date_modified": "2024-07-26T00:00:00",
+    "key": "you_should_call",
+    "keywords": [
+      "致电",
+      "你应该致电"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "youtube": {
+    "date_created": "2022-10-27T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "youtube",
+    "keywords": [
+      "yt",
+      "youtube"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "Porn",
+        "Hub"
+      ],
+      "max_images": 0,
+      "max_texts": 2,
+      "min_images": 0,
+      "min_texts": 2
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "zengxiaoxian": {
+    "date_created": "2021-12-24T00:00:00",
+    "date_modified": "2023-02-14T00:00:00",
+    "key": "zengxiaoxian",
+    "keywords": [
+      "曾小贤"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "平时你打电子游戏吗",
+        "偶尔",
+        "星际还是魔兽",
+        "连连看"
+      ],
+      "max_images": 0,
+      "max_texts": 4,
+      "min_images": 0,
+      "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  }
+}

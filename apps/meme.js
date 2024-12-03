@@ -32,14 +32,14 @@ export class meme extends plugin {
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => message.startsWith(key))
 
     if (!matchedKeyword) {
-      return true
+      return false
     }
 
     const memeKey = Meme.getKey(matchedKeyword)
     const memeInfo = Meme.getInfo(memeKey)
 
     if (!memeKey || !memeInfo) {
-      return true
+      return false
     }
 
     const { max_texts, min_images } = memeInfo.params_type || {}
@@ -52,6 +52,6 @@ export class meme extends plugin {
       return await Meme.image(e, memeKey, memeInfo)
     }
 
-    return true
+    return false
   }
 }

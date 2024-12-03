@@ -99,11 +99,11 @@ const Meme = {
           e.reply(segment.image(result))
         }
       }
-      return true
+      return false
     } catch (error) {
       logger.error(`[星点表情] 文本类型表情请求失败: ${error.message}`)
       e.reply(`生成表情包失败: ${error.message}`)
-      return true
+      return false
     }
   },
 
@@ -198,11 +198,11 @@ const Meme = {
           await e.reply(segment.image(result))
         }
       }
-      return true
+      return false
     } catch (error) {
       logger.error(`[星点表情] 图片处理失败: ${error.message}`)
       await e.reply(`表情包生成失败: ${error.message}`)
-      return true
+      return false
     }
   }
 }

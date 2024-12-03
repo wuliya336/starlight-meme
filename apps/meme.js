@@ -45,9 +45,9 @@ export class meme extends plugin {
       return true
     }
 
-    const { max_texts, min_images } = memeInfo.params_type || {}
+    const { min_texts, min_images } = memeInfo.params_type || {}
 
-    if (max_texts > 0) {
+    if (min_texts > 0) {
       // 文本规则处理
       return await Meme.text(e, memeKey, matchedKeyword, message)
     } else if (min_images > 0) {

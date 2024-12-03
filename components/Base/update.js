@@ -18,7 +18,7 @@ const Update = await (async () => {
     updateUrl = pathToFileURL(v3UpdatePath).href
   } else {
     logger.error('未安装system-plugin (https://github.com/yunzai-org/system)，无法提供本体更新支持，请安装后重试！')
-    return false
+    return true
   }
   const { update: Update } = await import(updateUrl)
   return Update

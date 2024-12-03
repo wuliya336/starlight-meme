@@ -17,7 +17,7 @@ const Restart = await (async () => {
           return (await import('node-karin')).restart(bot_id, contact, message_id, isFront)
         } catch (error) {
           logger.error('导入Karin模型失败:', error)
-          return false
+          return true
         }
       }
     }

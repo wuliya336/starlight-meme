@@ -27,7 +27,7 @@ export class updatePlugin extends plugin {
   async update (e = this.e) {
     if (uping) {
       e.reply(`正在更新${Version.Plugin_Name}，请稍后...`)
-      return false
+      return true
     }
     uping = true
     setTimeout(() => {

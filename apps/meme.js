@@ -27,20 +27,20 @@ export class meme extends plugin {
     const message = e.msg.trim()
 
     if (Config.meme.forceSharp && !message.startsWith('#')) {
-      return false
+      return true
     }
 
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => message.startsWith(key))
 
     if (!matchedKeyword) {
-      return false
+      return true
     }
 
     const memeKey = Meme.getKey(matchedKeyword)
     const memeInfo = Meme.getInfo(memeKey)
 
     if (!memeKey || !memeInfo) {
-      return false
+      return true
     }
 
     const { max_texts, min_images } = memeInfo.params_type || {}
@@ -53,6 +53,6 @@ export class meme extends plugin {
       return await Meme.image(e, memeKey, memeInfo)
     }
 
-    return false
+    return true
   }
 }

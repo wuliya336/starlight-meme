@@ -49,7 +49,7 @@ try {
     let lastLine = {}
 
     _.forEach(lines, (line) => {
-      if (changelogs.length >= versionCount) return false
+      if (changelogs.length >= versionCount) return true
 
       const versionMatch = /^#\s*([0-9a-zA-Z\\.~\s]+?)\s*$/.exec(line.trim())
       if (versionMatch && versionMatch[1]) {

@@ -33,7 +33,7 @@ export class meme extends plugin {
     const memeDetails = memeKey ? Meme.getInfo(memeKey) : null
 
     if (!memeKey || !memeDetails) {
-      return false
+      return true
     }
 
     await e.reply([

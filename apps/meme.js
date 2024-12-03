@@ -14,10 +14,13 @@ export class meme extends plugin {
     Meme.load()
 
     if (Meme.keyMap) {
-      this.rule = Object.keys(Meme.keyMap).map((keyword) => ({
-        reg: new RegExp(`^#?(${keyword})(.*)`, 'i'),
-        fnc: 'meme'
-      }))
+      this.rule = Object.keys(Meme.keyMap).map((keyword) => {
+        const prefix = Config.meme.forceSharp ? '^#' : '^#?'
+        return {
+          reg: new RegExp(`${prefix}(${keyword})(.*)`, 'i'),
+          fnc: 'meme'
+        }
+      })
     } else {
       logger.error(`[星点表情] 初始化失败`)
     }
@@ -25,10 +28,6 @@ export class meme extends plugin {
 
   async meme (e) {
     const message = e.msg.trim()
-
-    if (Config.meme.forceSharp && !message.startsWith('#')) {
-      return true
-    }
 
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => message.startsWith(key))
 

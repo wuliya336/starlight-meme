@@ -63,7 +63,7 @@ const Meme = {
    */
   async request (endpoint, params = {}, method = 'GET', responseType) {
     try {
-      const url = `${BASE_URL}/${endpoint}/`
+      const url = `${BASE_URL}/${endpoint}`
       if (method.toUpperCase() === 'GET') {
         return await Request.get(url, params, responseType)
       } else if (method.toUpperCase() === 'POST') {
@@ -84,7 +84,7 @@ const Meme = {
 
     try {
       logger.debug(`[星点表情] 发送文本类型表情请求: ${memeKey}`)
-      const endpoint = `memes/${memeKey}`
+      const endpoint = `memes/${memeKey}/`
       const result = await this.request(endpoint, userText ? { texts: userText } : null, 'POST', 'arraybuffer')
 
       if (Buffer.isBuffer(result)) {
@@ -180,7 +180,7 @@ const Meme = {
         formData.append('images', buffer, `image${index}.jpg`)
       })
 
-      const endpoint = `memes/${memeKey}`
+      const endpoint = `memes/${memeKey}/`
       logger.debug(`[星点表情] 发送表情包请求: ${endpoint}`)
       const result = await this.request(endpoint, formData, 'POST', 'arraybuffer')
 

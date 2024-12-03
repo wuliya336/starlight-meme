@@ -1,4 +1,5 @@
 import { plugin, logger } from '../components/Base/index.js'
+import { Config } from '../components/index.js'
 import { Meme } from '../models/index.js'
 
 export class meme extends plugin {
@@ -24,6 +25,10 @@ export class meme extends plugin {
 
   async meme (e) {
     const message = e.msg.trim()
+
+    if (Config.meme.forceSharp && !message.startsWith('#')) {
+      return false
+    }
 
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => message.startsWith(key))
 

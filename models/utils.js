@@ -54,29 +54,29 @@ const Utils = {
       const cachePath = `${cacheDir}/avatar_${qq}.jpg`
 
       if (Config.meme.cache && fs.existsSync(cachePath)) {
-        logger.info(`[星点表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
+        logger.debug(`[星点表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
         try {
           const buffer = fs.readFileSync(cachePath)
-          logger.info(`[星点表情] 已读取缓存头像 Buffer: QQ=${qq}`)
+          logger.debug(`[星点表情] 已读取缓存头像 Buffer: QQ=${qq}`)
           return buffer
         } catch (error) {
-          logger.error(`[星点表情] 读取缓存头像失败: QQ=${qq}, 错误: ${error.message}`)
+          logger.error(`[星点表情] 读取缓存头像失败: QQ: ${qq}, 错误: ${error.message}`)
           throw error
         }
       }
 
-      logger.info(`[星点表情] 开始下载头像: QQ=${qq}, URL=${avatarUrl(qq)}`)
+      logger.debug(`[星点表情] 开始下载头像: QQ: ${qq}, URL: ${avatarUrl(qq)}`)
       try {
         const buffer = await Request.get(avatarUrl(qq), {}, 'arraybuffer')
         if (buffer && Buffer.isBuffer(buffer)) {
           fs.writeFileSync(cachePath, buffer)
-          logger.info(`[星点表情] 头像下载完成: QQ=${qq}, Path=${cachePath}`)
+          logger.debug(`[星点表情] 头像下载完成: QQ: ${qq}, Path: ${cachePath}`)
           return buffer
         } else {
           throw new Error('头像下载返回了无效的数据')
         }
       } catch (error) {
-        logger.error(`[星点表情] 下载头像失败: QQ=${qq}, 错误: ${error.message}`)
+        logger.error(`[星点表情] 下载头像失败: QQ: ${qq}, 错误: ${error.message}`)
         throw error
       }
     }

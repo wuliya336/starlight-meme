@@ -2,6 +2,7 @@ import { logger, segment } from '../components/Base/index.js'
 import { Data } from '../components/index.js'
 import Request from './request.js'
 import Utils from './utils.js'
+import FormData from 'form-data'
 
 const BASE_URL = 'https://meme.wuliya.cn'
 
@@ -163,7 +164,7 @@ const Meme = {
       })
 
       const endpoint = `memes/${memeKey}`
-      logger.error(`[星点表情] 发送表情包请求: ${endpoint}`)
+      logger.debug(`[星点表情] 发送表情包请求: ${endpoint}`)
       const result = await this.request(endpoint, formData, 'POST', 'arraybuffer')
 
       if (Buffer.isBuffer(result)) {

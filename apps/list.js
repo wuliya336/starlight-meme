@@ -1,5 +1,5 @@
 import { plugin, segment, logger } from '../components/Base/index.js'
-import { Request } from '../models/index.js'
+import { Meme } from '../models/index.js'
 
 export class list extends plugin {
   constructor () {
@@ -15,13 +15,13 @@ export class list extends plugin {
       ]
     })
   }
+
   /*
- * 暂时先用服务端获取来渲染表情列表
- */
+   * 暂时先用服务端渲染发图
+   */
   async list (e) {
     try {
-      const imageBuffer = await Request.post('memes/render_list', {}, 'arraybuffer')
-
+      const imageBuffer = await Meme.request('memes/render_list', {}, 'POST', 'arraybuffer')
       await e.reply(segment.image(imageBuffer))
     } catch (error) {
       logger.error('获取表情列表失败:', error)

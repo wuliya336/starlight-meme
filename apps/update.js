@@ -8,7 +8,7 @@ export class updatePlugin extends plugin {
     super({
       name: '更新',
       event: 'message',
-      priority: 1000,
+      priority: 100,
       rule: [
         {
           reg: '^#?(星点表情|starlight-meme)(强制)?更新$',

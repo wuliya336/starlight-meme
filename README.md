@@ -64,6 +64,7 @@ pnpm install --filter=starlight-meme
 - [x] 支持手动输入QQ获取头像
 - [ ] 参数支持
 - [ ] 锅巴兼容
+- [ ] 修改渲染
 
 
 # 资源

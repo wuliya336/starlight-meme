@@ -10,11 +10,11 @@ const Utils = {
   async getImageBuffer (imageUrl) {
     if (!imageUrl) throw new Error('图片地址不能为空')
 
-    logger.info(`[星点表情] 开始下载图片: ${imageUrl}`)
+    logger.debug(`[星点表情] 开始下载图片: ${imageUrl}`)
 
     try {
       const buffer = await Request.get(imageUrl, {}, 'arraybuffer')
-      logger.info(`[星点表情] 图片下载完成: ${imageUrl}`)
+      logger.debug(`[星点表情] 图片下载完成: ${imageUrl}`)
       return buffer
     } catch (error) {
       logger.error(`[星点表情] 图片下载失败: ${error.message}`)
@@ -28,10 +28,10 @@ const Utils = {
   async bufferToBase64 (buffer) {
     if (!buffer) throw new Error('图片 Buffer 不能为空')
 
-    logger.info(`[星点表情] 开始转换 Buffer 为 Base64`)
+    logger.debug(`[星点表情] 开始转换 Buffer 为 Base64`)
     try {
       const base64Data = buffer.toString('base64')
-      logger.info(`[星点表情] Base64 转换完成`)
+      logger.debug(`[星点表情] Base64 转换完成`)
       return base64Data
     } catch (error) {
       logger.error(`[星点表情] Base64 转换失败: ${error.message}`)
@@ -95,7 +95,7 @@ const Utils = {
       try {
         if (fs.existsSync(filePath)) {
           fs.unlinkSync(filePath)
-          logger.info(`[星点表情] 已删除临时头像文件: ${filePath}`)
+          logger.debug(`[星点表情] 已删除临时头像文件: ${filePath}`)
         }
       } catch (error) {
         logger.error(`[星点表情] 删除头像文件失败, 错误: ${error.message}`)

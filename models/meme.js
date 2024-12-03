@@ -82,7 +82,7 @@ const Meme = {
     const userText = message.slice(matchedKeyword.length).trim()
 
     try {
-      logger.info(`[星点表情] 发送文本类型表情请求: ${memeKey}`)
+      logger.debug(`[星点表情] 发送文本类型表情请求: ${memeKey}`)
       const endpoint = `memes/${memeKey}`
       const result = await this.request(endpoint, userText ? { texts: userText } : null, 'POST', 'arraybuffer')
 
@@ -117,10 +117,10 @@ const Meme = {
         imagesInMessage.map(async (url) => {
           try {
             const buffer = await Utils.getImageBuffer(url)
-            if (buffer) logger.info(`[星点表情] 消息图片已下载: ${url}`)
+            if (buffer)
+              logger.debug(`[星点表情] 消息图片已下载: ${url}`)
             return buffer
           } catch (err) {
-            logger.warn(`[星点表情] 无法下载消息图片: URL=${url}, 错误=${err.message}`)
             return null
           }
         })
@@ -131,7 +131,7 @@ const Meme = {
           try {
             return await Utils.getAvatar(qq)
           } catch (err) {
-            logger.warn(`[星点表情] 无法获取艾特用户头像: QQ=${qq}, 错误=${err.message}`)
+            logger.debug(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
             return null
           }
         })
@@ -142,7 +142,7 @@ const Meme = {
           try {
             return await Utils.getAvatar(qq)
           } catch (err) {
-            logger.warn(`[星点表情] 无法获取手动输入艾特用户头像: QQ=${qq}, 错误=${err.message}`)
+            logger.warn(`[星点表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
             return null
           }
         })
@@ -175,7 +175,7 @@ const Meme = {
       return true
     } catch (error) {
       logger.error(`[星点表情] 图片处理失败: ${error.message}`)
-      await e.reply('表情包生成失败, 请查看日志了解详情')
+      await e.reply(`表情包生成失败: ${error.message}`)
       return false
     }
   }

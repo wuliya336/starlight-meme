@@ -6,7 +6,7 @@ export class meme extends plugin {
     super({
       name: '星点表情:表情包',
       event: 'message',
-      priority: 100,
+      priority: Infinity,
       rule: []
     })
 
@@ -35,8 +35,6 @@ export class meme extends plugin {
     const memeInfo = Meme.getInfo(memeKey)
 
     if (!memeKey || !memeInfo) {
-      logger.error(`[星点表情] 表情包键值或信息加载失败: ${matchedKeyword}`)
-      e.reply(`未找到相关表情包: ${matchedKeyword}`)
       return false
     }
 

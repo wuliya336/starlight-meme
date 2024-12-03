@@ -15,6 +15,13 @@ export const cfgSchema = {
         def: true,
         desc: '是否开启头像缓存',
         fileName: 'meme'
+      },
+      reply: {
+        title: '引用回复',
+        key: '引用回复',
+        def: false,
+        desc: '是否开启引用回复',
+        fileName: 'meme'
       }
     }
   },

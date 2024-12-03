@@ -1,5 +1,5 @@
 import { logger, segment } from '../components/Base/index.js'
-import { Data } from '../components/index.js'
+import { Data, Config } from '../components/index.js'
 import Request from './request.js'
 import Utils from './utils.js'
 import FormData from 'form-data'
@@ -89,9 +89,15 @@ const Meme = {
 
       if (Buffer.isBuffer(result)) {
         const base64Image = await Utils.bufferToBase64(result)
-        e.reply(segment.image(`base64://${base64Image}`))
+        if (Config.meme.reply) {
+          e.reply(segment.image(`base64://${base64Image}`), true) 
+          e.reply(segment.image(`base64://${base64Image}`))
+        }
       } else {
-        e.reply(segment.image(result))
+        if (Config.meme.reply) {
+          e.reply(segment.image(result), true) 
+          e.reply(segment.image(result))
+        }
       }
       return true
     } catch (error) {
@@ -112,44 +118,55 @@ const Meme = {
       const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url)
       const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
       const manualAtQQs = [...e.msg.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
-      let images = []
 
-      const messageImages = await Promise.all(
-        imagesInMessage.map(async (url) => {
+      const tasks = []
+
+      tasks.push(
+        ...imagesInMessage.map(async (url) => {
           try {
             const buffer = await Utils.getImageBuffer(url)
-            if (buffer)
+            if (buffer) {
               logger.debug(`[星点表情] 消息图片已下载: ${url}`)
-            return buffer
+              return buffer
+            }
           } catch (err) {
-            return null
+            logger.warn(`[星点表情] 消息图片下载失败: ${url}, 错误: ${err.message}`)
           }
+          return null
         })
       )
 
-      const atAvatars = await Promise.all(
-        ats.map(async (qq) => {
+      tasks.push(
+        ...ats.map(async (qq) => {
           try {
-            return await Utils.getAvatar(qq)
+            const avatar = await Utils.getAvatar(qq)
+            if (avatar) {
+              logger.debug(`[星点表情] 艾特用户头像已获取: QQ: ${qq}`)
+              return avatar
+            }
           } catch (err) {
-            logger.debug(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
-            return null
+            logger.warn(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
           }
+          return null
         })
       )
 
-      const manualAvatars = await Promise.all(
-        manualAtQQs.map(async (qq) => {
+      tasks.push(
+        ...manualAtQQs.map(async (qq) => {
           try {
-            return await Utils.getAvatar(qq)
+            const avatar = await Utils.getAvatar(qq)
+            if (avatar) {
+              logger.debug(`[星点表情] 手动艾特用户头像已获取: QQ: ${qq}`)
+              return avatar
+            }
           } catch (err) {
             logger.warn(`[星点表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
-            return null
           }
+          return null
         })
       )
 
-      images = [...messageImages.filter(Boolean), ...atAvatars.filter(Boolean), ...manualAvatars.filter(Boolean)]
+      let images = (await Promise.all(tasks)).filter(Boolean)
 
       if (images.length < min_images) {
         const triggerAvatar = await Utils.getAvatar(e.user_id)
@@ -169,9 +186,17 @@ const Meme = {
 
       if (Buffer.isBuffer(result)) {
         const base64Image = await Utils.bufferToBase64(result)
-        await e.reply(segment.image(`base64://${base64Image}`))
+        if (Config.meme.reply) {
+          await e.reply(segment.image(`base64://${base64Image}`), true) 
+        } else {
+          await e.reply(segment.image(`base64://${base64Image}`))
+        }
       } else {
-        await e.reply(segment.image(result))
+        if (Config.meme.reply) {
+          await e.reply(segment.image(result), true) 
+        } else {
+          await e.reply(segment.image(result))
+        }
       }
       return true
     } catch (error) {

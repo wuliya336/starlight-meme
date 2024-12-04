@@ -6,7 +6,7 @@ export const cfgSchema = {
         title: '强制触发',
         key: '强制触发',
         def: false,
-        desc: '是否强制使用#触发, 如#喜报',
+        desc: '是否强制使用#触发, 开启后必须使用#触发',
         fileName: 'meme'
       },
       cache: {

@@ -32,6 +32,11 @@ export const helpList = [
         icon: 81,
         title: "#星点表情xx详情",
         desc: "获取表情详情",
+      },
+      {
+        icon: 81,
+        title: "xx",
+        desc: "如喜报xx",
       }
     ],
   },

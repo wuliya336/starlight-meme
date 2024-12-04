@@ -31,7 +31,7 @@ const Render = {
       sys: {
         scale: scale(params?.scale || 1)
       },
-      copyright: `${Version.name}<span class="version"> v${Version.bot}</span> & ${Version.Plugin_Name}<span class="version"> v${Version.ver}`,
+      copyright: `${Version.name}<span class="version"> ${Version.bot}</span> & ${Version.Plugin_Name}<span class="version"> ${Version.ver}`,
       pageGotoParams: {
         waitUntil: 'load'
       },

@@ -46,7 +46,7 @@ const Utils = {
     if (!qqList) throw new Error('QQ 号不能为空')
     if (!Array.isArray(qqList)) qqList = [qqList]
 
-    const avatarUrl = (qq) => `https://q.qlogo.cn/headimg_dl?dst_uin=${qq}&spec=640&img_type=jpg`
+    const avatarUrl = (qq) => `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
     const cacheDir = `${Version.Plugin_Path}/data/avatar`
     Data.createDir('data/avatar', '', false)
 

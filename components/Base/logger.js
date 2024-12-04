@@ -1,4 +1,4 @@
-import Version from '../../components/Version.js'
+import Version from '../Version.js'
 
 /**
  * @type { import('node-karin').logger }

@@ -1,4 +1,4 @@
-import  { Version }  from '../index.js'
+import Version from '../Version.js'
 import common from './common.js'
 
 const makeForwardMsg = await (async () => {

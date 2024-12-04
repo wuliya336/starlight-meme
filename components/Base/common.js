@@ -1,4 +1,4 @@
-import { Version } from '../index.js'
+import Version from '../Version.js'
 
 /**
  * @type { import('node-karin').common }

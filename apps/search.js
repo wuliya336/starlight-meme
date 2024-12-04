@@ -1,5 +1,5 @@
-import { plugin, logger } from '../components/Base/index.js'
-import { Meme} from '../models/index.js'
+import { plugin, segment, logger } from '../components/Base/index.js'
+import { Meme, Utils } from '../models/index.js'
 
 export class search extends plugin {
   constructor () {
@@ -21,7 +21,7 @@ export class search extends plugin {
       const userQuery = e.msg.replace(/^#?(星点表情|starlight-meme)搜索\s*/i, '').trim();
 
       if (!userQuery) {
-        await e.reply('请提供搜索关键词或键值', true, { at: false });
+        await e.reply('请提供搜索的表情', true);
         return false;
       }
 
@@ -39,7 +39,7 @@ export class search extends plugin {
           return `${index + 1}.${keyword}`;
         }).join('\n');
 
-        await e.reply(replyMessage, true, { at: false }); 
+        await e.reply(replyMessage, true); 
         return true;
       }
 
@@ -48,7 +48,7 @@ export class search extends plugin {
       );
 
       if (results.length === 0) {
-        await e.reply(`未找到与 "${userQuery}" 相关的表情`, true, { at: false });
+        await e.reply(`未找到与 "${userQuery}" 相关的表情`, true);
         return true;
       }
 
@@ -59,11 +59,11 @@ export class search extends plugin {
         return `${index + 1}.${keyword}`;
       }).join('\n');
 
-      await e.reply(replyMessage, true, { at: false });
+      await e.reply(replyMessage, true);
       return true;
     } catch (error) {
       logger.error(`[星点表情] 搜索失败: ${error.message}`);
-      await e.reply('搜索时发生错误，请稍后重试', true, { at: false });
+      await e.reply('搜索时发生错误，请稍后重试', true);
       return true;
     }
   }

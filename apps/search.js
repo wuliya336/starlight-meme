@@ -32,7 +32,6 @@ export class search extends plugin {
         return false;
       }
 
-      // 精确搜索键值
       if (infoMap[userQuery]) {
         const info = infoMap[userQuery];
         const uniqueKeywords = Array.from(new Set(info.keywords)); 

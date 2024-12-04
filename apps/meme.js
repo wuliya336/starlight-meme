@@ -9,52 +9,56 @@ export class meme extends plugin {
       event: 'message',
       priority: Infinity,
       rule: []
-    })
+    });
 
-    Meme.load()
+    Meme.load();
 
     if (Meme.keyMap) {
+      const prefix = Config.meme.forceSharp ? '^#' : '^#?';
       this.rule = Object.keys(Meme.keyMap).map((keyword) => {
-        const prefix = Config.meme.forceSharp ? '^#' : '^#?'
         return {
           reg: new RegExp(`${prefix}(${keyword})(.*)`, 'i'),
           fnc: 'meme'
-        }
-      })
+        };
+      });
     } else {
-      logger.error(`[星点表情] 初始化失败`)
+      logger.error(`[星点表情] 初始化失败`);
     }
   }
 
   async meme (e) {
-    const message = e.msg.trim()
+    const message = e.msg.trim();
 
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => {
-      const fullKey = Config.meme.forceSharp ? `#${key}` : key
-      return message.startsWith(fullKey)
-    })
+      const regex = Config.meme.forceSharp 
+        ? new RegExp(`^#${key}`, 'i') 
+        : new RegExp(`^#?${key}`, 'i'); 
+      return regex.test(message);
+    });
 
     if (!matchedKeyword) {
-      return true
+      return true; 
     }
 
-    const memeKey = Meme.getKey(matchedKeyword)
-    const memeInfo = Meme.getInfo(memeKey)
+    const memeKey = Meme.getKey(matchedKeyword);
+    const memeInfo = Meme.getInfo(memeKey);
 
     if (!memeKey || !memeInfo) {
-      return true
+      return true; 
     }
 
-    const { min_texts, min_images } = memeInfo.params_type || {}
+    const { min_texts, min_images } = memeInfo.params_type || {};
 
     if (min_texts > 0) {
-      // 文本规则处理
-      return await Meme.text(e, memeKey, matchedKeyword, message)
+      // 文本类型规则处理
+      const userText = message.replace(new RegExp(`^#?${matchedKeyword}`, 'i'), '').trim();
+      return await Meme.text(e, memeKey, userText);
     } else if (min_images > 0) {
-      // 图片规则处理
-      return await Meme.image(e, memeKey, memeInfo)
+      // 图片类型规则处理
+      return await Meme.image(e, memeKey, memeInfo);
     }
 
-    return true
+    return true; 
   }
 }
+

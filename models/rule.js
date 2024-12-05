@@ -1,25 +1,28 @@
-import Meme from './meme.js'
-import Utils from './utils.js'
-import { Config } from '../components/index.js'
-import { logger, segment } from '../components/Base/index.js'
-import FormData from 'form-data'
+import Meme from "./meme.js"
+import Utils from "./utils.js"
+import { Config } from "../components/index.js"
+import { logger, segment } from "../components/Base/index.js"
+import FormData from "form-data"
 
 const Rule = {
   /**
    * 表情处理逻辑
    */
   async meme (e, memeKey, memeInfo, userText) {
-    const { min_texts, min_images, max_images, default_text } = memeInfo.params_type || {}
+    const { min_texts, min_images, max_images, default_text } =
+      memeInfo.params_type || {}
     let formData = new FormData()
+    let hasTexts = false
+    let hasImages = false
     let images = []
 
     try {
       /**
-         * 针对仅图片类型作特殊处理
-         */
+       * 针对仅图片类型作特殊处理
+       */
       if (min_images > 0 && min_texts === 0) {
         if (/[^@\d\s]/.test(userText)) {
-        //   return e.reply('仅允许输入@+数字的格式或提供图片', true)
+        //   await e.reply("仅允许输入@+数字的格式或提供图片", true)
           return false
         }
       }
@@ -42,8 +45,10 @@ const Rule = {
         images = images.slice(0, max_images)
 
         images.forEach((buffer, index) => {
-          formData.append('images', buffer, `image${index}.jpg`)
+          formData.append("images", buffer, `image${index}.jpg`)
         })
+
+        hasImages = images.length > 0
       }
 
       /**
@@ -54,21 +59,37 @@ const Rule = {
         if (!finalText || finalText.length === 0) {
           return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
         }
-        formData.append('texts', finalText)
+        formData.append("texts", finalText)
+        hasTexts = true
       }
 
-
-      if (!formData.has('texts') && !formData.has('images')) {
-        return e.reply(`该表情至少需要 ${min_images} 张图片，${min_texts} 个文字描述`, true)
+      /**
+       * 检查是否提供了必要的内容
+       */
+      if (!hasTexts && !hasImages) {
+        return e.reply(
+          `该表情至少需要 ${min_images} 张图片，${min_texts} 个文字描述`,
+          true
+        )
       }
 
-
+      /**
+       * 发送请求生成表情包
+       */
       const endpoint = `memes/${memeKey}/`
-      const result = await Meme.request(endpoint, formData, 'POST', 'arraybuffer')
+      const result = await Meme.request(
+        endpoint,
+        formData,
+        "POST",
+        "arraybuffer"
+      )
 
       if (Buffer.isBuffer(result)) {
         const base64Image = await Utils.bufferToBase64(result)
-        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply)
+        await e.reply(
+          segment.image(`base64://${base64Image}`),
+          Config.meme.reply
+        )
       } else {
         await e.reply(segment.image(result), Config.meme.reply)
       }

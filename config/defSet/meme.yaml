@@ -6,3 +6,6 @@ cache: true
 
 # 是否开启引用回复
 reply: false
+
+# 是否使用默认文本(0: 系统自带, 1: 用户昵称)
+defaultText: 0

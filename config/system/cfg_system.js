@@ -22,6 +22,15 @@ export const cfgSchema = {
         def: false,
         desc: '是否开启引用回复',
         fileName: 'meme'
+      },
+      defaultText: {
+        title: '默认文本方案',
+        key: '默认文本方案',
+        def: 0,
+        desc: '设置默认文本方案: 0表示使用插件自带默认文本, 1表示使用用户昵称',
+        type: 'num',
+        fileName: 'meme',
+        input: (n) => [0, 1].includes(n * 1) ? n * 1 : 0 
       }
     }
   },

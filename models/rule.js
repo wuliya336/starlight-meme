@@ -9,7 +9,7 @@ const Rule = {
    * 表情处理逻辑
    */
   async meme (e, memeKey, memeInfo, userText) {
-    const { min_texts, min_images, max_images, default_text } =
+    const { min_texts, min_images, max_images, default_texts } =
       memeInfo.params_type || {}
     let formData = new FormData()
     let hasTexts = false
@@ -22,7 +22,7 @@ const Rule = {
        */
       if (min_images > 0 && min_texts === 0) {
         if (/[^@\d\s]/.test(userText)) {
-        //   await e.reply("仅允许输入@+数字的格式或提供图片", true)
+          //   await e.reply('仅允许输入@+数字的格式或提供图片', true)
           return false
         }
       }
@@ -55,10 +55,21 @@ const Rule = {
        * 处理文本类型表情包
        */
       if (min_texts > 0) {
-        const finalText = userText || default_text
+        let finalText = userText || ""
+
+        if (!finalText) {
+          if (Config.meme.defaultText === 1) {
+            finalText = e.sender.nickname || "未知"
+          } else if (Array.isArray(default_texts) && default_texts.length > 0) {
+            const randomIndex = Math.floor(Math.random() * default_texts.length)
+            finalText = default_texts[randomIndex]
+          }
+        }
+
         if (!finalText || finalText.length === 0) {
           return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
         }
+
         formData.append("texts", finalText)
         hasTexts = true
       }

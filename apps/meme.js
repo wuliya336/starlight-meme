@@ -1,6 +1,6 @@
 import { plugin, logger } from '../components/Base/index.js'
 import { Config } from '../components/index.js'
-import { Meme } from '../models/index.js'
+import { Meme, Rule } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
@@ -27,6 +27,7 @@ export class meme extends plugin {
   }
 
   async meme (e) {
+
     const message = e.msg.trim()
 
     const matchedKeyword = Object.keys(Meme.keyMap).find((key) => {
@@ -37,25 +38,17 @@ export class meme extends plugin {
     })
 
     if (!matchedKeyword) {
-      return true
+      return false
     }
 
     const memeKey = Meme.getKey(matchedKeyword)
     const memeInfo = Meme.getInfo(memeKey)
 
     if (!memeKey || !memeInfo) {
-      return true
+      return false
     }
 
-    const { min_texts, min_images } = memeInfo.params_type || {}
     const userText = message.replace(new RegExp(`^#?${matchedKeyword}`, 'i'), '').trim()
-    if (min_texts > 0) {
-      return await Meme.text(e, memeKey, userText)
-    } else if (min_images > 0) {
-      return await Meme.image(e, memeKey, memeInfo, userText)
-    }
-
-    return true
+    return await Rule.meme(e, memeKey, memeInfo, userText)
   }
 }
-

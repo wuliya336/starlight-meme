@@ -1,5 +1,4 @@
-import { plugin, segment, logger } from '../components/Base/index.js'
-import { Meme, Utils } from '../models/index.js'
+import { Meme } from '../models/index.js'
 
 export class search extends plugin {
   constructor () {

@@ -1,5 +1,4 @@
 import lodash from 'lodash'
-import { plugin } from '../components/Base/index.js'
 import { Render, Data, Version } from '../components/index.js'
 import Theme from '../config/system/theme_system.js'
 

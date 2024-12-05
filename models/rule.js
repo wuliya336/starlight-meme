@@ -20,6 +20,7 @@ const Rule = {
       if (min_images > 0 && min_texts === 0) {
         if (/[^@\d\s]/.test(userText)) {
         //   return e.reply('仅允许输入@+数字的格式或提供图片', true)
+          return false
         }
       }
 

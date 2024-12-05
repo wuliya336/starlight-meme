@@ -13,6 +13,7 @@ export class random extends plugin {
         }
       ]
     })
+    Meme.load()
   }
 
   async random (e) {

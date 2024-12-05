@@ -13,6 +13,7 @@ export class meme extends plugin {
         }
       ]
     })
+    Meme.load()
   }
 
   /**

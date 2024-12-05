@@ -31,7 +31,7 @@ const Rule = {
       if (min_texts === 0 && max_texts === 0 && userText) {
         const isValidInput = /^@\d+$/.test(userText.trim())
         if (!isValidInput) {
-        //   await e.reply('参数错误，请输入正确的参数格式')
+          // await e.reply('只支持输入@+QQ号', true)
           return false
         }
       }
@@ -49,7 +49,6 @@ const Rule = {
           }
           userText = userText.replace(/#.+/, "").trim()
         }
-      } else {
       }
 
       /**
@@ -79,7 +78,9 @@ const Rule = {
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
           finalText = userText
-        } else if (default_texts && default_texts.length > 0) {
+        } else if (Config.meme.defaultText === 1) {
+          finalText = e.sender.nickname || "未知"
+        } else if (Config.meme.defaultText === 0 && default_texts && default_texts.length > 0) {
           const randomIndex = Math.floor(Math.random() * default_texts.length)
           finalText = default_texts[randomIndex]
         } else {
@@ -135,4 +136,3 @@ const Rule = {
 }
 
 export default Rule
-

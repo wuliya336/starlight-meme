@@ -119,6 +119,7 @@ const Meme = {
 
     try {
       if (userText && /[^\d@]/.test(userText)) {
+        return true
       }
 
       const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url)
@@ -204,6 +205,7 @@ const Meme = {
       return true
     }
   }
+
 
 }
 

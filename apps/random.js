@@ -13,13 +13,8 @@ export class random extends plugin {
         }
       ]
     })
-
-    Meme.load()
   }
 
-  /**
-   * 处理随机表情命令
-   */
   async random (e) {
     try {
       const memeKeys = Object.keys(Meme.keyMap)
@@ -28,16 +23,33 @@ export class random extends plugin {
       }
 
       const randomKey = memeKeys[Math.floor(Math.random() * memeKeys.length)]
-      const memeInfo = Meme.getInfo(randomKey)
+      const memeKey = Meme.getKey(randomKey)
+
+      if (!memeKey) {
+        return false
+      }
+
+      const memeInfo = Meme.getInfo(memeKey)
 
       if (!memeInfo) {
         return false
       }
 
-      const userText = ""
+      const { min_texts, max_texts, min_images, max_images, args_type } =
+        memeInfo.params_type || {}
 
-      const img = await Rule.meme(e, randomKey, memeInfo, userText)
-      await e.reply(img)
+      const isValid =
+        ((min_texts === 1 && max_texts === 1) ||
+          (min_images === 1 && max_images === 1) ||
+          (min_texts === 1 && min_images === 1) ||
+          (args_type && (min_texts === 1 || min_images === 1)))
+
+      if (!isValid) {
+        return false
+      }
+
+
+      await Rule.meme(e, memeKey, memeInfo, "")
     } catch (error) {
       logger.error(`[星点表情] 随机表情处理失败: ${error.message}`)
       await e.reply(`生成随机表情时出错: ${error.message}`, true)

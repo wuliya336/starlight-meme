@@ -40,16 +40,10 @@ const Meme = {
     this.loadInfoMap()
   },
 
-  /**
-   * 获取表情包键值
-   */
   getKey (keyword) {
     return this.keyMap?.[keyword] || null
   },
 
-  /**
-   * 获取表情包详情
-   */
   getInfo (memeKey) {
     return this.infoMap?.[memeKey] || null
   },

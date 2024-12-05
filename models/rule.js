@@ -28,21 +28,10 @@ const Rule = {
       /**
          * 针对仅图片类型表情作特殊处理
          */
-      if (min_texts === 0 && max_texts === 0 && userText) {
-        if (args_type !== null) {
-          const argsMatch = userText.match(/#(.+)/)
-          if (argsMatch) {
-            const message = argsMatch[1].trim()
-            if (message) {
-              argsString = JSON.stringify({ message })
-              formData.append("args", argsString)
-            }
-            userText = userText.replace(/#.+/, "").trim()
-          }
-        }
-
+      if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\d+$/.test(userText.trim())
         if (!isValidInput) {
+          // await e.reply('只支持输入@+QQ号', true)
           return false
         }
       }

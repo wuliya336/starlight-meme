@@ -1,4 +1,4 @@
-import { Version } from '../index.js'
+import Version from '../Version.js'
 
 const segment = await (async () => {
   switch (Version.name) {

@@ -6,31 +6,56 @@ import FormData from "form-data"
 
 const Rule = {
   /**
-   * 表情处理逻辑
-   */
+     * 表情处理逻辑
+     */
   async meme (e, memeKey, memeInfo, userText) {
-    const { min_texts, min_images, max_images, default_texts } =
-      memeInfo.params_type || {}
-    let formData = new FormData()
-    let hasTexts = false
-    let hasImages = false
+    const { params_type } = memeInfo || {}
+
+    const {
+      min_texts,
+      max_texts,
+      min_images,
+      max_images,
+      default_texts,
+      args_type
+    } = params_type
+    const formData = new FormData()
     let images = []
+    let finalText = null
+    let argsString = null
 
     try {
       /**
-       * 针对仅图片类型作特殊处理
-       */
-      if (min_images > 0 && min_texts === 0) {
-        if (/[^@\d\s]/.test(userText)) {
-          //   await e.reply('仅允许输入@+数字的格式或提供图片', true)
+         * 针对仅图片类型表情作特殊处理
+         */
+      if (min_texts === 0 && max_texts === 0 && userText) {
+        const isValidInput = /^@\d+$/.test(userText.trim())
+        if (!isValidInput) {
+        //   await e.reply('参数错误，请输入正确的参数格式')
           return false
         }
       }
 
       /**
-       * 处理图片类型表情包
-       */
-      if (min_images > 0) {
+         * 处理 args 参数类型表情
+         */
+      if (args_type !== null) {
+        const argsMatch = userText.match(/#(.+)/)
+        if (argsMatch) {
+          const message = argsMatch[1].trim()
+          if (message) {
+            argsString = JSON.stringify({ message })
+            formData.append("args", argsString)
+          }
+          userText = userText.replace(/#.+/, "").trim()
+        }
+      } else {
+      }
+
+      /**
+         * 处理图片类型表情
+         */
+      if (!(min_images === 0 && max_images === 0)) {
         images = await Utils.getImage(e, userText)
 
         if (images.length < min_images) {
@@ -43,50 +68,45 @@ const Rule = {
         }
 
         images = images.slice(0, max_images)
-
         images.forEach((buffer, index) => {
           formData.append("images", buffer, `image${index}.jpg`)
         })
-
-        hasImages = images.length > 0
       }
 
       /**
-       * 处理文本类型表情包
-       */
-      if (min_texts > 0) {
-        let finalText = userText || ""
-
-        if (!finalText) {
-          if (Config.meme.defaultText === 1) {
-            finalText = e.sender.nickname || "未知"
-          } else if (Array.isArray(default_texts) && default_texts.length > 0) {
-            const randomIndex = Math.floor(Math.random() * default_texts.length)
-            finalText = default_texts[randomIndex]
-          }
+         * 处理文本类型表情包
+         */
+      if (!(min_texts === 0 && max_texts === 0)) {
+        if (userText) {
+          finalText = userText
+        } else if (default_texts && default_texts.length > 0) {
+          const randomIndex = Math.floor(Math.random() * default_texts.length)
+          finalText = default_texts[randomIndex]
+        } else {
+          finalText = e.sender.nickname || "未知"
         }
 
-        if (!finalText || finalText.length === 0) {
+        if (!finalText || finalText.trim().length === 0) {
           return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
         }
 
         formData.append("texts", finalText)
-        hasTexts = true
       }
 
       /**
-       * 检查是否提供了必要的内容
-       */
-      if (!hasTexts && !hasImages) {
-        return e.reply(
-          `该表情至少需要 ${min_images} 张图片，${min_texts} 个文字描述`,
-          true
-        )
+         * 检查是否包含所需的字段
+         */
+      if (min_images > 0 && images.length === 0) {
+        return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
+      }
+
+      if (min_texts > 0 && (!finalText || finalText.trim().length === 0)) {
+        return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
       }
 
       /**
-       * 发送请求生成表情包
-       */
+         * 发生成表情包
+         */
       const endpoint = `memes/${memeKey}/`
       const result = await Meme.request(
         endpoint,
@@ -115,3 +135,4 @@ const Rule = {
 }
 
 export default Rule
+

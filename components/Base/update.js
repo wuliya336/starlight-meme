@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { pathToFileURL } from 'url'
-import { Version } from '../index.js'
+import Version from '../Version.js'
 
 /**
  * @type { import('node-karin').Update }

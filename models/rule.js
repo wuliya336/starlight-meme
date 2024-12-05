@@ -1,0 +1,84 @@
+import Meme from './meme.js'
+import Utils from './utils.js'
+import { Config } from '../components/index.js'
+import { logger, segment } from '../components/Base/index.js'
+import FormData from 'form-data'
+
+const Rule = {
+  /**
+   * 表情处理逻辑
+   */
+  async meme (e, memeKey, memeInfo, userText) {
+    const { min_texts, min_images, max_images, default_text } = memeInfo.params_type || {}
+    let formData = new FormData()
+    let images = []
+
+    try {
+      /**
+         * 针对仅图片类型作特殊处理
+         */
+      if (min_images > 0 && min_texts === 0) {
+        if (/[^@\d\s]/.test(userText)) {
+        //   return e.reply('仅允许输入@+数字的格式或提供图片', true)
+        }
+      }
+
+      /**
+       * 处理图片类型表情包
+       */
+      if (min_images > 0) {
+        images = await Utils.getImage(e, userText)
+
+        if (images.length < min_images) {
+          const triggerAvatar = await Utils.getAvatar(e.user_id)
+          if (triggerAvatar) images.unshift(triggerAvatar)
+        }
+
+        if (images.length < min_images) {
+          return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
+        }
+
+        images = images.slice(0, max_images)
+
+        images.forEach((buffer, index) => {
+          formData.append('images', buffer, `image${index}.jpg`)
+        })
+      }
+
+      /**
+       * 处理文本类型表情包
+       */
+      if (min_texts > 0) {
+        const finalText = userText || default_text
+        if (!finalText || finalText.length === 0) {
+          return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
+        }
+        formData.append('texts', finalText)
+      }
+
+
+      if (!formData.has('texts') && !formData.has('images')) {
+        return e.reply(`该表情至少需要 ${min_images} 张图片，${min_texts} 个文字描述`, true)
+      }
+
+
+      const endpoint = `memes/${memeKey}/`
+      const result = await Meme.request(endpoint, formData, 'POST', 'arraybuffer')
+
+      if (Buffer.isBuffer(result)) {
+        const base64Image = await Utils.bufferToBase64(result)
+        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply)
+      } else {
+        await e.reply(segment.image(result), Config.meme.reply)
+      }
+
+      return true
+    } catch (error) {
+      logger.error(`[星点表情] 表情生成失败: ${error.message}`)
+      await e.reply(`生成表情包失败: ${error.message}`)
+      return true
+    }
+  }
+}
+
+export default Rule

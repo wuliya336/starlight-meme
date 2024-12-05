@@ -86,7 +86,62 @@ const Utils = {
   },
 
   /**
-   * 删除临时文件
+   * 获取图片
+   */
+  async getImage (e, userText) {
+    const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url)
+    const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
+    const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
+
+    const tasks = []
+
+    // 获取消息中的图片的buffer
+    tasks.push(
+      ...imagesInMessage.map(async (url) => {
+        try {
+          const buffer = await this.getImageBuffer(url)
+          return buffer || null
+        } catch (err) {
+          logger.warn(`[星点表情] 消息图片下载失败: ${url}, 错误: ${err.message}`)
+          return null
+        }
+      })
+    )
+
+    /**
+     * 获取艾特用户的头像(长按头像艾特)
+     */
+    tasks.push(
+      ...ats.map(async (qq) => {
+        try {
+          return await this.getAvatar(qq)
+        } catch (err) {
+          logger.error(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
+          return null
+        }
+      })
+    )
+
+    /**
+     * 获取手动艾特用户的头像(@+QQ号)
+     */
+    tasks.push(
+      ...manualAtQQs.map(async (qq) => {
+        try {
+          return await this.getAvatar(qq)
+        } catch (err) {
+          logger.error(`[星点表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
+          return null
+        }
+      })
+    )
+
+    return (await Promise.all(tasks)).filter(Boolean)
+  },
+
+  /**
+
+ * 删除临时文件
    */
   deleteAvatar (filePaths) {
     if (!Array.isArray(filePaths)) filePaths = [filePaths]

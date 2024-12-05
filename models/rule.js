@@ -21,7 +21,7 @@ const Rule = {
     } = params_type
     const formData = new FormData()
     let images = []
-    let finalText = null
+    let finalTexts = []
     let argsString = null
 
     try {
@@ -77,21 +77,33 @@ const Rule = {
          */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
-          finalText = userText
-        } else if (Config.meme.defaultText === 1) {
-          finalText = e.sender.nickname || "未知"
-        } else if (Config.meme.defaultText === 0 && default_texts && default_texts.length > 0) {
-          const randomIndex = Math.floor(Math.random() * default_texts.length)
-          finalText = default_texts[randomIndex]
-        } else {
-          finalText = e.sender.nickname || "未知"
+          const splitTexts = userText.split("/").map(text => text.trim())
+          finalTexts = splitTexts.slice(0, max_texts)
         }
 
-        if (!finalText || finalText.trim().length === 0) {
+        if (finalTexts.length === 0 && Config.meme.defaultText === 1) {
+          finalTexts.push(e.sender.nickname || "未知")
+        } else if (
+          finalTexts.length === 0 &&
+          Config.meme.defaultText === 0 &&
+          default_texts &&
+          default_texts.length > 0
+        ) {
+          const randomIndex = Math.floor(Math.random() * default_texts.length)
+          finalTexts.push(default_texts[randomIndex])
+        }
+
+        if (finalTexts.length === 0) {
+          finalTexts.push(e.sender.nickname || "未知")
+        }
+
+        if (finalTexts.length < min_texts) {
           return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
         }
 
-        formData.append("texts", finalText)
+        finalTexts.forEach(text => {
+          formData.append("texts", text)
+        })
       }
 
       /**
@@ -101,7 +113,7 @@ const Rule = {
         return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
       }
 
-      if (min_texts > 0 && (!finalText || finalText.trim().length === 0)) {
+      if (min_texts > 0 && finalTexts.length < min_texts) {
         return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
       }
 

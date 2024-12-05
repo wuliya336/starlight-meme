@@ -1,5 +1,4 @@
 import { Config, Render } from '../components/index.js'
-import { plugin, redis } from '../components/Base/index.js'
 import lodash from 'lodash'
 
 let keys = lodash.map(Config.getCfgSchemaMap(), (i) => i.key)

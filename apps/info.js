@@ -1,4 +1,3 @@
-import { plugin } from "../components/Base/index.js"
 import { Meme } from "../models/index.js"
 
 export class meme extends plugin {

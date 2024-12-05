@@ -1,4 +1,3 @@
-import { plugin, logger } from '../components/Base/index.js'
 import { Config } from '../components/index.js'
 import { Meme, Rule } from '../models/index.js'
 

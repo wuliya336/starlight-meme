@@ -23,7 +23,7 @@ export class list extends plugin {
     try {
       const imageBuffer = await Meme.request('memes/render_list', {}, 'POST', 'arraybuffer')
       const base64Data = await Utils.bufferToBase64(imageBuffer)
-      
+
       await e.reply(segment.image(`base64://${base64Data}`))
     } catch (error) {
       logger.error('获取表情列表失败:', error)

@@ -79,128 +79,132 @@ const Meme = {
   /**
    * 文本类型表情处理
    */
-  async text(e, memeKey, userText) {
+  async text (e, memeKey, userText) {
     try {
-  
-      const endpoint = `memes/${memeKey}/`;
-      let formData = null;
-  
+      const endpoint = `memes/${memeKey}/`
+      let formData = null
+
       if (userText) {
-        formData = new FormData();
-        formData.append('texts', userText);
+        formData = new FormData()
+        formData.append('texts', userText)
       }
-  
-      const result = await this.request(endpoint, formData, 'POST', 'arraybuffer');
-  
+
+      const result = await this.request(endpoint, formData, 'POST', 'arraybuffer')
+
       if (!result) {
-        return true;
+        return true
       }
 
       if (Buffer.isBuffer(result)) {
-        const base64Image = await Utils.bufferToBase64(result);
-        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply);
+        const base64Image = await Utils.bufferToBase64(result)
+        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply)
       } else {
-        await e.reply(segment.image(result), Config.meme.reply);
+        await e.reply(segment.image(result), Config.meme.reply)
       }
-  
-      return true;
+
+      return true
     } catch (error) {
-      logger.error(`[星点表情] 表情请求失败: ${error.message}`);
-      await e.reply(`生成表情包失败: ${error.message}`);
-      return true;
+      logger.error(`[星点表情] 表情请求失败: ${error.message}`)
+      await e.reply(`生成表情包失败: ${error.message}`)
+      return true
     }
   },
-  
-      
 
   /**
-   * 图片类型表情处理
-   */
-  async image (e, memeKey, memeInfo) {
-    const { min_images, max_images } = memeInfo.params_type || {};
-    let formData = new FormData();
-  
+ * 图片类型表情处理
+ */
+  async image (e, memeKey, memeInfo, userText) {
+    const { min_images, max_images } = memeInfo.params_type || {}
+    let formData = new FormData()
+
     try {
-      const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url);
-      const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq);
-      const manualAtQQs = [...e.msg.matchAll(/@(\d{5,11})/g)].map((match) => match[1]);
-  
-      const tasks = [];
-  
+      if (userText && /[^\d@]/.test(userText)) {
+      }
+
+      const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url)
+      const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
+      const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
+
+      const tasks = []
+
       tasks.push(
         ...imagesInMessage.map(async (url) => {
           try {
-            const buffer = await Utils.getImageBuffer(url);
+            const buffer = await Utils.getImageBuffer(url)
             if (buffer) {
-              return buffer;
+              return buffer
             }
           } catch (err) {
-            logger.warn(`[星点表情] 消息图片下载失败: ${url}, 错误: ${err.message}`);
+            logger.warn(`[星点表情] 消息图片下载失败: ${url}, 错误: ${err.message}`)
           }
-          return null;
+          return null
         })
-      );
-  
+      )
+
       tasks.push(
         ...ats.map(async (qq) => {
           try {
-            const avatar = await Utils.getAvatar(qq);
+            const avatar = await Utils.getAvatar(qq)
             if (avatar) {
-              return avatar;
+              return avatar
             }
           } catch (err) {
-            logger.error(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`);
+            logger.error(`[星点表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
           }
-          return null;
+          return null
         })
-      );
-  
+      )
+
       tasks.push(
         ...manualAtQQs.map(async (qq) => {
           try {
-            const avatar = await Utils.getAvatar(qq);
+            const avatar = await Utils.getAvatar(qq)
             if (avatar) {
-              return avatar;
+              return avatar
             }
           } catch (err) {
-            logger.error(`[星点表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`);
+            logger.error(`[星点表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
           }
-          return null;
+          return null
         })
-      );
+      )
 
-      let images = (await Promise.all(tasks)).filter(Boolean);
-  
+      let images = (await Promise.all(tasks)).filter(Boolean)
+
       if (images.length < min_images) {
-        const triggerAvatar = await Utils.getAvatar(e.user_id);
-        while (images.length < min_images) {
-          images.unshift(triggerAvatar);
+        const triggerAvatar = await Utils.getAvatar(e.user_id)
+        if (triggerAvatar) {
+          images.unshift(triggerAvatar)
         }
       }
-  
-      images = images.slice(0, max_images);
-      images.forEach((buffer, index) => {
-        formData.append('images', buffer, `image${index}.jpg`);
-      });
-  
-      const endpoint = `memes/${memeKey}/`;
-      const result = await this.request(endpoint, formData, 'POST', 'arraybuffer');
-  
-      if (Buffer.isBuffer(result)) {
-        const base64Image = await Utils.bufferToBase64(result);
-        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply);
-      } else {
-        await e.reply(segment.image(result), Config.meme.reply);
+
+      if (images.length < min_images) {
+        return e.reply(`该表情至少需要${min_images}张图片`, true)
       }
-  
-      return true;
+
+      images = images.slice(0, max_images)
+      images.forEach((buffer, index) => {
+        formData.append('images', buffer, `image${index}.jpg`)
+      })
+
+      const endpoint = `memes/${memeKey}/`
+      const result = await this.request(endpoint, formData, 'POST', 'arraybuffer')
+
+      if (Buffer.isBuffer(result)) {
+        const base64Image = await Utils.bufferToBase64(result)
+        await e.reply(segment.image(`base64://${base64Image}`), Config.meme.reply)
+      } else {
+        await e.reply(segment.image(result), Config.meme.reply)
+      }
+
+      return true
     } catch (error) {
-      logger.error(`[星点表情] 图片表情生成失败: ${error.message}`);
-      await e.reply(`生成表情包失败: ${error.message}`);
-      return true;
+      logger.error(`[星点表情] 图片表情生成失败: ${error.message}`)
+      await e.reply(`生成表情包失败: ${error.message}`)
+      return true
     }
-  }  
-  
+  }
+
 }
 
 export default Meme

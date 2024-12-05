@@ -17,9 +17,9 @@ const endTime = Date.now();
 const loadTime = endTime - startTime;
 
 let loadTimeColor;
-if (loadTime < 100) {
+if (loadTime < 500) {
   loadTimeColor = chalk.rgb(144, 238, 144).bold;
-} else if (loadTime < 500) {
+} else if (loadTime < 1000) {
   loadTimeColor = chalk.rgb(255, 215, 0).bold; 
 } else {
   loadTimeColor = chalk.rgb(255, 0, 0).bold; 

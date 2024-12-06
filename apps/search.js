@@ -9,7 +9,7 @@ export class search extends plugin {
       priority: 100,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme|表情)搜索\s+(\S+)$/i,
+          reg: /^#?(星点表情|starlight-meme)搜索\s*(\S+)\s*$/i,
           fnc: 'search'
         }
       ]
@@ -18,7 +18,7 @@ export class search extends plugin {
 
   async search (e) {
     try {
-      const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i)
+      const match = e.msg.match(/^#?(星点表情|starlight-meme)搜索\s*(\S+)\s*$/i)
       const userQuery = match ? match[2].trim() : ''
 
       if (!userQuery) {

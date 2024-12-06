@@ -9,7 +9,7 @@ export class meme extends plugin {
       priority: -20,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme|表情)\s*(\S+)\s*详情$/i,
+          reg: /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i,
           fnc: "info"
         }
       ]
@@ -19,7 +19,7 @@ export class meme extends plugin {
   async info (e) {
     const message = (e?.msg || "").trim()
     const match = message.match(
-      /^#?(星点表情|starlight-meme|表情)\s*(\S+)\s*详情$/i
+      /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i
     )
     if (!match) return
 

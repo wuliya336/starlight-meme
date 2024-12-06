@@ -24,20 +24,14 @@ const getLine = (line) => {
     .replace(/ⁿᵉʷ/g, '<span class="new"></span>')
 }
 
-const BotName = (() => {
-  if (/^karin/i.test(Plugin_Name)) {
-    return 'Karin'
-  } else if (packageJson.name === 'yunzai-next') {
-    fs.rmdirSync(Plugin_Path, { recursive: true })
-    return 'yunzai'
-  } else if (Array.isArray(global.Bot?.uin)) {
-    return 'TRSS-Yunzai'
-  } else if (packageJson.dependencies.sequelize) {
-    return 'Miao-Yunzai'
-  } else {
-    throw new Error('还有人玩Yunzai-Bot??')
-  }
-})()
+let BotName = 'Yunzai-Bot'
+if (packageJson.name === 'miao-yunzai') {
+  BotName = 'Miao-Yunzai'
+} else if (packageJson.name === 'trss-yunzai') {
+  BotName = 'TRSS-Yunzai'
+} else {
+  BotName = 'Yunzai-Bot'
+}
 
 const CHANGELOG_path = `${Plugin_Path}/CHANGELOG.md`
 

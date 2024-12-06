@@ -1,4 +1,4 @@
-import { Plugin_Name } from "../components/index.js"
+import { Version } from "../components/index.js"
 import { update as Update } from "../../other/update.js"
 export class update extends plugin {
   constructor () {
@@ -21,14 +21,14 @@ export class update extends plugin {
 
   async update (e = this.e) {
     const Type = e.msg.includes("强制") ? "#强制更新" : "#更新"
-    e.msg = Type + Plugin_Name
+    e.msg = Type + Version.Plugin_Name
     const up = new Update(e)
     up.e = e
     return up.update()
   }
 
   async updateLog (e = this.e) {
-    e.msg = "#更新日志" + Plugin_Name
+    e.msg = "#更新日志" + Version.Plugin_Name
     const up = new Update(e)
     up.e = e
     return up.updateLog()

@@ -1,8 +1,10 @@
 import { Version, Init } from './components/index.js';
 import { logger } from './components/Base/index.js';
+import { Meme } from './models/index.js'
 import chalk from 'chalk';
 
 const startTime = Date.now();
+Meme.load();
 
 let apps;
 if (Version.name !== 'Karin') {

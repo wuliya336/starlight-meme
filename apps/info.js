@@ -1,4 +1,5 @@
-import { Meme } from "../models/index.js"
+import { plugin, segment } from '../components/Base/index.js'
+import { Meme, Utils, Args } from "../models/index.js"
 
 export class meme extends plugin {
   constructor () {
@@ -8,39 +9,85 @@ export class meme extends plugin {
       priority: 100,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i,
+          reg: /^#?(?:星点表情|starlight-meme|表情)\s+(\S+)\s*详情$/i,
           fnc: "info"
         }
       ]
     })
-    Meme.load()
   }
 
-  /**
-   * 处理详情命令
-   */
   async info (e) {
     const message = (e?.msg || "").trim()
     const match = message.match(
-      /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i
+      /^#?(?:星点表情|starlight-meme|表情)\s+(\S+)\s*详情$/i
     )
     if (!match) return
 
-    const keyword = match[2]
-    const memeKey = Meme.getKey(keyword)
-    const memeDetails = memeKey ? Meme.getInfo(memeKey) : null
+    const keyword = match[1]
 
-    if (!memeKey || !memeDetails) {
+    Meme.load()
+
+    const MemeData = Meme.infoMap
+    const memeKey = Object.keys(MemeData).find(key => {
+      const info = MemeData[key]
+      return key === keyword || info.keywords.includes(keyword)
+    })
+
+    if (!memeKey) {
+      await e.reply("未找到相关表情包详情")
       return true
     }
 
-    await e.reply([
+    const memeDetails = MemeData[memeKey]
+    const params_type = memeDetails.params_type || {}
+    const {
+      min_texts = 0,
+      max_texts = 0,
+      min_images = 0,
+      max_images = 0,
+      default_texts = [],
+      args_type = null
+    } = params_type
+
+    const argsHint = args_type && Args[args_type] ? Args[args_type] : ""
+    const aliases = memeDetails.keywords.join(", ")
+
+    const previewUrl = Meme.getPreviewUrl(memeKey)
+    let base64Data = ""
+    let previewImageBase64 = ""
+
+    try {
+      const imageBuffer = await Utils.getImageBuffer(previewUrl)
+      base64Data = await Utils.bufferToBase64(imageBuffer)
+      previewImageBase64 = `base64://${base64Data}`
+    } catch (error) {
+      previewImageBase64 = "图片加载失败"
+    }
+
+    const replyMessage = [
       `名称: ${memeKey}\n`,
-      `别名: ${memeDetails.keywords[0] || "无"}\n`,
-      `最大图片数量: ${memeDetails.params_type.max_images || 0}\n`,
-      `最小图片数量: ${memeDetails.params_type.min_images || 0}\n`,
-      `最大文本数量: ${memeDetails.params_type.max_texts || 0}\n`,
-      `最小文本数量: ${memeDetails.params_type.min_texts || 0}`
-    ])
+      `别名: ${aliases || "无"}\n`,
+      `可搜索键值: ${memeKey}, ${aliases || "无"}\n`,
+      `最大图片数量: ${max_images}\n`,
+      `最小图片数量: ${min_images}\n`,
+      `最大文本数量: ${max_texts}\n`,
+      `最小文本数量: ${min_texts}\n`,
+      `默认文本: ${default_texts.length > 0 ? default_texts.join(", ") : "无"}\n`
+    ]
+
+    if (argsHint) {
+      replyMessage.push("参数:\n")
+      replyMessage.push(argsHint)
+    }
+
+    if (base64Data) {
+      replyMessage.push("预览图片:\n")
+      replyMessage.push(segment.image(previewImageBase64))
+    } else {
+      replyMessage.push("预览图片:\n")
+      replyMessage.push(previewImageBase64)
+    }
+
+    await e.reply(replyMessage, true)
   }
 }

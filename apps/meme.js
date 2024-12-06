@@ -9,7 +9,6 @@ export class meme extends plugin {
       priority: -20,
       rule: []
     })
-    Meme.load()
     if (Meme.keyMap) {
       const prefix = Config.meme.forceSharp ? '^#' : '^#?'
       this.rule = Object.keys(Meme.keyMap).map((keyword) => {

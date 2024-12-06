@@ -1,4 +1,5 @@
-import { Meme, Utils } from '../models/index.js'
+import { Render } from '../components/index.js'
+import { Meme } from '../models/index.js'
 
 export class list extends plugin {
   constructor () {
@@ -8,7 +9,7 @@ export class list extends plugin {
       priority: 100,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme)列表$/i,
+          reg: /^#?(星点表情|starlight-meme|表情)列表$/i,
           fnc: 'list'
         }
       ]
@@ -16,17 +17,30 @@ export class list extends plugin {
   }
 
   /*
-   * 这里先使用服务端渲染图片
+   * 使用本地数据直接渲染图片
+   * @shiwuliya
    */
   async list (e) {
     try {
-      const imageBuffer = await Meme.request('memes/render_list', {}, 'POST', 'arraybuffer')
-      const base64Data = await Utils.bufferToBase64(imageBuffer)
+      Meme.loadKeyMap()
 
-      await e.reply(segment.image(`base64://${base64Data}`))
+      const keyMap = Meme.keyMap || {}
+      const keys = Object.keys(keyMap)
+
+      if (!keys.length) {
+        return
+      }
+
+      const img = await Render.render(
+        'meme/index',
+        {
+          title: '星点表情列表',
+          emojiList: keys
+        })
+      await e.reply(img)
     } catch (error) {
-      logger.error('获取表情列表失败:', error)
-      await e.reply('获取表情列表失败')
+      logger.error('加载表情列表失败:', error)
+      await e.reply('加载表情列表失败，请稍后重试。')
     }
   }
 }

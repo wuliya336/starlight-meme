@@ -13,7 +13,6 @@ export class random extends plugin {
         }
       ]
     })
-    Meme.load()
   }
 
   async random (e) {
@@ -31,13 +30,7 @@ export class random extends plugin {
       }
 
       const memeInfo = Meme.getInfo(memeKey)
-
-      if (!memeInfo) {
-        return false
-      }
-
-      const { min_texts, max_texts, min_images, max_images, args_type } =
-        memeInfo.params_type || {}
+      const { min_texts, max_texts, min_images, max_images, args_type } = memeInfo.params_type || {}
 
       const isValid =
         ((min_texts === 1 && max_texts === 1) ||

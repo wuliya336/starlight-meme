@@ -1,0 +1,23 @@
+{{extend defaultLayout}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{_res_path}}/meme/index.css" />
+{{/block}}
+
+{{block 'main'}}
+<div class="info_box">
+  <div class="label">{{title}}</div>
+  <div class="cfg-box">
+    {{each emojiList item index}}
+      {{if index % 80 === 0}}
+        {{if index !== 0}}</ul></div>{{/if}}
+        <div class="cfg-column">
+          <ul class="cfg-ul">
+      {{/if}}
+      <li class="cfg-li">{{item}}</li>
+    {{/each}}
+    </ul>
+    </div>
+  </div>
+</div>
+{{/block}}

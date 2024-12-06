@@ -1,0 +1,66 @@
+/* 整体容器样式 */
+.info_box {
+    padding: 20px;
+    background: rgba(35, 38, 57, 0.8);
+    background-image: url('./imgs/bg.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    border-radius: 15px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    box-sizing: border-box;
+    overflow: visible; 
+    max-width: 100%;
+    margin: 0 auto;
+}
+  
+.label {
+    font-size: 40px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+.cfg-box {
+    display: inline-flex;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6); 
+    border-radius: 10px;
+    flex-wrap: nowrap; 
+    white-space: nowrap; 
+    justify-content: flex-start; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+}
+  
+
+.cfg-column {
+    flex: 0 0 auto; 
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+  
+.cfg-ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.cfg-li {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000;
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px; 
+}

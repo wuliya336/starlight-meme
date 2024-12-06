@@ -9,7 +9,7 @@ export class search extends plugin {
       priority: 100,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i,
+          reg: /^#?(星点表情|starlight-meme|表情)搜索\s+(\S+)$/i,
           fnc: 'search'
         }
       ]
@@ -18,8 +18,17 @@ export class search extends plugin {
 
   async search (e) {
     try {
+<<<<<<< HEAD
       const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i)
       const userQuery = match ? match[2].trim() : ''
+=======
+      const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)搜索\s+(\S+)$/i)
+      if (!match) {
+        return false
+      }
+
+      const userQuery = match[2].trim()
+>>>>>>> e13d7d7ede42b9ad66d201b5b941426cdd0a0606
 
       if (!userQuery) {
         await e.reply('请提供搜索的表情', true)
@@ -33,8 +42,11 @@ export class search extends plugin {
         return false
       }
 
+<<<<<<< HEAD
       let replyMessage = []
 
+=======
+>>>>>>> e13d7d7ede42b9ad66d201b5b941426cdd0a0606
       if (infoMap[userQuery]) {
         const info = infoMap[userQuery]
         const uniqueKeywords = Array.from(new Set(info.keywords))

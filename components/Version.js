@@ -1,6 +1,7 @@
 import fs from 'fs'
 import _ from 'lodash'
 import Data from './Data.js'
+import cfg from "../../../lib/config/config.js"
 import { fileURLToPath } from 'url'
 import { join, dirname, basename } from 'path'
 
@@ -11,7 +12,7 @@ const Plugin_Path = join(__dirname, '..').replace(/\\/g, '/')
 const Plugin_Name = basename(Plugin_Path)
 
 let packageJson = {}
-packageJson = Data.readJSON('package.json', `${Plugin_Path}/${Plugin_Name}}`)
+packageJson = Data.readJSON('package.json', `${Path}`)
 
 let changelogs = []
 let currentVersion = ''
@@ -22,15 +23,6 @@ const getLine = (line) => {
     .replace(/\s*`([^`]+)`/g, '<span class="cmd">$1</span>')
     .replace(/\*\*([^*]+)\*\*/g, '<span class="strong">$1</span>')
     .replace(/ⁿᵉʷ/g, '<span class="new"></span>')
-}
-
-let BotName = 'Yunzai-Bot'
-if (packageJson.name === 'miao-yunzai') {
-  BotName = 'Miao-Yunzai'
-} else if (packageJson.name === 'trss-yunzai') {
-  BotName = 'TRSS-Yunzai'
-} else {
-  BotName = 'Yunzai-Bot'
 }
 
 const CHANGELOG_path = `${Plugin_Path}/CHANGELOG.md`
@@ -69,6 +61,17 @@ try {
 } catch (err) {
 }
 
+let BotName = cfg.package.name
+if (BotName == "miao-yunzai") {
+  BotName = "Miao-Yunzai"
+} else if (BotName == "yunzai") {
+  BotName = "Yunzai-Bot"
+} else if (BotName == "trss-yunzai") {
+  BotName = "TRSS-Yunzai"
+} else {
+  BotName = _.capitalize(BotName)
+}
+
 const Version = {
   get ver () {
     return currentVersion
@@ -77,7 +80,7 @@ const Version = {
     return BotName
   },
   get bot () {
-    return Data.readJSON('package.json', `${Path}`).version
+    return packageJson.version
   },
   get logs () {
     return changelogs

@@ -81,10 +81,10 @@ export class meme extends plugin {
     }
 
     if (base64Data) {
-      replyMessage.push("\n预览图片:\n")
+      replyMessage.push("预览图片:\n")
       replyMessage.push(segment.image(previewImageBase64))
     } else {
-      replyMessage.push("\n预览图片:\n")
+      replyMessage.push("预览图片:\n")
       replyMessage.push(previewImageBase64)
     }
 

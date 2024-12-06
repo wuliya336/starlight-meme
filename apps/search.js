@@ -39,7 +39,6 @@ export class search extends plugin {
         const info = infoMap[userQuery]
         const uniqueKeywords = Array.from(new Set(info.keywords))
 
-        replyMessage.push('\n')
         uniqueKeywords.forEach((keyword, index) => {
           replyMessage.push(`${index + 1}. ${keyword}`)
         })
@@ -60,7 +59,6 @@ export class search extends plugin {
       const uniqueKeywords = Array.from(
         new Set(results.flatMap((info) => info.keywords))
       )
-      replyMessage.push('\n')
       uniqueKeywords.forEach((keyword, index) => {
         replyMessage.push(`${index + 1}. ${keyword}`)
       })

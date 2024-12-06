@@ -6,7 +6,7 @@ export class list extends plugin {
     super({
       name: '星点表情:列表',
       event: 'message',
-      priority: 100,
+      priority: -20,
       rule: [
         {
           reg: /^#?(星点表情|starlight-meme|表情)列表$/i,

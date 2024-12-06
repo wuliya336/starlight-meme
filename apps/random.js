@@ -5,7 +5,7 @@ export class random extends plugin {
     super({
       name: "星点表情:随机表情包",
       event: "message",
-      priority: 100,
+      priority: -20,
       rule: [
         {
           reg: /^#?(星点表情|starlight-meme)随机表情(包)?$/i,

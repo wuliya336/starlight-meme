@@ -7,7 +7,7 @@ export class help extends plugin {
     super({
       name: '星点表情:帮助',
       event: 'message',
-      priority: 100,
+      priority: -20,
       rule: [
         {
           reg: '^#?(星点表情|starlight-meme)(命令|帮助|菜单|help|说明|功能|指令|使用说明)$',

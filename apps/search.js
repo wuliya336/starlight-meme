@@ -6,7 +6,7 @@ export class search extends plugin {
     super({
       name: '星点表情:搜索',
       event: 'message',
-      priority: 100,
+      priority: -20,
       rule: [
         {
           reg: /^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i,

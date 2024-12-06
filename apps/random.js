@@ -3,12 +3,12 @@ import { Meme, Rule } from "../models/index.js"
 export class random extends plugin {
   constructor () {
     super({
-      name: "星点表情:随机表情包",
+      name: "清语表情:随机表情包",
       event: "message",
       priority: -20,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme)随机表情(包)?$/i,
+          reg: /^#?(清语表情|clarity-meme)随机表情(包)?$/i,
           fnc: "random"
         }
       ]
@@ -45,7 +45,7 @@ export class random extends plugin {
 
       await Rule.meme(e, memeKey, memeInfo, "")
     } catch (error) {
-      logger.error(`[星点表情] 随机表情处理失败: ${error.message}`)
+      logger.error(`[清语表情] 随机表情处理失败: ${error.message}`)
       await e.reply(`生成随机表情时出错: ${error.message}`, true)
     }
   }

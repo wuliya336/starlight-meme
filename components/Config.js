@@ -90,7 +90,7 @@ class Config {
     watcher.on('change', async (path) => {
       delete this.config[key]
       if (typeof Bot == 'undefined') return
-      logger.mark(`[星点表情][修改配置文件][${type}][${name}]`)
+      logger.mark(`[清语表情][修改配置文件][${type}][${name}]`)
 
       if (name == 'config') {
         const oldConfig = this.oldConfig[key]

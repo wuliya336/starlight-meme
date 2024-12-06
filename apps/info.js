@@ -1,15 +1,14 @@
-import { plugin, segment } from '../components/Base/index.js'
 import { Meme, Utils, Args } from "../models/index.js"
 
 export class meme extends plugin {
   constructor () {
     super({
-      name: "星点表情:表情包详情",
+      name: "清语表情:表情包详情",
       event: "message",
       priority: -20,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i,
+          reg: /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i,
           fnc: "info"
         }
       ]
@@ -19,7 +18,7 @@ export class meme extends plugin {
   async info (e) {
     const message = (e?.msg || "").trim()
     const match = message.match(
-      /^#?(星点表情|starlight-meme)\s*(\S+)\s*详情$/i
+      /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i
     )
     if (!match) return
 

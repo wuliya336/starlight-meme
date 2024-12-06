@@ -1,4 +1,3 @@
-import { logger } from '../components/Base/index.js'
 import { Data } from '../components/index.js'
 import Request from './request.js'
 

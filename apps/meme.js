@@ -4,7 +4,7 @@ import { Meme, Rule } from '../models/index.js'
 export class meme extends plugin {
   constructor () {
     super({
-      name: '星点表情:表情包生成',
+      name: '清语表情:表情包生成',
       event: 'message',
       priority: -20,
       rule: []
@@ -18,7 +18,7 @@ export class meme extends plugin {
         }
       })
     } else {
-      logger.error(`[星点表情] 初始化失败`)
+      logger.error(`[清语表情] 初始化失败`)
     }
   }
 

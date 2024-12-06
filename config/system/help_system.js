@@ -1,6 +1,6 @@
 export const helpCfg = {
-  title: "星点表情帮助",
-  subTitle: "starlight-meme",
+  title: "清语表情帮助",
+  subTitle: "clarity-meme",
   columnCount: 3,
   colWidth: 265,
   theme: "all",
@@ -25,17 +25,17 @@ export const helpList = [
     list: [
       {
         icon: 81,
-        title: "#星点表情列表",
+        title: "#清语表情列表",
         desc: "获取表情列表",
       },
       {
         icon: 81,
-        title: "#星点表情搜索xx",
+        title: "#清语表情搜索xx",
         desc: "搜指定的表情",
       },
       {
         icon: 81,
-        title: "#星点表情xx详情",
+        title: "#清语表情xx详情",
         desc: "获取表情详情",
       },
       {
@@ -51,12 +51,12 @@ export const helpList = [
     list: [
       {
         icon: 95,
-        title: "#星点表情(插件)(强制)更新",
+        title: "#清语表情(插件)(强制)更新",
         desc: "更新插件本体",
       },
       {
         icon: 85,
-        title: "#星点表情设置",
+        title: "#清语表情设置",
         desc: "管理命令",
       },
     ],

@@ -1,7 +1,6 @@
 import Meme from "./meme.js"
 import Utils from "./utils.js"
 import { Config } from "../components/index.js"
-import { logger, segment } from "../components/Base/index.js"
 import FormData from "form-data"
 
 const Rule = {
@@ -140,7 +139,7 @@ const Rule = {
 
       return true
     } catch (error) {
-      logger.error(`[星点表情] 表情生成失败: ${error.message}`)
+      logger.error(`[清语表情] 表情生成失败: ${error.message}`)
       await e.reply(`生成表情包失败: ${error.message}`)
       return true
     }

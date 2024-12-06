@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { logger } from '../components/Base/index.js'
 import FormData from 'form-data'
 
 const Request = {
@@ -10,7 +9,7 @@ const Request = {
     try {
       const options = {
         headers: {
-          'User-Agent': 'starlight-meme'
+          'User-Agent': 'clarity-meme'
         },
         timeout: 5000
       }
@@ -45,7 +44,7 @@ const Request = {
 
       const response = await axios.post(url, postData, {
         headers: {
-          'User-Agent': 'starlight-meme',
+          'User-Agent': 'clarity-meme',
           ...formHeaders
         },
         timeout: 5000,

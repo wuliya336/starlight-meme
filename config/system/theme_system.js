@@ -10,7 +10,7 @@ let Theme = {
     let bgImagePath = `${resPath}bg.jpg`;
 
     if (!fs.existsSync(`${dirPath}main.png`)) {
-      throw new Error("[星点表情]背景图片不存在.");
+      throw new Error("[清语表情]背景图片不存在.");
     }
 
     if (!fs.existsSync(`${dirPath}bg.jpg`)) {
@@ -21,7 +21,7 @@ let Theme = {
     try {
       styleConfig = (await Data.importModule(`${dirPath}config.js`)).style || {};
     } catch (e) {
-      console.warn("[星点表情]配置文件config.js不存在.");
+      console.warn("[清语表情]配置文件config.js不存在.");
     }
 
     return {

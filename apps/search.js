@@ -1,15 +1,14 @@
-import { plugin, logger } from '../components/Base/index.js'
 import { Meme } from '../models/index.js'
 
 export class search extends plugin {
   constructor () {
     super({
-      name: '星点表情:搜索',
+      name: '清语表情:搜索',
       event: 'message',
       priority: 100,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme)搜索\s*(\S+)\s*$/i,
+          reg: /^#?(清语表情|clarity-meme)搜索\s*(\S+)\s*$/i,
           fnc: 'search'
         }
       ]
@@ -18,7 +17,7 @@ export class search extends plugin {
 
   async search (e) {
     try {
-      const match = e.msg.match(/^#?(星点表情|starlight-meme)搜索\s*(\S+)\s*$/i)
+      const match = e.msg.match(/^#?(清语表情|clarity-meme)搜索\s*(\S+)\s*$/i)
       const userQuery = match ? match[2].trim() : ''
 
       if (!userQuery) {
@@ -66,7 +65,7 @@ export class search extends plugin {
       await e.reply(replyMessage.join('\n'), true)
       return true
     } catch (error) {
-      logger.error(`[星点表情] 搜索失败: ${error.message}`)
+      logger.error(`[清语表情] 搜索失败: ${error.message}`)
       await e.reply('搜索时发生错误，请稍后重试', true)
       return true
     }

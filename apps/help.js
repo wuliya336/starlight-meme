@@ -5,16 +5,16 @@ import Theme from '../config/system/theme_system.js'
 export class help extends plugin {
   constructor () {
     super({
-      name: '星点表情:帮助',
+      name: '清语表情:帮助',
       event: 'message',
       priority: -20,
       rule: [
         {
-          reg: '^#?(星点表情|starlight-meme)(命令|帮助|菜单|help|说明|功能|指令|使用说明)$',
+          reg: '^#?(清语表情|clarity-meme)(命令|帮助|菜单|help|说明|功能|指令|使用说明)$',
           fnc: 'help'
         },
         {
-          reg: '^#?(星点表情|starlight-meme)(版本|版本信息|version|versioninfo)$',
+          reg: '^#?(清语表情|clarity-meme)(版本|版本信息|version|versioninfo)$',
           fnc: 'versionInfo'
         }
       ]

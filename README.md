@@ -1,8 +1,8 @@
-# <center>starlight-meme</center>
+# <center>清语表情</center>
 
-![星点表情](https://count.kjchmc.cn/get/@starlight-meme?theme=moebooru)<br>
-[![Github](https://img.shields.io/badge/Github-星点表情-black?style=flat-square&logo=github)](https://github.com/wuliya336/starlight-meme)[![云崽bot](https://img.shields.io/badge/云崽-v3.0.0-black?style=flat-square&logo=dependabot)](https://gitee.com/Le-niao/Yunzai-Bot)[![Q群](https://img.shields.io/badge/group-272040396-blue)](https://gitee.com/Le-niao/Yunzai-Bot)<br>
-`starlight-meme`是一个`Yunzai-Bot` | `Karin`的扩展插件，提供表情包合成等功能<br>
+![清语表情](https://count.kjchmc.cn/get/@clarity-meme?theme=moebooru)<br>
+[![Github](https://img.shields.io/badge/Github-清语表情-black?style=flat-square&logo=github)](https://github.com/wuliya336/clarity-meme)[![云崽bot](https://img.shields.io/badge/云崽-v3.0.0-black?style=flat-square&logo=dependabot)](https://gitee.com/Le-niao/Yunzai-Bot)[![Q群](https://img.shields.io/badge/group-272040396-blue)](https://gitee.com/Le-niao/Yunzai-Bot)<br>
+`清语`是一个`Yunzai-Bot` | `Karin`(暂未完成)的扩展插件，提供表情包合成等功能<br>
 
 ---
 
@@ -15,44 +15,46 @@
 #### 使用`Github`
 
 ```bash
-git clone --depth=1 https://github.com/wuliya336/starlight-meme ./plugins/starlight-meme/
+git clone --depth=1 https://github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
 ```
 
 #### 使用`Github`镜像
 
 ```bash
-git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/starlight-meme ./plugins/starlight-meme/
+git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
 ```
 
 ### `手工安装`
 
-**手工下载安装包，解压后将`starlight-meme-master`更名为`starlight-meme`，然后放置在`Yunzai`的`plugins`目录内<br>**
+**手工下载安装包，解压后将`clarity-meme-master`更名为`clarity-meme`，然后放置在`Yunzai`的`plugins`目录内<br>**
 
 **虽然此方式能够使用，不利于后续升级，故不推荐使用<br>**
 
 ### `Karin`
 
-### 使用`Github`
+<mark>暂未完成</mark>
+
+<!-- ### 使用`Github`
 
 ```bash
-git clone --depth=1 https://github.com/wuliya336/starlight-meme ./plugins/karin-plugin-starlight-meme/
+git clone --depth=1 https://github.com/wuliya336/clarity-meme ./plugins/karin-plugin-clarity-meme/
 ```
 
 ### 使用`Github`镜像
 
 ```bash
-git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/starlight-meme ./plugins/karin-plugin-starlight-meme/
+git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/clarity-meme ./plugins/karin-plugin-clarity-meme/
 ```
 
 ### `手工安装`
 
-**手工下载安装包，解压后将`starlight-meme-master`更名为`karin-plugin-starlight-meme`，然后放置在`Karin`的`plugins`目录内<br>**
+**手工下载安装包，解压后将`clarity-meme-master`更名为`karin-plugin-clarity-meme`，然后放置在`Karin`的`plugins`目录内<br>**
 
-**虽然此方式能够使用，不利于后续升级，故不推荐使用<br>**
+**虽然此方式能够使用，不利于后续升级，故不推荐使用<br>** -->
 
 ## 安装依赖
 ```bash
-pnpm install --filter=starlight-meme
+pnpm install --filter=clarity-meme
 ```
 
 ## 使用帮助

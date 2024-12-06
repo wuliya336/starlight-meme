@@ -1,6 +1,5 @@
 import fs from 'fs'
 import Version from './Version.js'
-import logger from './Base/logger.js'
 import chalk from 'chalk'
 
 export default async () => {
@@ -18,7 +17,6 @@ export default async () => {
 
   const apps = {}
 
-  const separator = chalk.bold.rgb(80, 200, 120)('✨'.repeat(30))
 
   for (const i in files) {
     const name = files[i].replace('.js', '')

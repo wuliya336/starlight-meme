@@ -4,12 +4,12 @@ import { Meme } from '../models/index.js'
 export class list extends plugin {
   constructor () {
     super({
-      name: '星点表情:列表',
+      name: '清语表情:列表',
       event: 'message',
       priority: -20,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme|表情)列表$/i,
+          reg: /^#?(清语表情|clarity-meme|表情)列表$/i,
           fnc: 'list'
         }
       ]
@@ -34,7 +34,7 @@ export class list extends plugin {
       const img = await Render.render(
         'meme/index',
         {
-          title: '星点表情列表',
+          title: '清语表情列表',
           emojiList: keys
         })
       await e.reply(img)

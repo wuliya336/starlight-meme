@@ -2,12 +2,12 @@ import { Config, Render } from '../components/index.js'
 import lodash from 'lodash'
 
 let keys = lodash.map(Config.getCfgSchemaMap(), (i) => i.key)
-let sysCfgReg = new RegExp(`^#星点表情设置\\s*(${keys.join('|')})?\\s*(.*)$`)
+let sysCfgReg = new RegExp(`^#清语表情设置\\s*(${keys.join('|')})?\\s*(.*)$`)
 
 export class setting extends plugin {
   constructor () {
     super({
-      name: '星点表情:设置',
+      name: '清语表情:设置',
       event: 'message',
       priority: -20,
       rule: [
@@ -39,7 +39,7 @@ export class setting extends plugin {
         for (const i of keys) {
           if (typeof cfgSchemaMap[i].def == 'boolean') {
             if (cfgSchemaMap[i].key == '全部') {
-              await redis.set('Yz:starlight-meme:setAll', val ? 1 : 0)
+              await redis.set('Yz:clarity-meme:setAll', val ? 1 : 0)
             } else {
               Config.modify(
                 cfgSchemaMap[i].fileName,
@@ -65,7 +65,7 @@ export class setting extends plugin {
 
     let schema = Config.getCfgSchema()
     let cfg = Config.getCfg()
-    cfg.setAll = (await redis.get('Yz:starlight-meme:setAll')) == 1
+    cfg.setAll = (await redis.get('Yz:clarity-meme:setAll')) == 1
 
     // 渲染图像
     const img = await Render.render(

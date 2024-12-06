@@ -9,7 +9,7 @@ export class search extends plugin {
       priority: -20,
       rule: [
         {
-          reg: /^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i,
+          reg: /^#?(星点表情|starlight-meme|表情)搜索\s+(\S+)$/i,
           fnc: 'search'
         }
       ]
@@ -18,18 +18,18 @@ export class search extends plugin {
 
   async search (e) {
     try {
-      const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)搜索\s*(\S.*)$/i)
+      const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)搜索\s+(\S+)$/i)
       if (!match) {
-        logger.error(`[星点表情] 正则匹配失败，输入内容: ${e.msg}`)
-        await e.reply('格式错误，请输入：#表情搜索 关键词', true)
-        return
+        return false
       }
+
       const userQuery = match[2].trim()
 
       if (!userQuery) {
         await e.reply('请提供搜索的表情', true)
         return
       }
+
       Meme.loadInfoMap()
       const infoMap = Meme.infoMap
       if (!infoMap || Object.keys(infoMap).length === 0) {
@@ -37,6 +37,7 @@ export class search extends plugin {
         await e.reply('表情数据未加载，请稍后再试', true)
         return
       }
+
       if (infoMap[userQuery]) {
         const info = infoMap[userQuery]
         const uniqueKeywords = Array.from(new Set(info.keywords))
@@ -47,6 +48,7 @@ export class search extends plugin {
         await e.reply(replyMessage, true)
         return
       }
+
       const results = Object.values(infoMap).filter((info) =>
         info.keywords.some((keyword) => keyword.includes(userQuery))
       )

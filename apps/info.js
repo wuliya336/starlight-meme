@@ -18,21 +18,22 @@ export class meme extends plugin {
 
   async info (e) {
     try {
-
       const match = e.msg.match(/^#?(星点表情|starlight-meme|表情)\s+(\S+)\s*详情$/i)
       if (!match) {
+        logger.warn(`[星点表情] 无法匹配用户输入: ${e.msg}`)
+        await e.reply("格式错误，请输入：#星点表情 关键词 详情", true)
         return false
       }
 
-      const keyword = match[2]
+      const keyword = match[2].trim()
 
       Meme.load()
       const MemeData = Meme.infoMap
 
       if (!MemeData || Object.keys(MemeData).length === 0) {
-        await e.reply("表情包数据未加载，请稍后再试", true)
         return false
       }
+
       const memeKey = Object.keys(MemeData).find(key => {
         const info = MemeData[key]
         return key === keyword || info.keywords.includes(keyword)
@@ -45,6 +46,7 @@ export class meme extends plugin {
 
       const memeDetails = MemeData[memeKey]
       const params_type = memeDetails.params_type || {}
+
       const {
         min_texts = 0,
         max_texts = 0,
@@ -54,19 +56,18 @@ export class meme extends plugin {
         args_type = null
       } = params_type
 
-      const argsHint = args_type && Args[args_type] ? Args[args_type] : ""
+      const argsHint = args_type && Args[args_type] ? Args[args_type] : null
       const aliases = memeDetails.keywords.join(", ")
 
       const previewUrl = Meme.getPreviewUrl(memeKey)
-      let previewImage = "图片加载失败"
+      let previewImage = "[图片加载失败]"
       try {
         const imageBuffer = await Utils.getImageBuffer(previewUrl)
         const base64Data = await Utils.bufferToBase64(imageBuffer)
         previewImage = segment.image(`base64://${base64Data}`)
       } catch (error) {
-        logger.error(`[星点表情] 图片加载失败: ${error.message}`)
+        logger.warn(`[星点表情] 预览图片加载失败: ${error.message}`)
       }
-
       const replyMessage = [
         `名称: ${memeKey}`,
         `别名: ${aliases || "无"}`,
@@ -82,7 +83,7 @@ export class meme extends plugin {
         replyMessage.push("参数提示:\n" + argsHint)
       }
 
-      replyMessage.push("预览图片:")
+      replyMessage.push("预览图片:\n")
       replyMessage.push(previewImage)
 
       await e.reply(replyMessage.join("\n"), true)

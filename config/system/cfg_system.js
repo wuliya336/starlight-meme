@@ -2,6 +2,13 @@ export const cfgSchema = {
   meme: {
     title: '表情设置',
     cfg: {
+      url: {
+        title: '自定义地址',
+        key: '自定义地址',
+        desc: '设置表情包的地址，留空时使用自带',
+        type: 'string',
+        fileName: 'meme'
+      },
       forceSharp: {
         title: '强制触发',
         key: '强制触发',
@@ -31,13 +38,6 @@ export const cfgSchema = {
         type: 'number',
         fileName: 'meme',
         input: (n) => [0, 1].includes(n * 1) ? n * 1 : 0 
-      },
-      url: {
-        title: '表情包URL',
-        key: 'url',
-        desc: '设置表情包的地址，留空时使用默认值',
-        type: 'string',
-        fileName: 'meme'
       }
     }
   },

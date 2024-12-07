@@ -1,6 +1,8 @@
-{{extend defaultLayout}} {{block 'css'}}
+{{extend defaultLayout}}
+{{block 'css'}}
 <link rel="stylesheet" type="text/css" href="{{_res_path}}/admin/index.css" />
-{{/block}} {{block 'main'}}
+{{/block}}
+{{block 'main'}}
 
 <div class="info_box">
   <div class="head-box type{{bgType}}">
@@ -17,11 +19,15 @@
       <div class="cfg-line">
         {{cfgItem.title}}
         <span class="cfg-hint">
-          #清语表情设置{{cfgItem.key}} {{if cfgItem.type==='num'}}
-          {{cfgItem.def}}{{else}} 开启/关闭{{/if}}
+          #清语表情设置{{cfgItem.key}} 
+          {{if cfgItem.type==='number'}}
+          {{cfgItem.def}}
+          {{else if cfgItem.type==='string'}} {{cfgItem.def}} {{else}} 开启/关闭{{/if}}
         </span>
-        {{if cfgItem.type === 'num'}}
+        {{if cfgItem.type === 'number'}}
         <div class="cfg-status">{{cfg[cfgKey]}}</div>
+        {{else if cfgItem.type === 'string'}}
+        <div class="cfg-status {{if cfg[cfgKey]}}cfg-status{{else}}cfg-status status-off{{/if}}">{{if cfg[cfgKey]}}已设置{{else}}未设置{{/if}}</div>
         {{else}} {{if cfg[cfgKey]}}
         <div class="cfg-status">已开启</div>
         {{else}}
@@ -35,4 +41,5 @@
     {{/each}}
   </ul>
 </div>
-{{/each}} {{/block}}
+{{/each}}
+{{/block}}

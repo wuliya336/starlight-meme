@@ -51,32 +51,35 @@ export class setting extends plugin {
         }
       } else {
         let cfgSchema = cfgSchemaMap[regRet[1]]
-        if (cfgSchema.input) {
-          val = cfgSchema.input(val)
-        } else {
-          val =
-            cfgSchema.type === 'num'
-              ? val * 1 || cfgSchema.def
-              : !/关闭/.test(val)
+        if (cfgSchema.type !== 'array') {
+          if (cfgSchema.input) {
+            val = cfgSchema.input(val)
+          } else if (cfgSchema.type === 'number') {
+            val = val * 1 || cfgSchema.def
+          } else if (cfgSchema.type === 'boolean') {
+            val = !/关闭/.test(val)
+          } else if (cfgSchema.type === 'string') {
+            val = val.trim() || cfgSchema.def
+          }
+          Config.modify(cfgSchema.fileName, cfgSchema.cfgKey, val)
         }
-        Config.modify(cfgSchema.fileName, cfgSchema.cfgKey, val)
       }
+
+      let schema = Config.getCfgSchema()
+      let cfg = Config.getCfg()
+      cfg.setAll = (await redis.get('Yz:clarity-meme:setAll')) == 1
+
+      // 渲染图像
+      const img = await Render.render(
+        'admin/index',
+        {
+          schema,
+          cfg
+        },
+        { e, scale: 1.4 }
+      )
+      await e.reply(img)
+      return true
     }
-
-    let schema = Config.getCfgSchema()
-    let cfg = Config.getCfg()
-    cfg.setAll = (await redis.get('Yz:clarity-meme:setAll')) == 1
-
-    // 渲染图像
-    const img = await Render.render(
-      'admin/index',
-      {
-        schema,
-        cfg
-      },
-      { e, scale: 1.4 }
-    )
-    await e.reply(img)
-    return true
   }
 }

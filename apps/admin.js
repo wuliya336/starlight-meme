@@ -68,7 +68,7 @@ export class setting extends plugin {
     const cfg = Config.getCfg()
     cfg.setAll = (await redis.get('Yz:clarity-meme:set-all')) == 1
 
-    const img = await Render.render('setting/index', {
+    const img = await Render.render('admin/index', {
       schema,
       cfg
     }, { e, scale: 1.4 })

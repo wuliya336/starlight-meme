@@ -36,6 +36,7 @@ export const cfgSchema = {
         title: '表情包URL',
         key: 'url',
         desc: '设置表情包的地址，留空时使用默认值',
+        type: 'string',
         fileName: 'meme'
       }
     }

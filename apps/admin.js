@@ -24,7 +24,7 @@ export class setting extends plugin {
       await e.reply('只有主人才可以设置哦~')
       return true
     }
-    const regRet = rule.setting.reg.exec(e.msg)
+    const regRet = sysCfgReg.exec(e.msg)
     const cfgSchemaMap = Config.getCfgSchemaMap()
     if (!regRet) {
       return true

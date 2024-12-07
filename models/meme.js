@@ -1,7 +1,11 @@
-import { Data } from '../components/index.js'
+import { Data, Config } from '../components/index.js'
 import Request from './request.js'
 
-const BASE_URL = 'https://meme.wuliya.cn'
+let BASE_URL = 'https://meme.wuliya.cn'
+
+if (BASE_URL.endsWith('/')) {
+  BASE_URL = BASE_URL.slice(0, -1)
+}
 
 const Meme = {
   keyMap: null,

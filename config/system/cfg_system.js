@@ -31,6 +31,12 @@ export const cfgSchema = {
         type: 'num',
         fileName: 'meme',
         input: (n) => [0, 1].includes(n * 1) ? n * 1 : 0 
+      },
+      url: {
+        title: '表情包URL',
+        key: 'url',
+        desc: '设置表情包的地址，留空时使用默认值',
+        fileName: 'meme'
       }
     }
   },

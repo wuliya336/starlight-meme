@@ -1,3 +1,6 @@
+# 表情包请求地址
+url: ''
+
 # 是否强制使用#触发
 forceSharp: false
 

@@ -1,11 +1,8 @@
 import { Data, Config } from '../components/index.js'
 import Request from './request.js'
 
-let BASE_URL = 'https://meme.wuliya.cn'
 
-if (BASE_URL.endsWith('/')) {
-  BASE_URL = BASE_URL.slice(0, -1)
-}
+const BASE_URL = (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
 
 const Meme = {
   keyMap: null,
@@ -13,7 +10,7 @@ const Meme = {
   loaded: false,
 
   /**
-   * 初始化加载全
+   * 初始化加载
    */
   load () {
     if (this.loaded) {

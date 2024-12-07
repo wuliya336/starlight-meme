@@ -2,7 +2,7 @@ import { Config, Render } from '../components/index.js'
 import lodash from 'lodash'
 
 let keys = lodash.map(Config.getCfgSchemaMap(), (i) => i.key)
-let sysCfgReg = new RegExp(`^#清语表情设置\\s*(${keys.join('|')})?\\s*(.*)$`)
+let sysCfgReg = new RegExp(`^#清语表情设置\\s*(${keys.join('|')})?\\s*(.*)`)
 
 export class setting extends plugin {
   constructor () {
@@ -20,12 +20,12 @@ export class setting extends plugin {
   }
 
   async setting (e) {
-    if (!this.e.isMaster) {
+    if (!e.isMaster) {
+      await e.reply('只有主人才可以设置哦~')
       return true
     }
-    let cfgReg = sysCfgReg
-    let regRet = cfgReg.exec(e.msg)
-    let cfgSchemaMap = Config.getCfgSchemaMap()
+    const regRet = rule.setting.reg.exec(e.msg)
+    const cfgSchemaMap = Config.getCfgSchemaMap()
     if (!regRet) {
       return true
     }
@@ -34,23 +34,21 @@ export class setting extends plugin {
       // 设置模式
       let val = regRet[2] || ''
 
-      if (regRet[1] == '全部') {
+      const key = regRet[1]
+
+      if (key == '全部') {
         val = !/关闭/.test(val)
         for (const i of keys) {
           if (typeof cfgSchemaMap[i].def == 'boolean') {
             if (cfgSchemaMap[i].key == '全部') {
-              await redis.set('Yz:clarity-meme:setAll', val ? 1 : 0)
+              await redis.set('Yz:clarity-meme:set-all', val ? 1 : 0)
             } else {
-              Config.modify(
-                cfgSchemaMap[i].fileName,
-                cfgSchemaMap[i].cfgKey,
-                val
-              )
+              Config.modify(cfgSchemaMap[i].fileName, cfgSchemaMap[i].cfgKey, val)
             }
           }
         }
       } else {
-        let cfgSchema = cfgSchemaMap[regRet[1]]
+        const cfgSchema = cfgSchemaMap[key]
         if (cfgSchema.type !== 'array') {
           if (cfgSchema.input) {
             val = cfgSchema.input(val)
@@ -64,22 +62,17 @@ export class setting extends plugin {
           Config.modify(cfgSchema.fileName, cfgSchema.cfgKey, val)
         }
       }
-
-      let schema = Config.getCfgSchema()
-      let cfg = Config.getCfg()
-      cfg.setAll = (await redis.get('Yz:clarity-meme:setAll')) == 1
-
-      // 渲染图像
-      const img = await Render.render(
-        'admin/index',
-        {
-          schema,
-          cfg
-        },
-        { e, scale: 1.4 }
-      )
-      await e.reply(img)
-      return true
     }
+
+    const schema = setting.cfgSchema
+    const cfg = Config.getCfg()
+    cfg.setAll = (await redis.get('Yz:clarity-meme:set-all')) == 1
+
+    const img = await Render.render('setting/index', {
+      schema,
+      cfg
+    }, { e, scale: 1.4 })
+    await e.reply(img)
+    return true
   }
 }

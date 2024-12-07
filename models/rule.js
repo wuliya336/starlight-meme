@@ -5,11 +5,10 @@ import FormData from "form-data"
 
 const Rule = {
   /**
-     * 表情处理逻辑
-     */
+   * 表情处理逻辑
+   */
   async meme (e, memeKey, memeInfo, userText) {
     const { params_type } = memeInfo || {}
-
     const {
       min_texts,
       max_texts,
@@ -17,7 +16,8 @@ const Rule = {
       max_images,
       default_texts,
       args_type
-    } = params_type
+    } = params_type || {}
+
     const formData = new FormData()
     let images = []
     let finalTexts = []
@@ -25,34 +25,40 @@ const Rule = {
 
     try {
       /**
-         * 针对仅图片类型表情作特殊处理
-         */
+       * 针对仅图片类型表情作特殊处理
+       */
       if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\d+$/.test(userText.trim())
         if (!isValidInput) {
-          // await e.reply('只支持输入@+QQ号', true)
           return false
         }
       }
 
       /**
-         * 处理 args 参数类型表情
-         */
+       * 处理 args 参数类型表情
+       */
       if (args_type !== null) {
         const argsMatch = userText.match(/#(.+)/)
         if (argsMatch) {
           const message = argsMatch[1].trim()
           if (message) {
-            argsString = JSON.stringify({ message })
-            formData.append("args", argsString)
+            const args = args_type.parser_options || []
+            for (const arg of args) {
+              const { name } = arg
+              if (name) {
+                argsString = JSON.stringify({ [name]: message })
+                formData.append("args", argsString)
+                break
+              }
+            }
           }
           userText = userText.replace(/#.+/, "").trim()
         }
       }
 
       /**
-         * 处理图片类型表情
-         */
+       * 处理图片类型表情
+       */
       if (!(min_images === 0 && max_images === 0)) {
         images = await Utils.getImage(e, userText)
 
@@ -72,8 +78,8 @@ const Rule = {
       }
 
       /**
-         * 处理文本类型表情包
-         */
+       * 处理文本类型表情包
+       */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
           const splitTexts = userText.split("/").map(text => text.trim())
@@ -106,8 +112,8 @@ const Rule = {
       }
 
       /**
-         * 检查是否包含所需的字段
-         */
+       * 检查是否包含所需的字段
+       */
       if (min_images > 0 && images.length === 0) {
         return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
       }
@@ -117,8 +123,8 @@ const Rule = {
       }
 
       /**
-         * 发生成表情包
-         */
+       * 发生成表情包
+       */
       const endpoint = `memes/${memeKey}/`
       const result = await Meme.request(
         endpoint,

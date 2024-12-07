@@ -17,7 +17,8 @@ const Args = {
   clown_mask: "小丑在前或在后，如#前 #后",
   alipay: "二维码的内容链接或文本，如#https://gituhub.com",
   wechat_pay: "二维码的内容链接或文本，如#https://gituhub.com",
-  panda_dragon_figure: "奇怪龙表情生成，如#原神龙"
+  panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
+  crawl: "今汐的图片编号，1-11。如#10"
 }
 
 export default Args

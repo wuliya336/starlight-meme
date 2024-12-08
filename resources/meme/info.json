@@ -418,7 +418,7 @@
   },
   "artifact": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "artifact",
     "keywords": [
       "圣遗物",
@@ -585,9 +585,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "萝卜子",
+      "ATRI",
       "亚托莉",
-      "ATRI"
+      "萝卜子"
     ]
   },
   "back_to_work": {
@@ -666,9 +666,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "杰瑞",
       "汤姆",
-      "猫和老鼠"
+      "猫和老鼠",
+      "杰瑞"
     ]
   },
   "behead": {
@@ -791,10 +791,10 @@
     },
     "shortcuts": [],
     "tags": [
+      "后藤一里",
       "孤独摇滚",
       "后藤独",
-      "波奇酱",
-      "后藤一里"
+      "波奇酱"
     ]
   },
   "bronya_holdsign": {
@@ -818,8 +818,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "崩坏3",
-      "布洛妮娅·扎伊切克"
+      "布洛妮娅·扎伊切克",
+      "崩坏3"
     ]
   },
   "bubble_tea": {
@@ -1209,7 +1209,7 @@
   },
   "celebrate_the_new_year": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "celebrate_the_new_year",
     "keywords": [
       "贺新春"
@@ -2043,7 +2043,7 @@
   },
   "dont_press": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "dont_press",
     "keywords": [
       "不要按"
@@ -2214,7 +2214,7 @@
   },
   "fast_do": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "fast_do",
     "keywords": [
       "狠撅",
@@ -2233,7 +2233,7 @@
   },
   "fast_qi": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "fast_qi",
     "keywords": [
       "狠骑"
@@ -2445,9 +2445,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "米哈游",
       "崩坏：星穹铁道",
-      "流萤"
+      "流萤",
+      "米哈游"
     ]
   },
   "flash_blind": {
@@ -2761,14 +2761,14 @@
       }
     ],
     "tags": [
-      "原神",
-      "钟离",
-      "刻晴",
       "米哈游",
       "妮露",
+      "钟离",
+      "原神",
+      "刻晴",
+      "可莉",
       "八重神子",
-      "胡桃",
-      "可莉"
+      "胡桃"
     ]
   },
   "genshin_start": {
@@ -3396,8 +3396,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "原神",
-      "胡桃"
+      "胡桃",
+      "原神"
     ]
   },
   "imprison": {
@@ -3431,6 +3431,26 @@
       "args_type": null,
       "default_texts": [
         "你刚才说的话不是很礼貌！"
+      ],
+      "max_images": 1,
+      "max_texts": 1,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "infinitynikki_start": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-08T22:06:00.009323",
+    "key": "infinitynikki_start",
+    "keywords": [
+      "无限暖暖启动"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "无限暖暖，启动！"
       ],
       "max_images": 1,
       "max_texts": 1,
@@ -3523,8 +3543,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "杰瑞",
-      "猫和老鼠"
+      "猫和老鼠",
+      "杰瑞"
     ]
   },
   "jiamianqishi": {
@@ -3640,8 +3660,8 @@
     "tags": []
   },
   "jinhsi": {
-    "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_created": "2024-12-07T00:00:00",
+    "date_modified": "2024-12-07T00:00:00",
     "key": "jinhsi",
     "keywords": [
       "汐汐",
@@ -3677,7 +3697,7 @@
           "properties": {
             "number": {
               "default": 0,
-              "description": "图片编号，范围为 0~11",
+              "description": "图片编号，范围为 1~12",
               "title": "Number",
               "type": "integer"
             },
@@ -3707,7 +3727,7 @@
             "compact": false,
             "default": null,
             "dest": null,
-            "help_text": "图片编号，范围为 0~11",
+            "help_text": "图片编号，范围为 1~12",
             "names": [
               "-n",
               "--number"
@@ -3724,7 +3744,10 @@
       "min_texts": 1
     },
     "shortcuts": [],
-    "tags": []
+    "tags": [
+      "鸣潮",
+      "今汐"
+    ]
   },
   "jiujiu": {
     "date_created": "2022-04-20T00:00:00",
@@ -3869,8 +3892,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "凯露",
-      "公主连结"
+      "公主连结",
+      "凯露"
     ]
   },
   "keep_away": {
@@ -4040,8 +4063,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "原神",
-      "可莉"
+      "可莉",
+      "原神"
     ]
   },
   "knock": {
@@ -4061,9 +4084,9 @@
     },
     "shortcuts": [],
     "tags": [
+      "鲨鲨",
       "噶呜·古拉",
-      "Gawr Gura",
-      "鲨鲨"
+      "Gawr Gura"
     ]
   },
   "kokona_seal": {
@@ -4151,8 +4174,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "碧蓝档案",
       "心奈",
+      "碧蓝档案",
       "蔚蓝档案"
     ]
   },
@@ -4765,8 +4788,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "原神",
-      "神里绫华"
+      "神里绫华",
+      "原神"
     ]
   },
   "love_you": {
@@ -4932,7 +4955,7 @@
   },
   "maki": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "maki",
     "keywords": [
       "真纪"
@@ -5009,7 +5032,7 @@
   },
   "ming_ku": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "ming_ku",
     "keywords": [
       "命苦"
@@ -5810,8 +5833,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "崩坏3",
-      "格蕾修"
+      "格蕾修",
+      "崩坏3"
     ]
   },
   "panda_dragon_figure": {
@@ -6200,8 +6223,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "普拉娜",
       "碧蓝档案",
+      "普拉娜",
       "蔚蓝档案"
     ]
   },
@@ -6459,7 +6482,7 @@
   },
   "qi": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "qi",
     "keywords": [
       "骑",
@@ -6826,8 +6849,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "学园偶像大师",
-      "藤田琴音"
+      "藤田琴音",
+      "学园偶像大师"
     ]
   },
   "shake_head": {
@@ -7506,8 +7529,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "唐可可",
-      "LoveLive!Superstar!!"
+      "LoveLive!Superstar!!",
+      "唐可可"
     ]
   },
   "taunt": {
@@ -7867,7 +7890,7 @@
   },
   "trump_vote": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-07T18:01:15.657980",
+    "date_modified": "2024-12-08T22:06:00.009323",
     "key": "trump_vote",
     "keywords": [
       "特朗普投票",
@@ -8441,6 +8464,28 @@
       "max_texts": 4,
       "min_images": 0,
       "min_texts": 4
+    },
+    "shortcuts": [],
+    "tags": []
+  },
+  "wuyage": {
+    "date_created": "2024-12-05T00:00:00",
+    "date_modified": "2024-12-05T00:00:00",
+    "key": "wuyage",
+    "keywords": [
+      "乌鸦哥"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [
+        "哟 云崽机器人",
+        "今天掉线了没",
+        "来给他弹个版本过低"
+      ],
+      "max_images": 0,
+      "max_texts": 3,
+      "min_images": 0,
+      "min_texts": 3
     },
     "shortcuts": [],
     "tags": []

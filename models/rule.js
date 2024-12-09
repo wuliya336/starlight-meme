@@ -37,7 +37,7 @@ const Rule = {
       }
 
       /**
-     * 全局处理
+     * 通用处理
      */
       let userAvatar = null
       const atMatch = userText.match(/@(\d+)/)
@@ -65,7 +65,7 @@ const Rule = {
      * 处理图片类型表情
      */
       if (!(min_images === 0 && max_images === 0)) {
-        images = await Utils.getImage(e, userText)
+        images = await Utils.getImage(e, userText, max_images)
 
         if (images.length < min_images && userAvatar) {
           const avatarBuffer = await Utils.getAvatar(userAvatar)

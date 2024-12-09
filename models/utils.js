@@ -1,18 +1,18 @@
-import fs from 'fs'
-import { Version, Data, Config } from '../components/index.js'
-import Request from './request.js'
+import fs from "fs"
+import { Version, Data, Config } from "../components/index.js"
+import Request from "./request.js"
 
 const Utils = {
   /**
    * 获取图片 Buffer
    */
   async getImageBuffer (imageUrl) {
-    if (!imageUrl) throw new Error('图片地址不能为空')
+    if (!imageUrl) throw new Error("图片地址不能为空")
 
     logger.debug(`[清语表情] 开始下载图片: ${imageUrl}`)
 
     try {
-      const buffer = await Request.get(imageUrl, {}, 'arraybuffer')
+      const buffer = await Request.get(imageUrl, {}, "arraybuffer")
       logger.debug(`[清语表情] 图片下载完成: ${imageUrl}`)
       return buffer
     } catch (error) {
@@ -25,11 +25,11 @@ const Utils = {
    * 将图片 Buffer 转换为 Base64
    */
   async bufferToBase64 (buffer) {
-    if (!buffer) throw new Error('图片 Buffer 不能为空')
+    if (!buffer) throw new Error("图片 Buffer 不能为空")
 
     logger.debug(`[清语表情] 开始转换 Buffer 为 Base64`)
     try {
-      const base64Data = buffer.toString('base64')
+      const base64Data = buffer.toString("base64")
       logger.debug(`[清语表情] Base64 转换完成`)
       return base64Data
     } catch (error) {
@@ -42,40 +42,54 @@ const Utils = {
    * 获取用户 QQ 头像
    */
   async getAvatar (qqList) {
-    if (!qqList) throw new Error('QQ 号不能为空')
+    if (!qqList) throw new Error("QQ 号不能为空")
     if (!Array.isArray(qqList)) qqList = [qqList]
 
     const avatarUrl = (qq) => `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
     const cacheDir = `${Version.Plugin_Path}/data/avatar`
-    Data.createDir('data/avatar', '', false)
+
+    if (!Config.meme.cache) {
+      if (fs.existsSync(cacheDir)) {
+        try {
+          fs.rmSync(cacheDir, { recursive: true, force: true })
+          logger.debug(`[清语表情] 缓存关闭，已删除头像缓存目录: ${cacheDir}`)
+        } catch (error) {
+          logger.error(`[清语表情] 删除头像缓存目录失败: ${error.message}`)
+        }
+      }
+      return
+    }
+
+    if (!fs.existsSync(cacheDir)) {
+      Data.createDir("data/avatar", "", false)
+      logger.debug(`[清语表情] 创建头像缓存目录: ${cacheDir}`)
+    }
 
     const downloadAvatar = async (qq) => {
       const cachePath = `${cacheDir}/avatar_${qq}.jpg`
 
-      if (Config.meme.cache && fs.existsSync(cachePath)) {
+      if (fs.existsSync(cachePath)) {
         logger.debug(`[清语表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
         try {
           const buffer = fs.readFileSync(cachePath)
-          logger.debug(`[清语表情] 已读取缓存头像 Buffer: QQ=${qq}`)
           return buffer
         } catch (error) {
-          logger.error(`[清语表情] 读取缓存头像失败: QQ: ${qq}, 错误: ${error.message}`)
+          logger.error(`[清语表情] 读取缓存头像失败: QQ=${qq}, 错误: ${error.message}`)
           throw error
         }
       }
 
-      logger.debug(`[清语表情] 开始下载头像: QQ: ${qq}, URL: ${avatarUrl(qq)}`)
+      logger.debug(`[清语表情] 开始下载头像: QQ=${qq}, URL: ${avatarUrl(qq)}`)
       try {
-        const buffer = await Request.get(avatarUrl(qq), {}, 'arraybuffer')
+        const buffer = await Request.get(avatarUrl(qq), {}, "arraybuffer")
         if (buffer && Buffer.isBuffer(buffer)) {
           fs.writeFileSync(cachePath, buffer)
-          logger.debug(`[清语表情] 头像下载完成: QQ: ${qq}, Path: ${cachePath}`)
           return buffer
         } else {
-          throw new Error('头像下载返回了无效的数据')
+          throw new Error("头像下载返回了无效的数据")
         }
       } catch (error) {
-        logger.error(`[清语表情] 下载头像失败: QQ: ${qq}, 错误: ${error.message}`)
+        logger.error(`[清语表情] 下载头像失败: QQ=${qq}, 错误: ${error.message}`)
         throw error
       }
     }
@@ -85,62 +99,110 @@ const Utils = {
   },
 
   /**
-   * 获取图片
-   **/
-  async getImage (e, userText) {
+ * 获取图片
+ **/
+  async getImage (e, userText, max_images) {
     const imagesInMessage = e.message.filter((m) => m.type === "image").map((img) => img.url)
     const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
     const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
-    const quotedImages = e.source.message.filter((msg) => msg.type === "image").map((img) => img.url)
+    const quotedImages = await this.getQuotedImages(e)
 
-    const tasks = []
+    let images = []
+    let tasks = []
 
-    const fetchBuffer = async (url, type) => {
+    /**
+     *  引用消息的图片
+     */
+    if (quotedImages.length > 0) {
+      tasks.push(...quotedImages.slice(0, max_images).map((imageUrl) => this.getImageBuffer(imageUrl)))
+    }
+
+    /**
+     * 消息中的图片
+     */
+    if (imagesInMessage.length > 0) {
+      tasks.push(...imagesInMessage.map((imageUrl) => this.getImageBuffer(imageUrl)))
+    }
+
+    /**
+     * 艾特用户头像(长按艾特)
+     */
+    if (ats.length > 0) {
+      tasks.push(...ats.map((qq) => this.getAvatar(qq)))
+    }
+
+    /**
+     * 手动输入的 at(@+数字)
+     */
+    if (manualAtQQs.length > 0) {
+      tasks.push(...manualAtQQs.map((qq) => this.getAvatar(qq)))
+    }
+
+    const results = await Promise.allSettled(tasks)
+    results.forEach((res) => {
+      if (res.status === "fulfilled" && res.value) {
+        images.push(res.value)
+      }
+    })
+
+    if (images.length < max_images) {
       try {
-        if (type === "image") {
-          return await this.getImageBuffer(url)
-        } else if (type === "avatar") {
-          return await this.getAvatar(url)
+        const triggerAvatar = await this.getAvatar(e.user_id)
+        if (triggerAvatar) {
+          images.unshift(triggerAvatar)
         }
       } catch (err) {
-        const errorType = type === "image" ? "图片" : "头像"
-        logger.warn(`[清语表情] ${errorType}下载失败: ${url}, 错误: ${err.message}`)
-        return null
+        logger.warn(`[清语表情] 获取触发者头像失败: ${e.user_id}, 错误: ${err.message}`)
       }
     }
 
-    // 获取引用消息中的图片
-    tasks.push(...quotedImages.map((imageUrl) => fetchBuffer(imageUrl, "image")))
-
-    // 获取消息中的图片
-    tasks.push(...imagesInMessage.map((url) => fetchBuffer(url, "image")))
-
-    // 获取艾特用户的头像（长按头像艾特）
-    tasks.push(...ats.map((qq) => fetchBuffer(qq, "avatar")))
-
-    // 获取手动艾特用户的头像（@+QQ号）
-    tasks.push(...manualAtQQs.map((qq) => fetchBuffer(qq, "avatar")))
-
-    const results = await Promise.all(tasks)
-    return results.filter(Boolean)
+    return images.slice(0, max_images)
   },
+
+  /**
+ * 获取引用消息中的图片
+ */
+  async getQuotedImages (e) {
+    let source = null
+
+    if (e.getReply) {
+      source = await e.getReply()
+    } else if (e.source) {
+      if (e.group?.getChatHistory) {
+        source = (await e.group.getChatHistory(e.source.seq, 1)).pop()
+      } else if (e.friend?.getChatHistory) {
+        source = (await e.friend.getChatHistory(e.source.time, 1)).pop()
+      }
+    }
+
+    if (!source || !source.message || !Array.isArray(source.message)) return []
+
+    const imgArr = []
+    for (const msg of source.message) {
+      if (msg.type === "image") {
+        imgArr.push(msg.url)
+      }
+    }
+    return imgArr
+  },
+
 
   /**
    * 删除临时文件
    */
-  deleteAvatar (filePaths) {
-    if (!Array.isArray(filePaths)) filePaths = [filePaths]
+  deleteAvatarDirectory () {
+    const cacheDir = `${Version.Plugin_Path}/data/avatar`
 
-    filePaths.forEach((filePath) => {
+    if (fs.existsSync(cacheDir)) {
       try {
-        if (fs.existsSync(filePath)) {
-          fs.unlinkSync(filePath)
-          logger.debug(`[清语表情] 已删除临时头像文件: ${filePath}`)
-        }
+        fs.rmSync(cacheDir, { recursive: true, force: true })
+        logger.debug(`[清语表情] 已删除头像缓存目录: ${cacheDir}`)
       } catch (error) {
-        logger.error(`[清语表情] 删除头像文件失败, 错误: ${error.message}`)
+        logger.error(`[清语表情] 删除头像缓存目录失败: ${error.message}`)
       }
-    })
+    } else {
+      logger.warn(`[清语表情] 头像缓存目录不存在: ${cacheDir}`)
+    }
   }
 }
 

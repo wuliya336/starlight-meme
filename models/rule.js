@@ -26,9 +26,9 @@ const Rule = {
     let argsString = null
 
     try {
-      /**
-       * 针对仅图片类型表情作特殊处理
-       */
+    /**
+     * 针对仅图片类型表情作特殊处理
+     */
       if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\d+$/.test(userText.trim())
         if (!isValidInput) {
@@ -37,22 +37,18 @@ const Rule = {
       }
 
       /**
-       * 全局处理
-       */
+     * 全局处理
+     */
       let userAvatar = null
       const atMatch = userText.match(/@(\d+)/)
       if (atMatch) {
         userAvatar = atMatch[1]
-        const avatarBuffer = await Utils.getAvatar(userAvatar)
-        if (avatarBuffer) {
-          images.unshift(avatarBuffer)
-        }
         userText = userText.replace(/@\d+/g, "").trim()
       }
 
       /**
-       * 处理 args 参数类型表情
-       */
+     * 处理 args 参数类型表情
+     */
       if (args_type !== null) {
         const argsMatch = userText.match(/#(.+)/)
         if (argsMatch) {
@@ -66,8 +62,8 @@ const Rule = {
       }
 
       /**
-       * 处理图片类型表情
-       */
+     * 处理图片类型表情
+     */
       if (!(min_images === 0 && max_images === 0)) {
         images = await Utils.getImage(e, userText)
 
@@ -92,8 +88,8 @@ const Rule = {
       }
 
       /**
-       * 处理文本类型表情包
-       */
+     * 处理文本类型表情包
+     */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
           const splitTexts = userText.split("/").map(text => text.trim())
@@ -104,9 +100,9 @@ const Rule = {
           finalTexts.push(e.sender.nickname || "未知")
         } else if (
           finalTexts.length === 0 &&
-          Config.meme.defaultText === 0 &&
-          default_texts &&
-          default_texts.length > 0
+        Config.meme.defaultText === 0 &&
+        default_texts &&
+        default_texts.length > 0
         ) {
           const randomIndex = Math.floor(Math.random() * default_texts.length)
           finalTexts.push(default_texts[randomIndex])
@@ -126,8 +122,8 @@ const Rule = {
       }
 
       /**
-       * 检查是否包含所需的内容
-       */
+     * 检查是否包含所需的内容
+     */
       if (min_images > 0 && images.length === 0) {
         return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
       }

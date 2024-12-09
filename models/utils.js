@@ -86,61 +86,47 @@ const Utils = {
 
   /**
    * 获取图片
-   */
+   **/
   async getImage (e, userText) {
-    const imagesInMessage = e.message.filter((m) => m.type === 'image').map((img) => img.url)
-    const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
+    const imagesInMessage = e.message.filter((m) => m.type === "image").map((img) => img.url)
+    const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
     const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
+    const quotedImages = e.source.message.filter((msg) => msg.type === "image").map((img) => img.url)
 
     const tasks = []
 
-    // 获取消息中的图片的buffer
-    tasks.push(
-      ...imagesInMessage.map(async (url) => {
-        try {
-          const buffer = await this.getImageBuffer(url)
-          return buffer || null
-        } catch (err) {
-          logger.warn(`[清语表情] 消息图片下载失败: ${url}, 错误: ${err.message}`)
-          return null
+    const fetchBuffer = async (url, type) => {
+      try {
+        if (type === "image") {
+          return await this.getImageBuffer(url)
+        } else if (type === "avatar") {
+          return await this.getAvatar(url)
         }
-      })
-    )
+      } catch (err) {
+        const errorType = type === "image" ? "图片" : "头像"
+        logger.warn(`[清语表情] ${errorType}下载失败: ${url}, 错误: ${err.message}`)
+        return null
+      }
+    }
 
-    /**
-     * 获取艾特用户的头像(长按头像艾特)
-     */
-    tasks.push(
-      ...ats.map(async (qq) => {
-        try {
-          return await this.getAvatar(qq)
-        } catch (err) {
-          logger.error(`[清语表情] 无法获取艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
-          return null
-        }
-      })
-    )
+    // 获取引用消息中的图片
+    tasks.push(...quotedImages.map((imageUrl) => fetchBuffer(imageUrl, "image")))
 
-    /**
-     * 获取手动艾特用户的头像(@+QQ号)
-     */
-    tasks.push(
-      ...manualAtQQs.map(async (qq) => {
-        try {
-          return await this.getAvatar(qq)
-        } catch (err) {
-          logger.error(`[清语表情] 无法获取手动输入艾特用户头像: QQ: ${qq}, 错误: ${err.message}`)
-          return null
-        }
-      })
-    )
+    // 获取消息中的图片
+    tasks.push(...imagesInMessage.map((url) => fetchBuffer(url, "image")))
 
-    return (await Promise.all(tasks)).filter(Boolean)
+    // 获取艾特用户的头像（长按头像艾特）
+    tasks.push(...ats.map((qq) => fetchBuffer(qq, "avatar")))
+
+    // 获取手动艾特用户的头像（@+QQ号）
+    tasks.push(...manualAtQQs.map((qq) => fetchBuffer(qq, "avatar")))
+
+    const results = await Promise.all(tasks)
+    return results.filter(Boolean)
   },
 
   /**
-
- * 删除临时文件
+   * 删除临时文件
    */
   deleteAvatar (filePaths) {
     if (!Array.isArray(filePaths)) filePaths = [filePaths]

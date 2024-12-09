@@ -37,6 +37,20 @@ const Rule = {
       }
 
       /**
+       * 全局处理
+       */
+      let userAvatar = null
+      const atMatch = userText.match(/@(\d+)/)
+      if (atMatch) {
+        userAvatar = atMatch[1]
+        const avatarBuffer = await Utils.getAvatar(userAvatar)
+        if (avatarBuffer) {
+          images.unshift(avatarBuffer)
+        }
+        userText = userText.replace(/@\d+/g, "").trim()
+      }
+
+      /**
        * 处理 args 参数类型表情
        */
       if (args_type !== null) {
@@ -44,7 +58,7 @@ const Rule = {
         if (argsMatch) {
           const message = argsMatch[1].trim()
           if (message) {
-            argsString = Args.handle(memeKey, message)  // 使用 Args.handle 来处理参数
+            argsString = Args.handle(memeKey, message)
             formData.append("args", argsString)
           }
           userText = userText.replace(/#.+/, "").trim()
@@ -56,6 +70,11 @@ const Rule = {
        */
       if (!(min_images === 0 && max_images === 0)) {
         images = await Utils.getImage(e, userText)
+
+        if (images.length < min_images && userAvatar) {
+          const avatarBuffer = await Utils.getAvatar(userAvatar)
+          if (avatarBuffer) images.unshift(avatarBuffer)
+        }
 
         if (images.length < min_images) {
           const triggerAvatar = await Utils.getAvatar(e.user_id)
@@ -107,7 +126,7 @@ const Rule = {
       }
 
       /**
-       * 检查是否包含所需的字段
+       * 检查是否包含所需的内容
        */
       if (min_images > 0 && images.length === 0) {
         return e.reply(`该表情至少需要 ${min_images} 张图片`, true)
@@ -117,9 +136,6 @@ const Rule = {
         return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
       }
 
-      /**
-       * 发生成表情包
-       */
       const endpoint = `memes/${memeKey}/`
       const result = await Meme.request(
         endpoint,

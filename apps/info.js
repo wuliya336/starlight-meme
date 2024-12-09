@@ -47,8 +47,8 @@ export class meme extends plugin {
     } = memeDetails.params_type || {}
 
     let argsHint = ""
-    if (args_type && Args[memeKey]) {
-      argsHint = Args[memeKey]
+    if (args_type && Args.descriptions[memeKey]) {
+      argsHint = Args.descriptions[memeKey]
     }
 
     const aliases = memeDetails.keywords ? memeDetails.keywords.join(", ") : "无"

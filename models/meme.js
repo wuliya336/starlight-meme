@@ -1,14 +1,16 @@
 import { Data, Config } from '../components/index.js'
 import Request from './request.js'
 
-
-const BASE_URL = (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
-
 const Meme = {
   keyMap: null,
   infoMap: null,
   loaded: false,
-
+  /**
+   * 动态获取请求地址
+   */
+  get BASE_URL () {
+    return (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
+  },
   /**
    * 初始化加载
    */
@@ -80,7 +82,7 @@ const Meme = {
    */
   async request (endpoint, params = {}, method = 'GET', responseType) {
     try {
-      const url = `${BASE_URL}/${endpoint}`
+      const url = `${this.BASE_URL}/${endpoint}`
       if (method.toUpperCase() === 'GET') {
         return await Request.get(url, params)
       } else if (method.toUpperCase() === 'POST') {
@@ -101,7 +103,7 @@ const Meme = {
       logger.error('表情键值不能为空')
       return null
     }
-    const previewUrl = `${BASE_URL}/memes/${memeKey}/preview`
+    const previewUrl = `${this.BASE_URL}/memes/${memeKey}/preview`
     return previewUrl
   }
 }

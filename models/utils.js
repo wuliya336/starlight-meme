@@ -74,7 +74,9 @@ const Utils = {
           const buffer = fs.readFileSync(cachePath)
           return buffer
         } catch (error) {
-          logger.error(`[清语表情] 读取缓存头像失败: QQ=${qq}, 错误: ${error.message}`)
+          logger.error(
+            `[清语表情] 读取缓存头像失败: QQ=${qq}, 错误: ${error.message}`
+          )
           throw error
         }
       }
@@ -89,7 +91,9 @@ const Utils = {
           throw new Error("头像下载返回了无效的数据")
         }
       } catch (error) {
-        logger.error(`[清语表情] 下载头像失败: QQ=${qq}, 错误: ${error.message}`)
+        logger.error(
+          `[清语表情] 下载头像失败: QQ=${qq}, 错误: ${error.message}`
+        )
         throw error
       }
     }
@@ -102,10 +106,15 @@ const Utils = {
    * 获取图片
    **/
   async getImage (e, userText, max_images, min_images) {
-    const imagesInMessage = e.message.filter((m) => m.type === "image").map((img) => img.url)
+    const imagesInMessage = e.message
+      .filter((m) => m.type === "image")
+      .map((img) => img.url)
     const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
-    const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
-    const quotedImages = await this.getQuotedImages(e)
+    const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map(
+      (match) => match[1]
+    )
+
+    const quotedImagesOrBuffers = await this.getQuotedImages(e)
 
     let images = []
     let tasks = []
@@ -113,28 +122,34 @@ const Utils = {
     /**
      * 引用消息的图片
      */
-    if (quotedImages.length > 0) {
-      tasks.push(...quotedImages.map((imageUrl) => this.getImageBuffer(imageUrl)))
+    if (quotedImagesOrBuffers.length > 0) {
+      quotedImagesOrBuffers.forEach((item) => {
+        if (Buffer.isBuffer(item)) {
+          images.push(item)
+        } else {
+          tasks.push(this.getImageBuffer(item))
+        }
+      })
     }
 
     /**
      * 消息中的图片
      */
     if (imagesInMessage.length > 0) {
-      tasks.push(...imagesInMessage.map((imageUrl) => this.getImageBuffer(imageUrl)))
+      tasks.push(
+        ...imagesInMessage.map((imageUrl) => this.getImageBuffer(imageUrl))
+      )
     }
 
     /**
      * 艾特用户头像(长按艾特)
      */
-    if (quotedImages.length !== 1) {
-      if (ats.length > 0) {
-        tasks.push(...ats.map((qq) => this.getAvatar(qq)))
-      }
+    if (quotedImagesOrBuffers.length === 0 && ats.length > 0) {
+      tasks.push(...ats.map((qq) => this.getAvatar(qq)))
     }
 
     /**
-     * 手动输入的 at(@+数字)
+     * 手动输入的艾特(@+数字)
      */
     if (manualAtQQs.length > 0) {
       tasks.push(...manualAtQQs.map((qq) => this.getAvatar(qq)))
@@ -150,13 +165,12 @@ const Utils = {
     return images.slice(0, max_images)
   },
 
-
   /**
- * 获取引用消息中的图片
- */
+   * 获取引用消息
+   */
+
   async getQuotedImages (e) {
     let source = null
-
     if (e.getReply) {
       source = await e.getReply()
     } else if (e.source) {
@@ -170,14 +184,27 @@ const Utils = {
     if (!source || !source.message || !Array.isArray(source.message)) return []
 
     const imgArr = []
+    let isOnlyImage = true
+
     for (const msg of source.message) {
       if (msg.type === "image") {
         imgArr.push(msg.url)
+      } else {
+        isOnlyImage = false
       }
     }
+
+    if (!isOnlyImage && source.sender?.user_id) {
+      try {
+        const avatarBuffer = await this.getAvatar(source.sender.user_id)
+        return [avatarBuffer]
+      } catch (error) {
+        return []
+      }
+    }
+
     return imgArr
   },
-
 
   /**
    * 删除临时文件

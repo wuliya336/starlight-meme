@@ -21,7 +21,7 @@ const Args = {
     alipay: "二维码的内容链接或文本，如#https://github.com",
     wechat_pay: "二维码的内容链接或文本，如#https://github.com",
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
-    crawl: "今汐的图片编号，1-13。如#10"
+    jinhsi: "今汐的图片编号，1-13。如#10"
   },
 
   handle (key, args) {

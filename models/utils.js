@@ -99,8 +99,8 @@ const Utils = {
   },
 
   /**
- * 获取图片
- **/
+   * 获取图片
+   **/
   async getImage (e, userText, max_images, min_images) {
     const imagesInMessage = e.message.filter((m) => m.type === "image").map((img) => img.url)
     const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
@@ -111,10 +111,10 @@ const Utils = {
     let tasks = []
 
     /**
-     *  引用消息的图片
+     * 引用消息的图片
      */
     if (quotedImages.length > 0) {
-      tasks.push(...quotedImages.slice(0, max_images).map((imageUrl) => this.getImageBuffer(imageUrl)))
+      tasks.push(...quotedImages.map((imageUrl) => this.getImageBuffer(imageUrl)))
     }
 
     /**
@@ -127,8 +127,10 @@ const Utils = {
     /**
      * 艾特用户头像(长按艾特)
      */
-    if (ats.length > 0) {
-      tasks.push(...ats.map((qq) => this.getAvatar(qq)))
+    if (quotedImages.length !== 1) {
+      if (ats.length > 0) {
+        tasks.push(...ats.map((qq) => this.getAvatar(qq)))
+      }
     }
 
     /**
@@ -145,15 +147,9 @@ const Utils = {
       }
     })
 
-    if (images.length < min_images) {
-      const triggerAvatar = await this.getAvatar(e.user_id)
-      if (triggerAvatar) {
-        images.unshift(triggerAvatar)
-      }
-    }
-
     return images.slice(0, max_images)
   },
+
 
   /**
  * 获取引用消息中的图片

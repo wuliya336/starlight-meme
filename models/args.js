@@ -21,7 +21,8 @@ const Args = {
     alipay: "二维码的内容链接或文本，如#https://github.com",
     wechat_pay: "二维码的内容链接或文本，如#https://github.com",
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
-    jinhsi: "今汐的图片编号，1-13。如#10"
+    jinhsi: "病娇的图片编号，1-13。如#10",
+    sick_delicate: "今汐的图片编号，1-4。如#1"
   },
 
   handle (key, args) {
@@ -139,6 +140,10 @@ const Args = {
       }
       case "jinhsi": {
         argsObj = { number: Math.min(parseInt(args || '1'), 13) }
+        break
+      }
+      case "sick_delicate": {
+        argsObj = { number: Math.min(parseInt(args || '1'), 4) }
         break
       }
     }

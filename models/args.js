@@ -18,10 +18,10 @@ const Args = {
     mourning: "是否黑白。如#黑白 或 #灰",
     genshin_eat: "吃的角色(八重、胡桃、妮露、可莉、刻晴、钟离)。如#胡桃",
     clown_mask: "小丑在前或在后，如#前 #后",
-    alipay: "二维码的内容链接或文本，如#https://gituhub.com",
-    wechat_pay: "二维码的内容链接或文本，如#https://gituhub.com",
+    alipay: "二维码的内容链接或文本，如#https://github.com",
+    wechat_pay: "二维码的内容链接或文本，如#https://github.com",
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
-    crawl: "今汐的图片编号，1-11。如#10"
+    crawl: "今汐的图片编号，1-13。如#10"
   },
 
   handle (key, args) {
@@ -138,7 +138,7 @@ const Args = {
         break
       }
       case "jinhsi": {
-        argsObj = { number: Math.min(parseInt(args || '1'), 11) }
+        argsObj = { number: Math.min(parseInt(args || '1'), 13) }
         break
       }
     }

@@ -14,6 +14,7 @@ export const cfgSchema = {
         key: '强制触发',
         def: false,
         desc: '是否强制使用#触发, 开启后必须使用#触发',
+        type: 'boolean',
         fileName: 'meme'
       },
       cache: {
@@ -21,6 +22,7 @@ export const cfgSchema = {
         key: '缓存',
         def: true,
         desc: '是否开启头像缓存',
+        type: 'boolean',
         fileName: 'meme'
       },
       reply: {
@@ -28,6 +30,7 @@ export const cfgSchema = {
         key: '引用回复',
         def: false,
         desc: '是否开启引用回复',
+        type: 'boolean',
         fileName: 'meme'
       },
       defaultText: {

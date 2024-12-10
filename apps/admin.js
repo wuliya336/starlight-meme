@@ -64,6 +64,9 @@ export class setting extends plugin {
             case 'string':
               val = val.trim() || cfgSchema.def
               break
+            default:
+              val = val || cfgSchema.def
+              break
           }
         }
         Config.modify(cfgSchema.fileName, cfgSchema.cfgKey, val)

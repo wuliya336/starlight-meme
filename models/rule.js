@@ -65,7 +65,7 @@ const Rule = {
      * 处理图片类型表情
      */
       if (!(min_images === 0 && max_images === 0)) {
-        images = await Utils.getImage(e, userText, max_images)
+        images = await Utils.getImage(e, userText, max_images, min_images)
 
         if (images.length < min_images && userAvatar) {
           const avatarBuffer = await Utils.getAvatar(userAvatar)

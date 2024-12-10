@@ -101,7 +101,7 @@ const Utils = {
   /**
  * 获取图片
  **/
-  async getImage (e, userText, max_images) {
+  async getImage (e, userText, max_images, min_images) {
     const imagesInMessage = e.message.filter((m) => m.type === "image").map((img) => img.url)
     const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
     const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map((match) => match[1])
@@ -145,14 +145,10 @@ const Utils = {
       }
     })
 
-    if (images.length < max_images) {
-      try {
-        const triggerAvatar = await this.getAvatar(e.user_id)
-        if (triggerAvatar) {
-          images.unshift(triggerAvatar)
-        }
-      } catch (err) {
-        logger.warn(`[清语表情] 获取触发者头像失败: ${e.user_id}, 错误: ${err.message}`)
+    if (images.length < min_images) {
+      const triggerAvatar = await this.getAvatar(e.user_id)
+      if (triggerAvatar) {
+        images.unshift(triggerAvatar)
       }
     }
 

@@ -22,7 +22,8 @@ const Args = {
     wechat_pay: "二维码的内容链接或文本，如#https://github.com",
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
     jinhsi: "病娇的图片编号，1-13。如#10",
-    sick_delicate: "今汐的图片编号，1-4。如#1"
+    sick_delicate: "今汐的图片编号，1-4。如#1",
+    kokona: "消息框的位置，包含 left、right、both"
   },
 
   handle (key, args) {
@@ -144,6 +145,15 @@ const Args = {
       }
       case "sick_delicate": {
         argsObj = { number: Math.min(parseInt(args || '1'), 4) }
+        break
+      }
+      case 'kokona': {
+        let positionMap = {
+          左: 'left',
+          右: 'right',
+          两边: 'both'
+        }
+        argsObj = { position: positionMap[args.trim()] || 'both' }
         break
       }
     }

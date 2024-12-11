@@ -394,8 +394,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "阿尼亚·福杰",
-      "间谍过家家"
+      "间谍过家家",
+      "阿尼亚·福杰"
     ]
   },
   "applaud": {
@@ -416,9 +416,31 @@
     "shortcuts": [],
     "tags": []
   },
+  "arona_throw": {
+    "date_created": "2024-12-10T00:00:00",
+    "date_modified": "2024-12-10T00:00:00",
+    "key": "arona_throw",
+    "keywords": [
+      "阿罗娜扔"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": [
+      "碧蓝档案",
+      "阿罗娜",
+      "蔚蓝档案"
+    ]
+  },
   "artifact": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "artifact",
     "keywords": [
       "圣遗物",
@@ -585,9 +607,9 @@
     },
     "shortcuts": [],
     "tags": [
+      "萝卜子",
       "亚托莉",
-      "ATRI",
-      "萝卜子"
+      "ATRI"
     ]
   },
   "back_to_work": {
@@ -666,9 +688,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "汤姆",
       "猫和老鼠",
-      "杰瑞"
+      "杰瑞",
+      "汤姆"
     ]
   },
   "behead": {
@@ -770,8 +792,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "蔚蓝档案",
-      "碧蓝档案"
+      "碧蓝档案",
+      "蔚蓝档案"
     ]
   },
   "bocchi_draft": {
@@ -791,8 +813,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "波奇酱",
       "后藤一里",
+      "波奇酱",
       "孤独摇滚",
       "后藤独"
     ]
@@ -818,8 +840,8 @@
     "shortcuts": [],
     "tags": [
       "崩坏3",
-      "布洛妮娅·扎伊切克",
-      "米哈游"
+      "米哈游",
+      "布洛妮娅·扎伊切克"
     ]
   },
   "bubble_tea": {
@@ -1174,8 +1196,8 @@
     "shortcuts": [],
     "tags": [
       "崩坏3",
-      "米哈游",
       "舰长",
+      "米哈游",
       "休伯利安号"
     ]
   },
@@ -1209,7 +1231,7 @@
   },
   "celebrate_the_new_year": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "celebrate_the_new_year",
     "keywords": [
       "贺新春"
@@ -2043,7 +2065,7 @@
   },
   "dont_press": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "dont_press",
     "keywords": [
       "不要按"
@@ -2214,7 +2236,7 @@
   },
   "fast_do": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "fast_do",
     "keywords": [
       "狠撅",
@@ -2233,7 +2255,7 @@
   },
   "fast_qi": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "fast_qi",
     "keywords": [
       "狠骑"
@@ -2307,8 +2329,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "咒术回战",
-      "两面宿傩"
+      "两面宿傩",
+      "咒术回战"
     ]
   },
   "fill_head": {
@@ -2562,8 +2584,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "葬送的芙莉莲",
-      "芙莉莲"
+      "芙莉莲",
+      "葬送的芙莉莲"
     ]
   },
   "funny_mirror": {
@@ -2761,13 +2783,13 @@
       }
     ],
     "tags": [
-      "可莉",
+      "米哈游",
+      "胡桃",
+      "钟离",
       "妮露",
+      "可莉",
       "刻晴",
       "八重神子",
-      "胡桃",
-      "米哈游",
-      "钟离",
       "原神"
     ]
   },
@@ -3396,8 +3418,8 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
-      "原神",
-      "胡桃"
+      "胡桃",
+      "原神"
     ]
   },
   "imprison": {
@@ -3442,7 +3464,7 @@
   },
   "infinitynikki_start": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "infinitynikki_start",
     "keywords": [
       "无限暖暖启动"
@@ -3697,7 +3719,7 @@
           "properties": {
             "number": {
               "default": 0,
-              "description": "图片编号，范围为 1~12",
+              "description": "图片编号，范围为 1~13",
               "title": "Number",
               "type": "integer"
             },
@@ -3727,7 +3749,7 @@
             "compact": false,
             "default": null,
             "dest": null,
-            "help_text": "图片编号，范围为 1~12",
+            "help_text": "图片编号，范围为 1~13",
             "names": [
               "-n",
               "--number"
@@ -4062,8 +4084,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "可莉",
       "米哈游",
+      "可莉",
       "原神"
     ]
   },
@@ -4088,6 +4110,156 @@
       "噶呜·古拉",
       "鲨鲨"
     ]
+  },
+  "kokona": {
+    "date_created": "2021-05-04T00:00:00",
+    "date_modified": "2024-12-11T16:49:00.391287",
+    "key": "kokona",
+    "keywords": [
+      "春原心奈",
+      "春原心菜"
+    ],
+    "params_type": {
+      "args_type": {
+        "args_examples": [
+          {
+            "position": "left",
+            "user_infos": []
+          },
+          {
+            "position": "right",
+            "user_infos": []
+          },
+          {
+            "position": "both",
+            "user_infos": []
+          }
+        ],
+        "args_model": {
+          "$defs": {
+            "UserInfo": {
+              "properties": {
+                "gender": {
+                  "default": "unknown",
+                  "enum": [
+                    "male",
+                    "female",
+                    "unknown"
+                  ],
+                  "title": "Gender",
+                  "type": "string"
+                },
+                "name": {
+                  "default": "",
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "title": "UserInfo",
+              "type": "object"
+            }
+          },
+          "properties": {
+            "position": {
+              "default": "both",
+              "description": "消息框的位置，包含 left、right、both",
+              "enum": [
+                "left",
+                "right",
+                "both"
+              ],
+              "title": "Position",
+              "type": "string"
+            },
+            "user_infos": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/UserInfo"
+              },
+              "title": "User Infos",
+              "type": "array"
+            }
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "parser_options": [
+          {
+            "action": null,
+            "args": [
+              {
+                "default": null,
+                "flags": null,
+                "name": "position",
+                "value": "str"
+              }
+            ],
+            "compact": false,
+            "default": null,
+            "dest": null,
+            "help_text": "消息框的位置，包含 left、right、both",
+            "names": [
+              "-p",
+              "--position"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "left"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--left",
+              "左边"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "right"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--right",
+              "右边"
+            ]
+          },
+          {
+            "action": {
+              "type": 0,
+              "value": "both"
+            },
+            "args": null,
+            "compact": false,
+            "default": null,
+            "dest": "position",
+            "help_text": null,
+            "names": [
+              "--both",
+              "两边"
+            ]
+          }
+        ]
+      },
+      "default_texts": [
+        "那我问你"
+      ],
+      "max_images": 0,
+      "max_texts": 1,
+      "min_images": 0,
+      "min_texts": 1
+    },
+    "shortcuts": [],
+    "tags": []
   },
   "kokona_seal": {
     "date_created": "2024-11-05T00:00:00",
@@ -4174,9 +4346,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "蔚蓝档案",
+      "碧蓝档案",
       "心奈",
-      "碧蓝档案"
+      "蔚蓝档案"
     ]
   },
   "konata_watch": {
@@ -4196,8 +4368,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "泉此方",
-      "幸运星"
+      "幸运星",
+      "泉此方"
     ]
   },
   "lash": {
@@ -4787,9 +4959,9 @@
     },
     "shortcuts": [],
     "tags": [
+      "米哈游",
       "神里绫华",
-      "原神",
-      "米哈游"
+      "原神"
     ]
   },
   "love_you": {
@@ -4955,7 +5127,7 @@
   },
   "maki": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "maki",
     "keywords": [
       "真纪"
@@ -5032,7 +5204,7 @@
   },
   "ming_ku": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "ming_ku",
     "keywords": [
       "命苦"
@@ -5393,9 +5565,9 @@
     "shortcuts": [],
     "tags": [
       "米哈游",
+      "纳西妲",
       "原神",
-      "草神",
-      "纳西妲"
+      "草神"
     ]
   },
   "name_generator": {
@@ -5833,8 +6005,8 @@
     "shortcuts": [],
     "tags": [
       "崩坏3",
-      "米哈游",
-      "格蕾修"
+      "格蕾修",
+      "米哈游"
     ]
   },
   "panda_dragon_figure": {
@@ -5974,7 +6146,7 @@
   },
   "penguin_shake_head": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "penguin_shake_head",
     "keywords": [
       "企鹅摇头"
@@ -5982,7 +6154,7 @@
     "params_type": {
       "args_type": null,
       "default_texts": [],
-      "max_images": 1,
+      "max_images": 10,
       "max_texts": 0,
       "min_images": 1,
       "min_texts": 0
@@ -6241,9 +6413,9 @@
     },
     "shortcuts": [],
     "tags": [
+      "碧蓝档案",
       "普拉娜",
-      "蔚蓝档案",
-      "碧蓝档案"
+      "蔚蓝档案"
     ]
   },
   "play": {
@@ -6302,8 +6474,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "蔚蓝档案",
-      "碧蓝档案"
+      "碧蓝档案",
+      "蔚蓝档案"
     ]
   },
   "police": {
@@ -6500,7 +6672,7 @@
   },
   "qi": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "qi",
     "keywords": [
       "骑",
@@ -6792,6 +6964,24 @@
     "shortcuts": [],
     "tags": []
   },
+  "saimin_app": {
+    "date_created": "2024-12-10T00:00:00",
+    "date_modified": "2024-12-10T00:00:00",
+    "key": "saimin_app",
+    "keywords": [
+      "催眠app"
+    ],
+    "params_type": {
+      "args_type": null,
+      "default_texts": [],
+      "max_images": 1,
+      "max_texts": 0,
+      "min_images": 1,
+      "min_texts": 0
+    },
+    "shortcuts": [],
+    "tags": []
+  },
   "scratch_head": {
     "date_created": "2023-01-07T00:00:00",
     "date_modified": "2023-02-14T00:00:00",
@@ -6867,8 +7057,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "学园偶像大师",
-      "藤田琴音"
+      "藤田琴音",
+      "学园偶像大师"
     ]
   },
   "shake_head": {
@@ -6906,9 +7096,9 @@
     },
     "shortcuts": [],
     "tags": [
-      "蔚蓝档案",
+      "砂狼白子",
       "碧蓝档案",
-      "砂狼白子"
+      "蔚蓝档案"
     ]
   },
   "shishilani": {
@@ -7016,7 +7206,7 @@
   },
   "sick_delicate": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "sick_delicate",
     "keywords": [
       "病娇"
@@ -7675,8 +7865,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "莉可丽丝",
-      "井之上泷奈"
+      "井之上泷奈",
+      "莉可丽丝"
     ]
   },
   "tease": {
@@ -7697,8 +7887,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "蔚蓝档案",
-      "碧蓝档案"
+      "碧蓝档案",
+      "蔚蓝档案"
     ]
   },
   "telescope": {
@@ -7931,8 +8121,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "汤姆",
-      "猫和老鼠"
+      "猫和老鼠",
+      "汤姆"
     ]
   },
   "tomb_yeah": {
@@ -7994,7 +8184,7 @@
   },
   "trump_vote": {
     "date_created": "2021-05-04T00:00:00",
-    "date_modified": "2024-12-10T22:22:52.864677",
+    "date_modified": "2024-12-11T16:49:00.391287",
     "key": "trump_vote",
     "keywords": [
       "特朗普投票",
@@ -8151,8 +8341,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "瑞克·桑切斯",
-      "瑞克和莫蒂"
+      "瑞克和莫蒂",
+      "瑞克·桑切斯"
     ]
   },
   "walnut_pad": {
@@ -8172,8 +8362,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "莉可丽丝",
-      "胡桃"
+      "胡桃",
+      "莉可丽丝"
     ]
   },
   "walnut_zoom": {
@@ -8193,8 +8383,8 @@
     },
     "shortcuts": [],
     "tags": [
-      "莉可丽丝",
-      "胡桃"
+      "胡桃",
+      "莉可丽丝"
     ]
   },
   "wangjingze": {

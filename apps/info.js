@@ -72,7 +72,7 @@ export class meme extends plugin {
       `最小图片数量: ${min_images}\n`,
       `最大文本数量: ${max_texts}\n`,
       `最小文本数量: ${min_texts}\n`,
-      `默认文本: ${default_texts.length > 0 ? default_texts.join(", ") : "无"}\n`
+      `默认文本: ${default_texts.length > 0 ? default_texts.join(", ") : "无"}`
     ]
 
     if (argsHint) {
@@ -80,10 +80,10 @@ export class meme extends plugin {
     }
 
     if (base64Data) {
-      replyMessage.push("预览图片:\n")
+      replyMessage.push("\n预览图片:\n")
       replyMessage.push(segment.image(previewImageBase64))
     } else {
-      replyMessage.push("预览图片:\n")
+      replyMessage.push("\n预览图片:\n")
       replyMessage.push(previewImageBase64)
     }
 

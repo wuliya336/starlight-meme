@@ -49,14 +49,6 @@ const Utils = {
     const cacheDir = `${Version.Plugin_Path}/data/avatar`
 
     if (!Config.meme.cache) {
-      if (fs.existsSync(cacheDir)) {
-        try {
-          fs.rmSync(cacheDir, { recursive: true, force: true })
-          logger.debug(`[清语表情] 缓存关闭，已删除头像缓存目录: ${cacheDir}`)
-        } catch (error) {
-          logger.error(`[清语表情] 删除头像缓存目录失败: ${error.message}`)
-        }
-      }
       return
     }
 
@@ -105,7 +97,7 @@ const Utils = {
   /**
    * 获取图片
    **/
-  async getImage (e, userText, max_images, min_images) {
+  async getImage (e, userText, max_images) {
     const imagesInMessage = e.message
       .filter((m) => m.type === "image")
       .map((img) => img.url)
@@ -204,24 +196,6 @@ const Utils = {
     }
 
     return imgArr
-  },
-
-  /**
-   * 删除临时文件
-   */
-  deleteAvatarDirectory () {
-    const cacheDir = `${Version.Plugin_Path}/data/avatar`
-
-    if (fs.existsSync(cacheDir)) {
-      try {
-        fs.rmSync(cacheDir, { recursive: true, force: true })
-        logger.debug(`[清语表情] 已删除头像缓存目录: ${cacheDir}`)
-      } catch (error) {
-        logger.error(`[清语表情] 删除头像缓存目录失败: ${error.message}`)
-      }
-    } else {
-      logger.warn(`[清语表情] 头像缓存目录不存在: ${cacheDir}`)
-    }
   }
 }
 

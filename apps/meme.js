@@ -10,7 +10,7 @@ export class meme extends plugin {
       rule: []
     })
 
-    this.loadRules()
+    this.loadRule()
   }
 
   loadRule () {

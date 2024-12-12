@@ -31,25 +31,24 @@ export class meme extends plugin {
 
   async meme(e) {
     const message = e.msg.trim();
-    const Prefix = this.getPrefix();
-    const PrefixRegex = new RegExp(`^${Prefix}`);
+    const prefix = this.getPrefix();
+    const prefixRegex = new RegExp(`^${prefix}`);
 
     const matchedKeyword = Object.keys(Meme.keyMap).find(key =>
-      PrefixRegex.test(message) && new RegExp(key, 'i').test(message)
+      prefixRegex.test(message) && new RegExp(key, 'i').test(message)
     );
 
-    if (!matchedKeyword) {
-      return true;
+    if (!matchedKeyword || 
+        !Meme.getKey(matchedKeyword) ||
+        Config.meme.blackList.includes(matchedKeyword.toLowerCase()) ||
+        Config.meme.blackList.includes(Meme.getKey(matchedKeyword).toLowerCase()) ||
+        !Meme.getInfo(Meme.getKey(matchedKeyword))) {
+      return true; 
     }
 
     const memeKey = Meme.getKey(matchedKeyword);
     const memeInfo = Meme.getInfo(memeKey);
-
-    if (!memeKey || !memeInfo) {
-      return true;
-    }
-
-    const userText = message.replace(PrefixRegex, '').trim().replace(new RegExp(`^${matchedKeyword}`, 'i'), '').trim();
+    const userText = message.replace(prefixRegex, '').trim().replace(new RegExp(`^${matchedKeyword}`, 'i'), '').trim();
     return await Rule.meme(e, memeKey, memeInfo, userText);
   }
 }

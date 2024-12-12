@@ -48,6 +48,13 @@ export const cfgSchema = {
         type: 'number',
         fileName: 'meme',
         input: (n) => [0, 1].includes(n * 1) ? n * 1 : 0 
+      },
+      blackList: {
+        title: '黑名单',
+        key: '黑名单',
+        desc: '设置表情黑名单，如骑，qi',
+        type: 'list',
+        fileName: 'meme'
       }
     }
   },

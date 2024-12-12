@@ -6,8 +6,8 @@
 
 <div class="info_box">
   <div class="head-box type{{bgType}}">
-    <div class="label">清语表情管理面板</div>
-    <div class="title">#清语表情设置</div>
+    <div class="label">清语管理面板</div>
+    <div class="title">#清语设置</div>
   </div>
 </div>
 {{each schema cfgGroup}}
@@ -19,24 +19,27 @@
       <div class="cfg-line">
         {{cfgItem.title}}
         <span class="cfg-hint">
-          #清语表情设置{{cfgItem.key}} 
+          #甜星设置{{cfgItem.key}} 
           {{if cfgItem.type==='number'}}
           {{cfgItem.def}}
-          {{else if cfgItem.type==='string'}} {{cfgItem.def}} {{else}} 开启/关闭{{/if}}
+          {{else if cfgItem.type==='string'}} {{cfgItem.def}} {{else if cfgItem.type==='list'}} 添加/删除 {{else}} 开启/关闭{{/if}}
         </span>
         {{if cfgItem.type === 'number'}}
         <div class="cfg-status">{{cfg[cfgKey]}}</div>
         {{else if cfgItem.type === 'string'}}
         <div class="cfg-status {{if cfg[cfgKey]}}cfg-status{{else}}cfg-status status-off{{/if}}">{{if cfg[cfgKey]}}已设置{{else}}未设置{{/if}}</div>
-        {{else}} {{if cfg[cfgKey]}}
+        {{else if cfgItem.type === 'list'}}
+        <div class="cfg-status {{if cfg[cfgKey] && cfg[cfgKey].length > 0}}cfg-status{{else}}cfg-status status-off{{/if}}">
+          {{if cfg[cfgKey] && cfg[cfgKey].length > 0}}已配置 {{cfg[cfgKey].length}} 项{{else}}未配置{{/if}}
+        </div>
+        {{else}} 
+        {{if cfg[cfgKey]}}
         <div class="cfg-status">已开启</div>
         {{else}}
         <div class="cfg-status status-off">已关闭</div>
-        {{/if}} {{/if}}
+        {{/if}} 
+        {{/if}}
       </div>
-      {{if cfgItem.desc && cfgItem.showDesc!== false}}
-      <div class="cfg-desc">{{cfgItem.desc}}</div>
-      {{/if}}
     </li>
     {{/each}}
   </ul>

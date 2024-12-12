@@ -2,6 +2,13 @@ export const cfgSchema = {
   meme: {
     title: '表情设置',
     cfg: {
+      default: {
+        title: '默认表情包',
+        key: '默认表情包',
+        desc: '是否设置为默认表情包，关闭后需要携带清语表情才能触发',
+        type: 'boolean',
+        fileName: 'meme'
+      },
       url: {
         title: '自定义地址',
         key: '自定义地址',

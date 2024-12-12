@@ -7,7 +7,7 @@ export class help extends plugin {
     super({
       name: '清语表情:帮助',
       event: 'message',
-      priority: -20,
+      priority: 200,
       rule: [
         {
           reg: '^#?(清语表情|clarity-meme)(命令|帮助|菜单|help|说明|功能|指令|使用说明)$',

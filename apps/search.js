@@ -22,14 +22,14 @@ export class search extends plugin {
 
       if (!userQuery) {
         await e.reply('请提供搜索的表情', true)
-        return false
+        return true
       }
 
       Meme.loadInfoMap()
       const infoMap = Meme.infoMap
 
       if (!infoMap) {
-        return false
+        return true
       }
 
       let replyMessage = []

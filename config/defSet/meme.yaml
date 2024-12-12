@@ -1,3 +1,6 @@
+# 是否设置为默认表情
+default: false
+
 # 自定义表情包地址
 url: ''
 
@@ -12,3 +15,6 @@ reply: false
 
 # 是否使用默认文本(0: 系统自带, 1: 用户昵称)
 defaultText: 0
+
+# 禁用表情列表
+blackList: []

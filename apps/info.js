@@ -5,7 +5,7 @@ export class meme extends plugin {
     super({
       name: "清语表情:表情包详情",
       event: "message",
-      priority: -20,
+      priority: 200,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i,

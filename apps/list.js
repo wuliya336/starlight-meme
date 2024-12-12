@@ -6,7 +6,7 @@ export class list extends plugin {
     super({
       name: '清语表情:列表',
       event: 'message',
-      priority: -20,
+      priority: 200,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme|表情)列表$/i,

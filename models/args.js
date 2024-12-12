@@ -23,7 +23,7 @@ const Args = {
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
     jinhsi: "病娇的图片编号，1-13。如#10",
     sick_delicate: "今汐的图片编号，1-4。如#1",
-    kokona: "消息框的位置，如#左#右 #两边"
+    kokona: "消息框的位置，如#左#右 #随机"
   },
 
   handle (key, args) {
@@ -151,9 +151,9 @@ const Args = {
         let positionMap = {
           左: 'left',
           右: 'right',
-          两边: 'both'
+          随机: 'random'
         }
-        argsObj = { position: positionMap[args.trim()] || 'both' }
+        argsObj = { position: positionMap[args.trim()] || 'random' }
         break
       }
     }

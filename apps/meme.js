@@ -10,11 +10,15 @@ export class meme extends plugin {
       rule: []
     })
 
+    this.loadRules()
+  }
+
+  loadRule () {
     if (Meme.keyMap) {
       this.rule = Object.keys(Meme.keyMap).map(keyword => {
-        const dynamicPrefix = this.getPrefix()
+        const Prefix = this.getPrefix()
         return {
-          reg: new RegExp(`${dynamicPrefix}(${keyword})(.*)`, 'i'),
+          reg: new RegExp(`${Prefix}(${keyword})(.*)`, 'i'),
           fnc: 'meme'
         }
       })
@@ -30,8 +34,8 @@ export class meme extends plugin {
   }
 
   async meme (e) {
-    const message = e.msg.trim()
     const prefix = this.getPrefix()
+    const message = e.msg.trim()
     const prefixRegex = new RegExp(`^${prefix}`)
 
     const matchedKeyword = Object.keys(Meme.keyMap).find(key =>

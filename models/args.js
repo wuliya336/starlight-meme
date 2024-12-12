@@ -23,7 +23,7 @@ const Args = {
     panda_dragon_figure: "奇怪龙表情生成，如#原神龙",
     jinhsi: "病娇的图片编号，1-13。如#10",
     sick_delicate: "今汐的图片编号，1-4。如#1",
-    kokona: "消息框的位置，如#左#右 #随机"
+    kokona_say: "消息框的位置，如#左#右 #随机"
   },
 
   handle (key, args) {
@@ -147,7 +147,7 @@ const Args = {
         argsObj = { number: Math.min(parseInt(args || '1'), 4) }
         break
       }
-      case 'kokona': {
+      case 'kokona_say': {
         let positionMap = {
           左: 'left',
           右: 'right',

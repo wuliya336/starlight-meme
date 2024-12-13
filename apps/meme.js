@@ -10,53 +10,37 @@ export class MemePlugin extends plugin {
       rule: []
     })
 
-    this.loadRule()
-  }
+    this.prefix = `${Config.meme.forceSharp ? '#' : '#?'}${Config.meme.default ? '' : '清语表情'}`
 
-  loadRule () {
-    if (!Meme.keyMap) {
+    if (Meme.keyMap) {
+      this.rule = Object.keys(Meme.keyMap).map(keyword => ({
+        reg: new RegExp(`${this.prefix}(${keyword})(.*)`, 'i'),
+        fnc: 'meme'
+      }))
+    } else {
       logger.error('[清语表情] 初始化失败')
-      return
     }
-
-    this.rule = Object.keys(Meme.keyMap).map(keyword => ({
-      reg: new RegExp(`${this.getPrefix()}(${keyword})(.*)`, 'i'),
-      fnc: 'meme'
-    }))
-  }
-
-  getPrefix () {
-    const sharpPrefix = Config.meme.forceSharp ? '#' : '#?'
-    const defaultPrefix = !Config.meme.default ? '清语表情' : ''
-    return `${sharpPrefix}${defaultPrefix}`
   }
 
   async meme (e) {
     const message = e.msg.trim()
-    const prefix = this.getPrefix()
-    const prefixRegex = new RegExp(`^${prefix}`)
+    const prefixRegex = new RegExp(`^${this.prefix}`)
 
     const matchedKeyword = Object.keys(Meme.keyMap).find(key =>
       prefixRegex.test(message) && new RegExp(key, 'i').test(message)
     )
 
-    if (!matchedKeyword) return true
+    if (!matchedKeyword ||
+        !Meme.getKey(matchedKeyword) ||
+        Config.meme.blackList.includes(matchedKeyword.toLowerCase()) ||
+        Config.meme.blackList.includes(Meme.getKey(matchedKeyword).toLowerCase()) ||
+        !Meme.getInfo(Meme.getKey(matchedKeyword))) {
+      return true
+    }
 
     const memeKey = Meme.getKey(matchedKeyword)
-    if (this.isBlacklisted(memeKey)) return true
-
     const memeInfo = Meme.getInfo(memeKey)
-    if (!memeInfo) return true
-
-    const userText = this.finallUserText(message, matchedKeyword, prefixRegex)
+    const userText = message.replace(prefixRegex, '').trim().replace(new RegExp(`^${matchedKeyword}`, 'i'), '').trim()
     return await Rule.meme(e, memeKey, memeInfo, userText)
-  }
-
-  isBlacklisted (keyword) {
-    return Config.meme.blackList.includes(keyword.toLowerCase())
-  }
-
-  finallUserText (message, keyword, prefixRegex) {
-    return message.replace(prefixRegex, '').trim().replace(new RegExp(`^${keyword}`, 'i'), '').trim()
   }
 }

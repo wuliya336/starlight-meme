@@ -3,7 +3,7 @@ import { Meme } from './models/index.js'
 import chalk from 'chalk';
 
 const startTime = Date.now();
-Meme.load();
+await Meme.load();
 
 let apps;
 

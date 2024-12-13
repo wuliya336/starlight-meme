@@ -70,6 +70,14 @@ export const cfgSchema = {
         input: (n) => Math.min(200, Math.max(50, n * 1 || 100)),
         desc: '可选值50~200，建议100。设置高精度会提高图片的精细度，但因图片较大可能会影响渲染与发送速度',
         fileName: 'other'
+      },
+      priority: {
+        title: '优先级',
+        key: '优先级',
+        type: 'number',
+        def: 500,
+        desc: '优先级，数字越小越优先',
+        fileName: 'other'
       }
     }
   }

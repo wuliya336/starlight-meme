@@ -1,5 +1,6 @@
  
 import { Config, Version } from './components/index.js'
+import Meme from './models/meme.js'
 
 // 兼容锅巴
 export function supportGuoba () {
@@ -32,6 +33,12 @@ export function supportGuoba () {
         {
           component: 'Divider',
           label: '表情设置'
+        },
+        {
+          field: 'meme.enable',
+          label: '表情',
+          component: 'Switch',
+          bottomHelpMessage: '是否开启当前插件的表情功能'
         },
         {
           field: 'meme.url',
@@ -75,6 +82,19 @@ export function supportGuoba () {
           bottomHelpMessage: '是否强制使用#触发, 开启后必须使用#触发'
         },
         {
+          field: 'meme.blackList',
+          label: '黑名单',
+          component: 'Select',
+          bottomHelpMessage: '设置表情黑名单，如骑，qi',
+          componentProps: {
+            options: Array.from(new Set(
+              Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
+            )).map(keyword => ({ label: keyword, value: keyword })),
+            mode: "multiple",
+            allowClear: true
+          }
+        },
+        {
           component: 'Divider',
           label: '其他设置'
         },
@@ -89,6 +109,18 @@ export function supportGuoba () {
             min: 50,
             max: 200,
             placeholder: '请输入渲染精度'
+          }
+        },
+        {
+          field: 'other.priority',
+          label: '优先级',
+          component: 'InputNumber',
+          bottomHelpMessage: '优先级，数字越小越优先',
+          required: true,
+          componentProps: {
+            min: -9999,
+            max: 9999,
+            placeholder: '请输入优先级'
           }
         }
       ],

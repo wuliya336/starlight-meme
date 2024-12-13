@@ -18,7 +18,6 @@ export class meme extends plugin {
         })
       })
     })
-    console.log(`表情：${this.rule.length}`)
   }
 
   async meme (e) {

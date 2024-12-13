@@ -6,7 +6,7 @@ export class random extends plugin {
     super({
       name: "清语表情:随机表情包",
       event: "message",
-      priority: 200,
+      priority: Config.other.priority,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)随机(表情|meme)(包)?$/i,

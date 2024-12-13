@@ -9,7 +9,7 @@ export class setting extends plugin {
     super({
       name: '清语表情:设置',
       event: 'message',
-      priority: 200,
+      priority: Config.other.priority,
       rule: [
         {
           reg: sysCfgReg,

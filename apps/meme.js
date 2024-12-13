@@ -6,10 +6,9 @@ export class meme extends plugin {
     super({
       name: '清语表情:表情包生成',
       event: 'message',
-      priority: -20,
+      priority: Config.other.priority,
       rule: []
     })
-
     const prefix = Config.meme.forceSharp ? '^#' : '^#?'
     Object.entries(Meme.infoMap).forEach(([key, value]) => {
       value.keywords.forEach(keyword => {
@@ -19,6 +18,7 @@ export class meme extends plugin {
         })
       })
     })
+    console.log(`表情：${this.rule.length}`)
   }
 
   async meme (e) {

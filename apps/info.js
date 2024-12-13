@@ -1,3 +1,4 @@
+import { Config } from "../components/index.js"
 import { Meme, Utils, Args } from "../models/index.js"
 
 export class meme extends plugin {
@@ -5,7 +6,7 @@ export class meme extends plugin {
     super({
       name: "清语表情:表情包详情",
       event: "message",
-      priority: 200,
+      priority: Config.other.priority,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i,

@@ -1,4 +1,4 @@
-import { Render } from '../components/index.js'
+import { Config, Render } from '../components/index.js'
 import { Meme } from '../models/index.js'
 
 export class list extends plugin {
@@ -6,7 +6,7 @@ export class list extends plugin {
     super({
       name: '清语表情:列表',
       event: 'message',
-      priority: 200,
+      priority: Config.other.priority,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme|表情)列表$/i,

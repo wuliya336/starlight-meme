@@ -1,3 +1,4 @@
+import { Config } from '../components/index.js'
 import { Meme } from '../models/index.js'
 
 export class search extends plugin {
@@ -5,7 +6,7 @@ export class search extends plugin {
     super({
       name: '清语表情:搜索',
       event: 'message',
-      priority: 100,
+      priority: Config.other.priority,
       rule: [{
         reg: /^#?(清语表情|clarity-meme)搜索\s*(\S+)\s*$/i,
         fnc: 'search'

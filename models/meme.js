@@ -1,4 +1,5 @@
 import { Data, Config } from '../components/index.js'
+import Utils from './utils.js'
 import Request from './request.js'
 
 const Meme = {
@@ -9,18 +10,29 @@ const Meme = {
     return (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
   },
 
-  load () {
+  async load () {
     if (this.loaded) {
       logger.debug('表情数据已加载，跳过重复加载')
       return
     }
-    const infoMap = Data.readJSON('resources/meme/meme.json')
-    if (!infoMap || typeof infoMap !== 'object') {
-      logger.error('加载表情包详情失败')
-      return
+
+    try {
+      if (!Config.meme.url) {
+        await Utils.downloadMemeData()
+        this.infoMap = Data.readJSON('data/meme.json')
+      } else {
+        await Utils.generateMemeData()
+        this.infoMap = Data.readJSON('data/custom/meme.json')
+      }
+
+      if (!this.infoMap || typeof this.infoMap !== 'object') {
+        logger.error('加载表情包详情失败')
+        return
+      }
+      this.loaded = true
+    } catch (error) {
+      logger.error(`加载表情包数据出错: ${error.message}`)
     }
-    this.infoMap = infoMap
-    this.loaded = true
   },
 
   getKey (keyword) {

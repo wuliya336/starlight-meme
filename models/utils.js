@@ -1,7 +1,7 @@
-import fs from "fs"
-import { Version, Data, Config } from "../components/index.js"
-import Request from "./request.js"
-import Meme from "./meme.js"
+import fs from 'fs'
+import { Version, Data, Config } from '../components/index.js'
+import Request from './request.js'
+import Meme from './meme.js'
 
 const Utils = {
   /**
@@ -20,7 +20,7 @@ const Utils = {
       }
       const response = await Request.get('https://pan.wuliya.cn/d/Yunzai-Bot/data/meme.json')
       Data.writeJSON('data/meme.json', response)
-      logger.debug(`远程表情包数据下载完成`)
+      logger.debug('远程表情包数据下载完成')
     } catch (error) {
       logger.error(`下载远程表情包数据失败: ${error.message}`)
       throw error
@@ -45,7 +45,7 @@ const Utils = {
         memeData[key] = infoResponse
       }
       Data.writeJSON('data/custom/meme.json', memeData, 2)
-      logger.debug(`本地表情包数据生成完成`)
+      logger.debug('本地表情包数据生成完成')
     } catch (error) {
       logger.error(`生成本地表情包数据失败: ${error.message}`)
       throw error
@@ -55,12 +55,12 @@ const Utils = {
    * 获取图片 Buffer
    */
   async getImageBuffer (imageUrl) {
-    if (!imageUrl) throw new Error("图片地址不能为空")
+    if (!imageUrl) throw new Error('图片地址不能为空')
 
     logger.debug(`[清语表情] 开始下载图片: ${imageUrl}`)
 
     try {
-      const buffer = await Request.get(imageUrl, {}, "arraybuffer")
+      const buffer = await Request.get(imageUrl, {}, 'arraybuffer')
       logger.debug(`[清语表情] 图片下载完成: ${imageUrl}`)
       return buffer
     } catch (error) {
@@ -73,12 +73,12 @@ const Utils = {
    * 将图片 Buffer 转换为 Base64
    */
   async bufferToBase64 (buffer) {
-    if (!buffer) throw new Error("图片 Buffer 不能为空")
+    if (!buffer) throw new Error('图片 Buffer 不能为空')
 
-    logger.debug(`[清语表情] 开始转换 Buffer 为 Base64`)
+    logger.debug('[清语表情] 开始转换 Buffer 为 Base64')
     try {
-      const base64Data = buffer.toString("base64")
-      logger.debug(`[清语表情] Base64 转换完成`)
+      const base64Data = buffer.toString('base64')
+      logger.debug('[清语表情] Base64 转换完成')
       return base64Data
     } catch (error) {
       logger.error(`[清语表情] Base64 转换失败: ${error.message}`)
@@ -90,7 +90,7 @@ const Utils = {
    * 获取用户 QQ 头像
    */
   async getAvatar (qqList) {
-    if (!qqList) throw new Error("QQ 号不能为空")
+    if (!qqList) throw new Error('QQ 号不能为空')
     if (!Array.isArray(qqList)) qqList = [qqList]
 
     const avatarUrl = (qq) => `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
@@ -101,7 +101,7 @@ const Utils = {
     }
 
     if (!fs.existsSync(cacheDir)) {
-      Data.createDir("data/avatar", "", false)
+      Data.createDir('data/avatar', '', false)
       logger.debug(`[清语表情] 创建头像缓存目录: ${cacheDir}`)
     }
 
@@ -121,12 +121,12 @@ const Utils = {
 
       logger.debug(`[清语表情] 开始下载头像: QQ=${qq}, URL: ${avatarUrl(qq)}`)
       try {
-        const buffer = await Request.get(avatarUrl(qq), {}, "arraybuffer")
+        const buffer = await Request.get(avatarUrl(qq), {}, 'arraybuffer')
         if (buffer && Buffer.isBuffer(buffer)) {
           fs.writeFileSync(cachePath, buffer)
           return buffer
         } else {
-          throw new Error("头像下载返回了无效的数据")
+          throw new Error('头像下载返回了无效的数据')
         }
       } catch (error) {
         logger.error(`[清语表情] 下载头像失败: QQ=${qq}, 错误: ${error.message}`)
@@ -143,9 +143,9 @@ const Utils = {
    **/
   async getImage (e, userText, max_images) {
     const imagesInMessage = e.message
-      .filter((m) => m.type === "image")
+      .filter((m) => m.type === 'image')
       .map((img) => img.url)
-    const ats = e.message.filter((m) => m.type === "at").map((at) => at.qq)
+    const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
     const manualAtQQs = [...userText.matchAll(/@(\d{5,11})/g)].map(
       (match) => match[1]
     )
@@ -193,7 +193,7 @@ const Utils = {
 
     const results = await Promise.allSettled(tasks)
     results.forEach((res) => {
-      if (res.status === "fulfilled" && res.value) {
+      if (res.status === 'fulfilled' && res.value) {
         images.push(res.value)
       }
     })
@@ -220,10 +220,10 @@ const Utils = {
       return []
 
     const imgArr = source.message
-      .filter((msg) => msg.type === "image")
+      .filter((msg) => msg.type === 'image')
       .map((img) => img.url)
 
-    if (imgArr.length > 0 && source.message.every(msg => msg.type === "image")) {
+    if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
       return imgArr
     } else if (source.sender?.user_id) {
 

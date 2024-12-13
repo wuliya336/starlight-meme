@@ -1,7 +1,7 @@
 import fs from 'fs'
 import _ from 'lodash'
 import Data from './Data.js'
-import cfg from "../../../lib/config/config.js"
+import cfg from '../../../lib/config/config.js'
 import { fileURLToPath } from 'url'
 import { join, dirname, basename } from 'path'
 
@@ -62,12 +62,12 @@ try {
 }
 
 let BotName = cfg.package.name
-if (BotName == "miao-yunzai") {
-  BotName = "Miao-Yunzai"
-} else if (BotName == "yunzai") {
-  BotName = "Yunzai-Bot"
-} else if (BotName == "trss-yunzai") {
-  BotName = "TRSS-Yunzai"
+if (BotName == 'miao-yunzai') {
+  BotName = 'Miao-Yunzai'
+} else if (BotName == 'yunzai') {
+  BotName = 'Yunzai-Bot'
+} else if (BotName == 'trss-yunzai') {
+  BotName = 'TRSS-Yunzai'
 } else {
   BotName = _.capitalize(BotName)
 }

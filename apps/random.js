@@ -1,16 +1,16 @@
-import { Meme, Rule } from "../models/index.js"
+import { Meme, Rule } from '../models/index.js'
 import { Config } from '../components/index.js'
 
 export class random extends plugin {
   constructor () {
     super({
-      name: "清语表情:随机表情包",
-      event: "message",
+      name: '清语表情:随机表情包',
+      event: 'message',
       priority: Config.other.priority,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)随机(表情|meme)(包)?$/i,
-          fnc: "random"
+          fnc: 'random'
         }
       ]
     })
@@ -44,7 +44,7 @@ export class random extends plugin {
       }
 
 
-      await Rule.meme(e, memeKey, memeInfo, "")
+      await Rule.meme(e, memeKey, memeInfo, '')
     } catch (error) {
       logger.error(`[清语表情] 随机表情处理失败: ${error.message}`)
       await e.reply(`生成随机表情时出错: ${error.message}`, true)

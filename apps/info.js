@@ -1,23 +1,23 @@
-import { Config } from "../components/index.js"
-import { Meme, Utils, Args } from "../models/index.js"
+import { Config } from '../components/index.js'
+import { Meme, Utils, Args } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
     super({
-      name: "清语表情:表情包详情",
-      event: "message",
+      name: '清语表情:表情包详情',
+      event: 'message',
       priority: Config.other.priority,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i,
-          fnc: "info"
+          fnc: 'info'
         }
       ]
     })
   }
 
   async info (e) {
-    const message = (e?.msg || "").trim()
+    const message = (e?.msg || '').trim()
     const match = message.match(
       /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i
     )
@@ -29,13 +29,13 @@ export class meme extends plugin {
 
     const memeKey = Meme.getKey(keyword)
     if (!memeKey) {
-      await e.reply("未找到相关表情包详情")
+      await e.reply('未找到相关表情包详情')
       return true
     }
 
     const memeDetails = Meme.getInfo(memeKey)
     if (!memeDetails) {
-      await e.reply("未找到相关表情包详情")
+      await e.reply('未找到相关表情包详情')
       return true
     }
 
@@ -48,33 +48,33 @@ export class meme extends plugin {
       params_type = {}
     } = memeDetails
 
-    let argsHint = ""
+    let argsHint = ''
     if (params_type.args_type && Args.descriptions[memeKey]) {
       argsHint = Args.descriptions[memeKey]
     }
 
-    const aliases = memeDetails.keywords ? memeDetails.keywords.join(", ") : "无"
+    const aliases = memeDetails.keywords ? memeDetails.keywords.join(', ') : '无'
 
     const previewUrl = Meme.getPreviewUrl(memeKey)
-    let base64Data = ""
-    let previewImageBase64 = ""
+    let base64Data = ''
+    let previewImageBase64 = ''
 
     try {
       const imageBuffer = await Utils.getImageBuffer(previewUrl)
       base64Data = await Utils.bufferToBase64(imageBuffer)
       previewImageBase64 = `base64://${base64Data}`
     } catch (error) {
-      previewImageBase64 = "预览图片加载失败"
+      previewImageBase64 = '预览图片加载失败'
     }
 
     const replyMessage = [
       `名称: ${memeKey}\n`,
-      `别名: ${aliases || "无"}\n`,
+      `别名: ${aliases || '无'}\n`,
       `最大图片数量: ${max_images}\n`,
       `最小图片数量: ${min_images}\n`,
       `最大文本数量: ${max_texts}\n`,
       `最小文本数量: ${min_texts}\n`,
-      `默认文本: ${default_texts.length > 0 ? default_texts.join(", ") : "无"}`
+      `默认文本: ${default_texts.length > 0 ? default_texts.join(', ') : '无'}`
     ]
 
     if (argsHint) {
@@ -82,10 +82,10 @@ export class meme extends plugin {
     }
 
     if (base64Data) {
-      replyMessage.push("\n预览图片:\n")
+      replyMessage.push('\n预览图片:\n')
       replyMessage.push(segment.image(previewImageBase64))
     } else {
-      replyMessage.push("\n预览图片:\n")
+      replyMessage.push('\n预览图片:\n')
       replyMessage.push(previewImageBase64)
     }
 

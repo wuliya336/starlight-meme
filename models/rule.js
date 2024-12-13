@@ -1,8 +1,8 @@
-import Meme from "./meme.js"
-import Utils from "./utils.js"
-import { Config } from "../components/index.js"
-import FormData from "form-data"
-import Args from "./args.js"
+import Meme from './meme.js'
+import Utils from './utils.js'
+import { Config } from '../components/index.js'
+import FormData from 'form-data'
+import Args from './args.js'
 
 const Rule = {
   /**
@@ -44,7 +44,7 @@ const Rule = {
       for (const match of atMatches) {
         userAvatars.push(match[1])
       }
-      userText = userText.replace(/@\s*\d+/g, "").trim()
+      userText = userText.replace(/@\s*\d+/g, '').trim()
 
       /**
        * 处理 args 参数类型表情
@@ -55,9 +55,9 @@ const Rule = {
           const message = argsMatch[1].trim()
           if (message) {
             argsString = Args.handle(memeKey, message)
-            formData.append("args", argsString)
+            formData.append('args', argsString)
           }
-          userText = userText.replace(/#.+/, "").trim()
+          userText = userText.replace(/#.+/, '').trim()
         }
       }
 
@@ -86,7 +86,7 @@ const Rule = {
 
         images = images.slice(0, max_images)
         images.forEach((buffer, index) => {
-          formData.append("images", buffer, `image${index}.jpg`)
+          formData.append('images', buffer, `image${index}.jpg`)
         })
       }
 
@@ -95,12 +95,12 @@ const Rule = {
        */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
-          const splitTexts = userText.split("/").map(text => text.trim())
+          const splitTexts = userText.split('/').map(text => text.trim())
           finalTexts = splitTexts.slice(0, max_texts)
         }
 
         if (finalTexts.length === 0 && Config.meme.defaultText === 1) {
-          finalTexts.push(e.sender.nickname || "未知")
+          finalTexts.push(e.sender.nickname || '未知')
         } else if (
           finalTexts.length === 0 &&
           Config.meme.defaultText === 0 &&
@@ -112,7 +112,7 @@ const Rule = {
         }
 
         if (finalTexts.length === 0) {
-          finalTexts.push(e.sender.nickname || "未知")
+          finalTexts.push(e.sender.nickname || '未知')
         }
 
         if (finalTexts.length < min_texts) {
@@ -120,7 +120,7 @@ const Rule = {
         }
 
         finalTexts.forEach(text => {
-          formData.append("texts", text)
+          formData.append('texts', text)
         })
       }
 
@@ -139,8 +139,8 @@ const Rule = {
       const result = await Meme.request(
         endpoint,
         formData,
-        "POST",
-        "arraybuffer"
+        'POST',
+        'arraybuffer'
       )
 
       if (Buffer.isBuffer(result)) {

@@ -10,6 +10,10 @@ export default [{
   files: ['apps/**/*.js', 'components/**/*.js', 'models/**/*.js'],
   rules: {
     ...neostandard.rules,
+    // 禁用单行注释规则，允许使用多行注释。
+    'line-comment-position': ['off'],
+    // 强制使用单引号，设置为错误等级1。
+    'quotes': [1, 'single'],
     // 禁用驼峰命名命名规则，允许使用下划线命名法。
     'camelcase': ['off'],
     // 禁用等号严格比较规则，允许使用==和!=进行比较。

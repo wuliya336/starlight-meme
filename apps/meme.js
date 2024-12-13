@@ -31,16 +31,14 @@ export class MemePlugin extends plugin {
     return `${sharpPrefix}${defaultPrefix}`
   }
 
-
-
   async meme (e) {
     const message = e.msg.trim()
     const prefix = this.getPrefix()
     const prefixRegex = new RegExp(`^${prefix}`)
 
-    const matchedKeyword = Object.keys(Meme.keyMap).find(key => {
-      return prefixRegex.test(message) && new RegExp(key, 'i').test(message)
-    })
+    const matchedKeyword = Object.keys(Meme.keyMap).find(key =>
+      prefixRegex.test(message) && new RegExp(key, 'i').test(message)
+    )
 
     if (!matchedKeyword) return true
 

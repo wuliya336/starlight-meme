@@ -35,7 +35,7 @@ export class MemePlugin extends plugin {
         Config.meme.blackList.includes(matchedKeyword.toLowerCase()) ||
         Config.meme.blackList.includes(Meme.getKey(matchedKeyword).toLowerCase()) ||
         !Meme.getInfo(Meme.getKey(matchedKeyword))) {
-      return true
+      return false
     }
 
     const memeKey = Meme.getKey(matchedKeyword)

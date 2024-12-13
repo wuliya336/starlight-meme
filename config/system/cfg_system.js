@@ -5,7 +5,7 @@ export const cfgSchema = {
       default: {
         title: '默认表情',
         key: '默认表情',
-        desc: '是否设置当前插件为默认表情，关闭后需要携带插件前缀才能触发',
+        desc: '是否设置当前插件为默认表情，关闭后需要携带插件前缀才能触发(需重启)',
         type: 'boolean',
         fileName: 'meme'
       },

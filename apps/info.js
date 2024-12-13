@@ -45,11 +45,11 @@ export class meme extends plugin {
       min_images = 0,
       max_images = 0,
       default_texts = [],
-      params_type = {}
-    } = memeDetails
+      args_type = {}
+    } = memeDetails.params_type
 
     let argsHint = ''
-    if (params_type.args_type && Args.descriptions[memeKey]) {
+    if (args_type && Args.descriptions[memeKey]) {
       argsHint = Args.descriptions[memeKey]
     }
 

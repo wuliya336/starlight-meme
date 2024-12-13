@@ -1,7 +1,7 @@
 import { Config } from '../components/index.js'
 import { Meme, Rule } from '../models/index.js'
 
-export class meme extends plugin {
+export class MemePlugin extends plugin {
   constructor () {
     super({
       name: '清语表情:表情包生成',
@@ -14,45 +14,51 @@ export class meme extends plugin {
   }
 
   loadRule () {
-    if (Meme.keyMap) {
-      this.rule = Object.keys(Meme.keyMap).map(keyword => {
-        const Prefix = this.getPrefix()
-        return {
-          reg: new RegExp(`${Prefix}(${keyword})(.*)`, 'i'),
-          fnc: 'meme'
-        }
-      })
-    } else {
+    if (!Meme.keyMap) {
       logger.error('[清语表情] 初始化失败')
+      return
     }
+
+    this.rule = Object.keys(Meme.keyMap).map(keyword => ({
+      reg: new RegExp(`${this.getPrefix()}(${keyword})(.*)`, 'i'),
+      fnc: 'meme'
+    }))
   }
 
   getPrefix () {
     const sharpPrefix = Config.meme.forceSharp ? '#' : '#?'
-    const defaultPrefix = Config.meme.default ? '' : '清语表情'
+    const defaultPrefix = !Config.meme.default ? '清语表情' : ''
     return `${sharpPrefix}${defaultPrefix}`
   }
 
+
+
   async meme (e) {
-    const prefix = this.getPrefix()
     const message = e.msg.trim()
+    const prefix = this.getPrefix()
     const prefixRegex = new RegExp(`^${prefix}`)
 
-    const matchedKeyword = Object.keys(Meme.keyMap).find(key =>
-      prefixRegex.test(message) && new RegExp(key, 'i').test(message)
-    )
+    const matchedKeyword = Object.keys(Meme.keyMap).find(key => {
+      return prefixRegex.test(message) && new RegExp(key, 'i').test(message)
+    })
 
-    if (!matchedKeyword ||
-        !Meme.getKey(matchedKeyword) ||
-        Config.meme.blackList.includes(matchedKeyword.toLowerCase()) ||
-        Config.meme.blackList.includes(Meme.getKey(matchedKeyword).toLowerCase()) ||
-        !Meme.getInfo(Meme.getKey(matchedKeyword))) {
-      return true
-    }
+    if (!matchedKeyword) return true
 
     const memeKey = Meme.getKey(matchedKeyword)
+    if (this.isBlacklisted(memeKey)) return true
+
     const memeInfo = Meme.getInfo(memeKey)
-    const userText = message.replace(prefixRegex, '').trim().replace(new RegExp(`^${matchedKeyword}`, 'i'), '').trim()
+    if (!memeInfo) return true
+
+    const userText = this.finallUserText(message, matchedKeyword, prefixRegex)
     return await Rule.meme(e, memeKey, memeInfo, userText)
+  }
+
+  isBlacklisted (keyword) {
+    return Config.meme.blackList.includes(keyword.toLowerCase())
+  }
+
+  finallUserText (message, keyword, prefixRegex) {
+    return message.replace(prefixRegex, '').trim().replace(new RegExp(`^${keyword}`, 'i'), '').trim()
   }
 }

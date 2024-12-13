@@ -2,84 +2,46 @@ import { Data, Config } from '../components/index.js'
 import Request from './request.js'
 
 const Meme = {
-  keyMap: null,
   infoMap: null,
   loaded: false,
-  /**
-   * 动态获取请求地址
-   */
+
   get BASE_URL () {
     return (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
   },
-  /**
-   * 初始化加载
-   */
+
   load () {
     if (this.loaded) {
       logger.debug('表情数据已加载，跳过重复加载')
       return
     }
-    this.loadKeyMap()
-    this.loadInfoMap()
+    const infoMap = Data.readJSON('resources/meme/meme.json')
+    if (!infoMap || typeof infoMap !== 'object') {
+      logger.error('加载表情包详情失败')
+      return
+    }
+    this.infoMap = infoMap
     this.loaded = true
-    logger.debug('表情数据加载完成')
   },
 
-  /**
-   * 加载表情正则规则
-   */
-  loadKeyMap () {
-    if (!this.keyMap) {
-      logger.debug('加载表情规则映射...')
-      const keyMap = Data.readJSON('resources/meme/keyMap.json')
-      if (!keyMap || typeof keyMap !== 'object') {
-        logger.error('加载表情规则失败')
-        return
-      }
-      this.keyMap = keyMap
-      logger.debug('表情规则映射加载完成')
-    }
-  },
-
-  /**
-   * 加载表情包详情
-   */
-  loadInfoMap () {
-    if (!this.infoMap) {
-      logger.debug('加载表情包详情...')
-      const infoMap = Data.readJSON('resources/meme/info.json')
-      if (!infoMap || typeof infoMap !== 'object') {
-        logger.error('加载表情包详情失败')
-        return
-      }
-      this.infoMap = infoMap
-      logger.debug('表情包详情数据加载完成')
-    }
-  },
-
-  /**
-   * 根据关键字获取表情
-   */
   getKey (keyword) {
-    if (!this.keyMap) {
-      this.loadKeyMap()
+    if (!this.loaded) {
+      this.load()
     }
-    return this.keyMap?.[keyword] || null
+    for (const [key, value] of Object.entries(this.infoMap)) {
+      if (value.keywords.includes(keyword)) {
+        return key
+      }
+    }
+    return null
   },
 
-  /**
-   * 根据表情键值获取表情详情
-   */
   getInfo (memeKey) {
-    if (!this.infoMap) {
-      this.loadInfoMap()
+    if (!this.loaded) {
+      this.load()
     }
     return this.infoMap?.[memeKey] || null
   },
 
-  /**
-   * 表情请求接口
-   */
   async request (endpoint, params = {}, method = 'GET', responseType) {
     try {
       const url = `${this.BASE_URL}/${endpoint}`
@@ -95,9 +57,7 @@ const Meme = {
       throw error
     }
   },
-  /**
-   * 获取预览图 URL
-   */
+
   getPreviewUrl (memeKey) {
     if (!memeKey) {
       logger.error('表情键值不能为空')

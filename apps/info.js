@@ -26,28 +26,29 @@ export class meme extends plugin {
 
     Meme.load()
 
-    const MemeData = Meme.infoMap
-    const memeKey = MemeData[keyword]
-      ? keyword
-      : Object.keys(MemeData).find(key => MemeData[key].keywords.includes(keyword))
-
+    const memeKey = Meme.getKey(keyword)
     if (!memeKey) {
       await e.reply("未找到相关表情包详情")
       return true
     }
 
-    const memeDetails = MemeData[memeKey]
+    const memeDetails = Meme.getInfo(memeKey)
+    if (!memeDetails) {
+      await e.reply("未找到相关表情包详情")
+      return true
+    }
+
     const {
       min_texts = 0,
       max_texts = 0,
       min_images = 0,
       max_images = 0,
       default_texts = [],
-      args_type = null
-    } = memeDetails.params_type || {}
+      params_type = {}
+    } = memeDetails
 
     let argsHint = ""
-    if (args_type && Args.descriptions[memeKey]) {
+    if (params_type.args_type && Args.descriptions[memeKey]) {
       argsHint = Args.descriptions[memeKey]
     }
 

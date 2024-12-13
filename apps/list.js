@@ -22,20 +22,22 @@ export class list extends plugin {
    */
   async list (e) {
     try {
-      Meme.loadKeyMap()
 
-      const keyMap = Meme.keyMap || {}
-      const keys = Object.keys(keyMap)
+      const infoMap = Meme.infoMap || {}
+      const keys = Object.keys(infoMap)
 
       if (!keys.length) {
+        await e.reply('没有可用的表情列表。')
         return
       }
+
+      const emojiList = keys.map(key => infoMap[key].keywords.join(', '))
 
       const img = await Render.render(
         'meme/index',
         {
           title: '清语表情列表',
-          emojiList: keys
+          emojiList: emojiList
         })
       await e.reply(img)
     } catch (error) {

@@ -2,10 +2,11 @@ export const cfgSchema = {
   meme: {
     title: '表情设置',
     cfg: {
-      default: {
-        title: '默认表情',
-        key: '默认表情',
-        desc: '是否设置当前插件为默认表情，关闭后需要携带插件前缀才能触发(需重启)',
+      enable: {
+        title: '表情',
+        key: '表情',
+        desc: '是否开启当前插件的表情功能',
+        def: true,
         type: 'boolean',
         fileName: 'meme'
       },

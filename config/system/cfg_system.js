@@ -1,84 +1,125 @@
 export const cfgSchema = {
   meme: {
-    title: '表情设置',
+    title: "表情设置",
     cfg: {
       enable: {
-        title: '表情',
-        key: '表情',
-        desc: '是否开启当前插件的表情功能',
+        title: "表情",
+        key: "表情",
+        desc: "是否开启当前插件的表情功能",
         def: true,
-        type: 'boolean',
-        fileName: 'meme'
+        type: "boolean",
+        fileName: "meme",
       },
       url: {
-        title: '自定义地址',
-        key: '自定义地址',
-        desc: '设置表情包的地址，留空时使用自带',
-        type: 'string',
-        fileName: 'meme'
+        title: "自定义地址",
+        key: "自定义地址",
+        desc: "设置表情包的地址，留空时使用自带",
+        type: "string",
+        fileName: "meme",
       },
       forceSharp: {
-        title: '强制触发',
-        key: '强制触发',
+        title: "强制触发",
+        key: "强制触发",
         def: false,
-        desc: '是否强制使用#触发, 开启后必须使用#触发',
-        type: 'boolean',
-        fileName: 'meme'
+        desc: "是否强制使用#触发, 开启后必须使用#触发",
+        type: "boolean",
+        fileName: "meme",
       },
       cache: {
-        title: '缓存',
-        key: '缓存',
+        title: "缓存",
+        key: "缓存",
         def: true,
-        desc: '是否开启头像缓存',
-        type: 'boolean',
-        fileName: 'meme'
+        desc: "是否开启头像缓存",
+        type: "boolean",
+        fileName: "meme",
       },
       reply: {
-        title: '引用回复',
-        key: '引用回复',
+        title: "引用回复",
+        key: "引用回复",
         def: false,
-        desc: '是否开启引用回复',
-        type: 'boolean',
-        fileName: 'meme'
+        desc: "是否开启引用回复",
+        type: "boolean",
+        fileName: "meme",
       },
       defaultText: {
-        title: '默认文本方案',
-        key: '默认文本方案',
+        title: "默认文本方案",
+        key: "默认文本方案",
         def: 0,
-        desc: '设置默认文本方案: 0表示使用插件自带默认文本, 1表示使用用户昵称',
-        type: 'number',
-        fileName: 'meme',
-        input: (n) => [0, 1].includes(n * 1) ? n * 1 : 0 
+        desc: "设置默认文本方案: 0表示使用插件自带默认文本, 1表示使用用户昵称",
+        type: "number",
+        fileName: "meme",
+        input: (n) => ([0, 1].includes(n * 1) ? n * 1 : 0),
+      },
+    },
+  },
+  access: {
+    title: "名单设置",
+    cfg: {
+      enable: {
+        title: "名单限制",
+        key: "名单限制",
+        desc: "是否开启名单限制",
+        def: false,
+        type: "boolean",
+        fileName: "access",
+      },
+      blackListEnable: {
+        title: "禁用表情列表",
+        key: "禁用表情列表",
+        desc: "是否开启黑名单",
+        def: false,
+        type: "boolean",
+        fileName: "access",
+      },
+      mode: {
+        title: "名单模式",
+        key: "名单模式",
+        desc: "名单模式，仅在开启名单限制启用，0为白名单，1为黑名单",
+        type: "number",
+        fileName: "access",
+      },
+      userWhiteList: {
+        title: "用户白名单",
+        key: "用户白名单",
+        desc: "白名单，白名单模式时生效",
+        type: "list",
+      },
+      userBlackList: {
+        title: "用户黑名单",
+        key: "用户黑名单",
+        desc: "用户黑名单，黑名单模式时生效",
+        type: "list",
+        fileName: "access",
       },
       blackList: {
-        title: '黑名单',
-        key: '黑名单',
-        desc: '设置表情黑名单，如骑，qi',
-        type: 'list',
-        fileName: 'meme'
-      }
-    }
+        title: "禁用表情列表",
+        key: "禁用表情列表",
+        desc: "禁用表情列表",
+        type: "list",
+        fileName: "access",
+      },
+    },
   },
   other: {
-    title: '其他设置',
+    title: "其他设置",
     cfg: {
       renderScale: {
-        title: '渲染精度',
-        key: '渲染精度',
-        type: 'number',
+        title: "渲染精度",
+        key: "渲染精度",
+        type: "number",
         def: 100,
         input: (n) => Math.min(200, Math.max(50, n * 1 || 100)),
-        desc: '可选值50~200，建议100。设置高精度会提高图片的精细度，但因图片较大可能会影响渲染与发送速度',
-        fileName: 'other'
+        desc: "可选值50~200，建议100。设置高精度会提高图片的精细度，但因图片较大可能会影响渲染与发送速度",
+        fileName: "other",
       },
       priority: {
-        title: '优先级',
-        key: '优先级',
-        type: 'number',
+        title: "优先级",
+        key: "优先级",
+        type: "number",
         def: 500,
-        desc: '优先级，数字越小越优先',
-        fileName: 'other'
-      }
-    }
-  }
-}
+        desc: "优先级，数字越小越优先",
+        fileName: "other",
+      },
+    },
+  },
+};

@@ -40,6 +40,9 @@
         {{/if}} 
         {{/if}}
       </div>
+      {{if cfgItem.desc && cfgItem.showDesc!== false}}
+      <div class="cfg-desc">{{cfgItem.desc}}</div>
+      {{/if}}
     </li>
     {{/each}}
   </ul>

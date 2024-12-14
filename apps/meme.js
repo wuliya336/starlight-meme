@@ -1,3 +1,6 @@
+import { Config } from '../components/index.js'
+import { Meme, Rule } from '../models/index.js'
+
 export class meme extends plugin {
   constructor () {
     super({
@@ -18,7 +21,7 @@ export class meme extends plugin {
   }
 
   async meme (e) {
-    if (!Config.meme.enable) { return true }
+    if (!Config.meme.enable) return true
 
     const message = e.msg.trim()
     let matchedKeyword = null
@@ -29,10 +32,12 @@ export class meme extends plugin {
         matchedKeyword = match[1]
         return true
       }
-      return true
+      return false
     })
 
     if (!matchedKeyword) return true
+
+
 
     const memeKey = Meme.getKey(matchedKeyword)
 
@@ -40,6 +45,31 @@ export class meme extends plugin {
       return true
     }
 
+    if (Config.access.enable) {
+      const userId = e.user_id
+
+      /**
+       * 黑名名单
+       */
+      if (Config.access.mode === 0) {
+        /**
+         * 白名单模式
+         */
+        if (!Config.access.userWhiteList.includes(userId)) {
+          return true
+        }
+      } else if (Config.access.mode === 1) {
+        /**
+         * 黑名单模式
+         */
+        if (Config.access.userBlackList.includes(userId)) {
+          return true
+        }
+      }
+    }
+    /**
+     * 禁用表情列表
+     */
     if (Config.access.blackListEnable) {
       if (
         Config.access.blackList.includes(matchedKeyword.toLowerCase()) ||

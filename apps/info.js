@@ -55,7 +55,8 @@ export class meme extends plugin {
 
     const aliases = memeDetails.keywords ? memeDetails.keywords.join(', ') : '无'
 
-    const previewUrl = Meme.getPreviewUrl(memeKey)
+    const previewUrl = await Meme.getPreviewUrl(memeKey)
+
     let base64Data = ''
     let previewImageBase64 = ''
 

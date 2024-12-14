@@ -5,9 +5,36 @@ import Request from './request.js'
 const Meme = {
   infoMap: null,
   loaded: false,
+  baseUrl: null,
 
-  get BASE_URL () {
-    return (Config.meme.url || 'https://meme.wuliya.cn').replace(/\/+$/, '')
+  async getBaseUrl () {
+    if (this.baseUrl) {
+      return this.baseUrl
+    }
+    if (Config.meme.url) {
+      this.baseUrl = Config.meme.url.replace(/\/+$/, '')
+      return this.baseUrl
+    }
+
+    let Url = 'https://meme.wuliya.cn'
+    const urls = [
+      'https://blog.cloudflare.com/cdn-cgi/trace',
+      'https://developers.cloudflare.com/cdn-cgi/trace'
+    ]
+
+    try {
+      const response = await Promise.any(urls.map(url => Request.get(url, {}, 'text')))
+      const traceMap = Object.fromEntries(
+        response.split('\n').filter(line => line).map(line => line.split('='))
+      )
+      if (traceMap.loc != 'CN') {
+        Url = 'https://meme.wuliya336.top'
+      }
+    } catch (error) {
+      logger.error(`所有 Cloudflare 追踪地址请求失败，使用默认 URL: ${error.message}`)
+    }
+    this.baseUrl = Url
+    return this.baseUrl
   },
 
   async load () {
@@ -56,7 +83,8 @@ const Meme = {
 
   async request (endpoint, params = {}, method = 'GET', responseType) {
     try {
-      const url = `${this.BASE_URL}/${endpoint}`
+      const baseUrl = await this.getBaseUrl()
+      const url = `${baseUrl}/${endpoint}`
       if (method.toUpperCase() === 'GET') {
         return await Request.get(url, params)
       } else if (method.toUpperCase() === 'POST') {
@@ -70,12 +98,13 @@ const Meme = {
     }
   },
 
-  getPreviewUrl (memeKey) {
+  async getPreviewUrl (memeKey) {
     if (!memeKey) {
       logger.error('表情键值不能为空')
       return null
     }
-    const previewUrl = `${this.BASE_URL}/memes/${memeKey}/preview`
+    const baseUrl = await this.getBaseUrl()
+    const previewUrl = `${baseUrl}/memes/${memeKey}/preview`
     return previewUrl
   }
 }

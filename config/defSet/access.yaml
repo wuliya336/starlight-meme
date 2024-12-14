@@ -1,0 +1,5 @@
+# 是否开启禁用表情列表
+blackListEnable: false
+
+# 禁用表情列表
+blackList: []

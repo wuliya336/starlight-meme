@@ -38,6 +38,13 @@ class Config {
     return this.getDefOrConfig('meme')
   }
 
+  /**
+   * 权限设置
+   */
+  get access (){
+    return this.getDefOrConfig('access')
+  }
+
   /** 其他设置 */
   get other () {
     return this.getDefOrConfig('other')
@@ -159,9 +166,11 @@ class Config {
   getCfg () {
     let other = this.getDefOrConfig('other')
     let meme = this.getDefOrConfig('meme')
+    let access = this.getDefOrConfig('access')
     return {
       ...other,
-      ...meme
+      ...meme,
+      ...access
     }
   }
 

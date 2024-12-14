@@ -1,6 +1,3 @@
-import { Config } from '../components/index.js'
-import { Meme, Rule } from '../models/index.js'
-
 export class meme extends plugin {
   constructor () {
     super({
@@ -21,7 +18,7 @@ export class meme extends plugin {
   }
 
   async meme (e) {
-    if (!Config.meme.enable) { return false }
+    if (!Config.meme.enable) { return true }
 
     const message = e.msg.trim()
     let matchedKeyword = null
@@ -32,17 +29,27 @@ export class meme extends plugin {
         matchedKeyword = match[1]
         return true
       }
-      return false
+      return true
     })
 
-    if (!matchedKeyword) return false
+    if (!matchedKeyword) return true
 
     const memeKey = Meme.getKey(matchedKeyword)
-    if (!memeKey ||
-        Config.meme.blackList.includes(matchedKeyword.toLowerCase()) ||
-        Config.meme.blackList.includes(memeKey.toLowerCase()) ||
-        !Meme.getInfo(memeKey)) {
-      return false
+
+    if (!memeKey) {
+      return true
+    }
+
+    if (Config.access.blackListEnable) {
+      if (
+        Config.access.blackList.includes(matchedKeyword.toLowerCase()) ||
+        Config.access.blackList.includes(memeKey.toLowerCase())
+      ) {
+        return true
+      }
+    }
+    if (!Meme.getInfo(memeKey)) {
+      return true
     }
 
     const memeInfo = Meme.getInfo(memeKey)

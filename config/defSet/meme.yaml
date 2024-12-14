@@ -15,6 +15,3 @@ reply: false
 
 # 是否使用默认文本(0: 系统自带, 1: 用户昵称)
 defaultText: 0
-
-# 禁用表情列表
-blackList: []

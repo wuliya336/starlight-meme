@@ -31,7 +31,7 @@ const Meme = {
         Url = 'https://meme.wuliya336.top'
       }
     } catch (error) {
-      logger.error(`所有 Cloudflare 追踪地址请求失败，使用默认 URL: ${error.message}`)
+      logger.error(`获取IP地址出错，使用默认 URL: ${error.message}`)
     }
     this.baseUrl = Url
     return this.baseUrl

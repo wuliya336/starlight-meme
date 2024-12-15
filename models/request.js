@@ -11,7 +11,8 @@ const Request = {
         headers: {
           'User-Agent': 'clarity-meme'
         },
-        timeout: 5000
+        timeout: 5000,
+        proxy: false
       }
       if (params) {
         options.params = params
@@ -48,6 +49,7 @@ const Request = {
           ...formHeaders
         },
         timeout: 5000,
+        proxy: false,
         ...(responseType && { responseType })
       })
 

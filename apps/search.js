@@ -15,7 +15,7 @@ export class search extends plugin {
   }
 
   async search (e) {
-    if(!Config.meme.enable) return false
+    if(!Config.meme.Enable) return false
     try {
       const match = e.msg.match(this.rule[0].reg)
       const keyword = match[2].trim()

@@ -18,7 +18,7 @@ export class update extends plugin {
           fnc: 'updateLog'
         },
         {
-          reg: /^#?(清语表情|clarity-meme)?资源更新$/i,
+          reg: /^#?(清语表情|clarity-meme)?更新资源$/i,
           fnc: 'updateRes'
         }
       ]

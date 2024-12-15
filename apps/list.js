@@ -17,7 +17,7 @@ export class list extends plugin {
   }
 
   async list (e) {
-    if(!Config.meme.enable) return false
+    if(!Config.meme.Enable) return false
     try {
       const infoMap = Meme.infoMap || {}
       const keys = Object.keys(infoMap)

@@ -1,5 +1,5 @@
-# 是否设置默认表情
-enable: true
+# 是否设置为默认表情
+Enable: true
 
 # 自定义表情包地址
 url: ''

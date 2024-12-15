@@ -56,7 +56,7 @@ export const helpList = [
       },
       {
         icon: 81,
-        title: "#清语表情(强制)更新资源",
+        title: "#清语表情更新资源",
         desc: "更新表情资源",
       },
       {

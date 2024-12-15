@@ -2,10 +2,10 @@ export const cfgSchema = {
   meme: {
     title: "表情设置",
     cfg: {
-      enable: {
+      Enable: {
         title: "默认表情",
         key: "默认表情",
-        desc: "是否设置本插件的表情功能为默认表情",
+        desc: "是否设置为默认表情",
         def: true,
         type: "boolean",
         fileName: "meme",
@@ -162,7 +162,7 @@ export const cfgSchema = {
         def: true,
         desc: "是否开启资源更新默认重启",
         fileName: "other",
-      }
+      },
     },
   },
 };

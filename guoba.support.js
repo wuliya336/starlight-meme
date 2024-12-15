@@ -34,7 +34,7 @@ export function supportGuoba () {
           label: '表情设置'
         },
         {
-          field: 'meme.enable',
+          field: 'meme.Enable',
           label: '表情',
           component: 'Switch',
           bottomHelpMessage: '是否设置当前插件的表情功能为默认表情'

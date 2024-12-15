@@ -1,5 +1,6 @@
 import { Version, Config } from '../components/index.js'
 import { update as Update } from '../../other/update.js'
+import { Restart } from '../../other/restart.js'
 import { Utils } from '../models/index.js'
 export class update extends plugin {
   constructor () {
@@ -40,16 +41,27 @@ export class update extends plugin {
   }
 
   async updateRes (e) {
+
     try {
       if (!Config.meme.url) {
-        await Utils.downloadMemeData(forceUpdate)
+        await Utils.downloadMemeData(true)
       } else {
-        await Utils.generateMemeData(forceUpdate)
+        await Utils.generateMemeData(true)
       }
-      await e.reply('表情包数据更新成功, 请稍后重启以应用')
+
+      if(Config.other.restart){
+        await e.reply('表情包数据更新成功，正在重启...')
+        new Restart(this.e).restart()
+      } else {
+        await e.reply('表情包数据更新成功，请重启后生效')
+        return
+      }
+
+
     } catch (error) {
       logger.error(`表情包数据更新出错: ${error.message}`)
       await e.reply(`表情包数据更新失败: ${error.message}`)
     }
   }
+
 }

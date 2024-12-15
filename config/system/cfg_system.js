@@ -100,6 +100,49 @@ export const cfgSchema = {
       },
     },
   },
+  protect: {
+    title: "表情保护设置",
+    cfg: {
+      enable: {
+        title: "是否开启表情保护",
+        key: "是否开启表情保护",
+        desc: "是否开启表情保护功能",
+        def: false,
+        type: "boolean",
+        fileName: "protect",
+      },
+      master: {
+        title: "主人保护",
+        key: "主人保护",
+        desc: "是否开启主人保护功能",
+        def: false,
+        type: "boolean",
+        fileName: "protect",
+      },
+      userEnable: {
+        title: "用户保护",
+        key: "用户保护",
+        desc: "是否开启用户保护功能",
+        def: false,
+        type: "boolean",
+        fileName: "protect",
+      },
+      user: {
+        title: "保护用户",
+        key: "保护用户",
+        desc: "其他用户的保护列表",
+        type: "list",
+        fileName: "protect",
+      },
+      list: {
+        title: "保护表情列表",
+        key: "保护表情列表",
+        desc: "主人的保护列表",
+        type: "list",
+        fileName: "protect",
+      },
+    },
+  },
   other: {
     title: "其他设置",
     cfg: {
@@ -120,6 +163,14 @@ export const cfgSchema = {
         desc: "优先级，数字越小越优先",
         fileName: "other",
       },
+      restart: {
+        title: "重启",
+        key: "重启",
+        type: "boolean",
+        def: true,
+        desc: "是否开启资源更新默认重启",
+        fileName: "other",
+      }
     },
   },
 };

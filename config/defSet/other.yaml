@@ -1,5 +1,8 @@
 # 优先级
 priority: 500
 
+# 是否开启资源更新自动重启
+restart: true
+
 # 图片渲染精度
 renderScale: 100

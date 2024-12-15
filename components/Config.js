@@ -6,6 +6,7 @@ import YamlReader from './YamlReader.js'
 import _ from 'lodash'
 import Version from './Version.js'
 import { cfgSchema } from '../config/system/cfg_system.js'
+import cfg from '../../../lib/config/config.js'
 
 class Config {
   constructor () {
@@ -33,6 +34,11 @@ class Config {
     }
   }
 
+  /** 主人QQ */
+  get masterQQ () {
+    return cfg.masterQQ
+  }
+
   /** 表情设置 */
   get meme () {
     return this.getDefOrConfig('meme')
@@ -43,6 +49,13 @@ class Config {
    */
   get access (){
     return this.getDefOrConfig('access')
+  }
+
+  /**
+   * 保护设置
+   */
+  get protect () {
+    return this.getDefOrConfig('protect')
   }
 
   /** 其他设置 */

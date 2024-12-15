@@ -6,7 +6,7 @@ export class meme extends plugin {
     super({
       name: '清语表情:表情包生成',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: []
     })
     const prefix = Config.meme.forceSharp ? '^#' : '^#?'
@@ -21,7 +21,7 @@ export class meme extends plugin {
   }
 
   async meme (e) {
-    if (!Config.meme.enable) return true
+    if (!Config.meme.enable) return false
 
     const message = e.msg.trim()
     let matchedKeyword = null

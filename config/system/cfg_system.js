@@ -3,9 +3,9 @@ export const cfgSchema = {
     title: "表情设置",
     cfg: {
       enable: {
-        title: "表情",
-        key: "表情",
-        desc: "是否开启当前插件的表情功能",
+        title: "默认表情",
+        key: "默认表情",
+        desc: "是否设置本插件的表情功能为默认表情",
         def: true,
         type: "boolean",
         fileName: "meme",
@@ -153,14 +153,6 @@ export const cfgSchema = {
         def: 100,
         input: (n) => Math.min(200, Math.max(50, n * 1 || 100)),
         desc: "可选值50~200，建议100。设置高精度会提高图片的精细度，但因图片较大可能会影响渲染与发送速度",
-        fileName: "other",
-      },
-      priority: {
-        title: "优先级",
-        key: "优先级",
-        type: "number",
-        def: 500,
-        desc: "优先级，数字越小越优先",
         fileName: "other",
       },
       restart: {

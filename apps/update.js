@@ -7,7 +7,7 @@ export class update extends plugin {
     super({
       name: '清语表情:更新',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: [
         {
           reg: /^#?(清语表情|clarity-meme)(插件)?(强制)?更新$/i,

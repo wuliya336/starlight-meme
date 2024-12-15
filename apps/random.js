@@ -6,10 +6,10 @@ export class random extends plugin {
     super({
       name: '清语表情:随机表情包',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: [
         {
-          reg: /^#?(清语表情|clarity-meme)随机(表情|meme)(包)?$/i,
+          reg: /^#?(清语表情|clarity-meme)?随机(表情|meme)(包)?$/i,
           fnc: 'random'
         }
       ]
@@ -17,6 +17,7 @@ export class random extends plugin {
   }
 
   async random (e) {
+    if (!Config.meme.enable) return false
     try {
       const memeKeys = Object.keys(Meme.keyMap)
       if (memeKeys.length === 0) {

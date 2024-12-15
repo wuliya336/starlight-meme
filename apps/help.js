@@ -1,5 +1,5 @@
 import lodash from 'lodash'
-import { Render, Data, Version, Config } from '../components/index.js'
+import { Render, Data, Version } from '../components/index.js'
 import Theme from '../config/system/theme_system.js'
 
 export class help extends plugin {
@@ -7,7 +7,7 @@ export class help extends plugin {
     super({
       name: '清语表情:帮助',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: [
         {
           reg: '^#?(清语表情|clarity-meme)(命令|帮助|菜单|help|说明|功能|指令|使用说明)$',

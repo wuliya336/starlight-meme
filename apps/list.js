@@ -6,29 +6,25 @@ export class list extends plugin {
     super({
       name: '清语表情:列表',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: [
         {
-          reg: /^#?(清语表情|clarity-meme|表情)列表$/i,
+          reg: /^#?(清语表情|clarity[\s-]?meme|表情|meme)列表$/i,
           fnc: 'list'
         }
       ]
     })
   }
 
-  /*
-   * 使用本地数据直接渲染图片
-   * @shiwuliya
-   */
   async list (e) {
+    if(!Config.meme.enable) return false
     try {
-
       const infoMap = Meme.infoMap || {}
       const keys = Object.keys(infoMap)
 
       if (!keys.length) {
-        await e.reply('没有可用的表情列表。')
-        return
+        await e.reply('没有可用的表情列表', true)
+        return true
       }
 
       const emojiList = keys.map(key => infoMap[key].keywords.join(', '))
@@ -38,11 +34,14 @@ export class list extends plugin {
         {
           title: '清语表情列表',
           emojiList: emojiList
-        })
+        }
+      )
       await e.reply(img)
+      return true
     } catch (error) {
       logger.error('加载表情列表失败:', error)
-      await e.reply('加载表情列表失败，请稍后重试。')
+      await e.reply('加载表情列表失败，请稍后重试', true)
+      return true
     }
   }
 }

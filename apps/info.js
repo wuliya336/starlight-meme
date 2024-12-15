@@ -6,10 +6,10 @@ export class meme extends plugin {
     super({
       name: '清语表情:表情包详情',
       event: 'message',
-      priority: Config.other.priority,
+      priority: -Infinity,
       rule: [
         {
-          reg: /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i,
+          reg: /^#?(清语表情|clarity[\s-]?meme|表情|meme)\s*(.+?)\s*详情$/i,
           fnc: 'info'
         }
       ]
@@ -17,10 +17,9 @@ export class meme extends plugin {
   }
 
   async info (e) {
+    if(!Config.meme.enable) return false
     const message = (e?.msg || '').trim()
-    const match = message.match(
-      /^#?(清语表情|clarity-meme)\s*(\S+)\s*详情$/i
-    )
+    const match = message.match(this.rule[0].reg)
     if (!match) return
 
     const keyword = match[2]
@@ -29,13 +28,13 @@ export class meme extends plugin {
 
     const memeKey = Meme.getKey(keyword)
     if (!memeKey) {
-      await e.reply('未找到相关表情包详情')
+      await e.reply('未找到相关表情包详情', true)
       return true
     }
 
     const memeDetails = Meme.getInfo(memeKey)
     if (!memeDetails) {
-      await e.reply('未找到相关表情包详情')
+      await e.reply('未找到相关表情包详情', true)
       return true
     }
 
@@ -91,5 +90,6 @@ export class meme extends plugin {
     }
 
     await e.reply(replyMessage, true)
+    return true
   }
 }

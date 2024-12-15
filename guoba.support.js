@@ -37,7 +37,7 @@ export function supportGuoba () {
           field: 'meme.enable',
           label: '表情',
           component: 'Switch',
-          bottomHelpMessage: '是否开启当前插件的表情功能'
+          bottomHelpMessage: '是否设置当前插件的表情功能为默认表情'
         },
         {
           field: 'meme.url',
@@ -198,17 +198,11 @@ export function supportGuoba () {
           }
         },
         {
-          field: 'other.priority',
-          label: '优先级',
-          component: 'InputNumber',
-          bottomHelpMessage: '优先级，数字越小越优先',
-          required: true,
-          componentProps: {
-            min: -9999,
-            max: 9999,
-            placeholder: '请输入优先级'
-          }
-        }
+          field: 'other.restart',
+          label: '重启',
+          component: 'Switch',
+          bottomHelpMessage: '是否开启资源更新默认重启'
+        },
       ],
       getConfigData () {
         return {

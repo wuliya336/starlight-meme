@@ -21,7 +21,7 @@ git clone --depth=1 https://github.com/wuliya336/clarity-meme ./plugins/clarity-
 #### 使用`Github`镜像
 
 ```bash
-git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
+git clone --depth=1 https://gh-proxy.com/github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
 ```
 
 ### `手工安装`

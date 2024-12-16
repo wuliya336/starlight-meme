@@ -29,7 +29,7 @@ const Utils = {
 
   async generateMemeData (forceUpdate = false) {
     try {
-      const filePath = Version.Plugin_Path + '/data/custom/meme.json'
+      const filePath = `${Version.Plugin_Path}/data/custom/meme.json`
       Data.createDir('data/custom', '', false)
       if (fs.existsSync(filePath) && !forceUpdate) {
         logger.debug('本地表情包数据已存在，跳过生成')
@@ -38,12 +38,19 @@ const Utils = {
       if (forceUpdate && fs.existsSync(filePath)) {
         fs.unlinkSync(filePath)
       }
-      const keysResponse = await Request.get(`${Meme.getBaseUrl}/memes/keys`)
+
+      const baseUrl = await Meme.getBaseUrl()
+      if (!baseUrl) {
+        throw new Error('无法获取基础URL')
+      }
+      const keysResponse = await Request.get(`${baseUrl}/memes/keys`)
       const memeData = {}
+
       for (const key of keysResponse) {
-        const infoResponse = await Request.get(`${Meme.getBaseUrl}/memes/${key}/info`)
+        const infoResponse = await Request.get(`${baseUrl}/memes/${key}/info`)
         memeData[key] = infoResponse
       }
+
       Data.writeJSON('data/custom/meme.json', memeData, 2)
       logger.debug('本地表情包数据生成完成')
     } catch (error) {

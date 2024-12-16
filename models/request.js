@@ -30,6 +30,27 @@ const Request = {
   },
 
   /**
+   * 通用 HEAD 请求
+   */
+  head: async (url) => {
+    try {
+      const options = {
+        headers: {
+          'User-Agent': 'clarity-meme'
+        },
+        timeout: 5000,
+        proxy: false
+      }
+
+      const response = await axios.head(url, options)
+      return response.headers
+    } catch (error) {
+      logger.error(`请求 ${url} 的头部信息失败: ${error.message}`)
+      throw error
+    }
+  },
+
+  /**
    * 通用 POST 请求
    */
   post: async (url, data = null, responseType) => {

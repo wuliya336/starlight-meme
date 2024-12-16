@@ -43,7 +43,7 @@ const Render = {
       multiPageHeight: 12000,
       ...params
     }
-    return await puppeteer.screenshots(Version.name === 'Karin' ? savePath : Version.Plugin_Name + savePath, data)
+    return await puppeteer.screenshots(Version.Plugin_Name + savePath, data)
   }
 }
 

@@ -94,12 +94,12 @@ const Utils = {
     if (!Array.isArray(qqList)) qqList = [qqList]
 
     const avatarUrl = (qq) => `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`
-    const cacheDir = `${Version.Plugin_Path}/data/avatar`
 
     if (!Config.meme.cache) {
       return
     }
 
+    const cacheDir = `${Version.Plugin_Path}/data/avatar`
     if (!fs.existsSync(cacheDir)) {
       Data.createDir('data/avatar', '', false)
       logger.debug(`[清语表情] 创建头像缓存目录: ${cacheDir}`)
@@ -107,21 +107,27 @@ const Utils = {
 
     const downloadAvatar = async (qq) => {
       const cachePath = `${cacheDir}/avatar_${qq}.jpg`
+      const remoteAvatarUrl = avatarUrl(qq)
 
       if (fs.existsSync(cachePath)) {
-        logger.debug(`[清语表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
         try {
-          const buffer = fs.readFileSync(cachePath)
-          return buffer
+          const localStats = fs.statSync(cachePath)
+          const remoteHeaders = await Request.head(remoteAvatarUrl)
+          const remoteLastModified = new Date(remoteHeaders['last-modified'])
+          const localLastModified = localStats.mtime
+
+          if (localLastModified >= remoteLastModified) {
+            logger.debug(`[清语表情] 使用已缓存头像: QQ=${qq}, Path=${cachePath}`)
+            return fs.readFileSync(cachePath)
+          }
         } catch (error) {
-          logger.error(`[清语表情] 读取缓存头像失败: QQ=${qq}, 错误: ${error.message}`)
-          throw error
+          logger.error(`[清语表情] 检查远程头像文件信息失败: QQ=${qq}, 错误: ${error.message}`)
         }
       }
 
-      logger.debug(`[清语表情] 开始下载头像: QQ=${qq}, URL: ${avatarUrl(qq)}`)
+      logger.debug(`[清语表情] 开始下载头像: QQ=${qq}, URL: ${remoteAvatarUrl}`)
       try {
-        const buffer = await Request.get(avatarUrl(qq), {}, 'arraybuffer')
+        const buffer = await Request.get(remoteAvatarUrl, {}, 'arraybuffer')
         if (buffer && Buffer.isBuffer(buffer)) {
           fs.writeFileSync(cachePath, buffer)
           return buffer
@@ -133,6 +139,7 @@ const Utils = {
         throw error
       }
     }
+
 
     const results = await Promise.all(qqList.map((qq) => downloadAvatar(qq)))
     return qqList.length === 1 ? results[0] : results

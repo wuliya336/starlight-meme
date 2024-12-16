@@ -9,7 +9,7 @@ const Utils = {
    */
   async downloadMemeData (forceUpdate = false) {
     try {
-      const filePath = Version.Plugin_Path + '/data/meme.json'
+      const filePath = `${Version.Plugin_Path}/data/meme.json`
       Data.createDir('data')
       if (fs.existsSync(filePath) && !forceUpdate) {
         logger.debug('远程表情包数据已存在，跳过下载')
@@ -38,10 +38,10 @@ const Utils = {
       if (forceUpdate && fs.existsSync(filePath)) {
         fs.unlinkSync(filePath)
       }
-      const keysResponse = await Request.get(`${Meme.BASE_URL}/memes/keys`)
+      const keysResponse = await Request.get(`${Meme.getBaseUrl}/memes/keys`)
       const memeData = {}
       for (const key of keysResponse) {
-        const infoResponse = await Request.get(`${Meme.BASE_URL}/memes/${key}/info`)
+        const infoResponse = await Request.get(`${Meme.getBaseUrl}/memes/${key}/info`)
         memeData[key] = infoResponse
       }
       Data.writeJSON('data/custom/meme.json', memeData, 2)

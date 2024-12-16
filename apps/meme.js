@@ -35,14 +35,14 @@ export class meme extends plugin {
       return false
     })
 
-    if (!matchedKeyword) return true
+    if (!matchedKeyword) return false
 
 
 
     const memeKey = Meme.getKey(matchedKeyword)
 
     if (!memeKey) {
-      return true
+      return false
     }
 
     if (Config.access.enable) {
@@ -79,7 +79,7 @@ export class meme extends plugin {
       }
     }
     if (!Meme.getInfo(memeKey)) {
-      return true
+      return false
     }
 
     const memeInfo = Meme.getInfo(memeKey)

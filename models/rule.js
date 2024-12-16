@@ -32,7 +32,7 @@ const Rule = {
       if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\s*\d+(\s*@\s*\d+)*$/.test(userText.trim())
         if (!isValidInput) {
-          return true
+          return false
         }
       }
 

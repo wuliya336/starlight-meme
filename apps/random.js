@@ -19,31 +19,30 @@ export class random extends plugin {
   async random (e) {
     if (!Config.meme.Enable) return false
     try {
-      const memeKeys = Object.keys(Meme.keyMap)
+      const memeKeys = Object.keys(Meme.infoMap)
       if (memeKeys.length === 0) {
         return true
       }
 
-      const randomKey = memeKeys[Math.floor(Math.random() * memeKeys.length)]
-      const memeKey = Meme.getKey(randomKey)
+      const memeKey = memeKeys[Math.floor(Math.random() * memeKeys.length)]
+      const memeInfo = Meme.getInfo(memeKey)
 
-      if (!memeKey) {
+      if (!memeInfo) {
         return true
       }
 
-      const memeInfo = Meme.getInfo(memeKey)
-      const { min_texts, max_texts, min_images, max_images, args_type } = memeInfo.params_type || {}
+      const { min_texts, max_texts, min_images, max_images, args_type } =
+        memeInfo.params_type || {}
 
       const isValid =
-        ((min_texts === 1 && max_texts === 1) ||
-          (min_images === 1 && max_images === 1) ||
-          (min_texts === 1 && min_images === 1) ||
-          (args_type && (min_texts === 1 || min_images === 1)))
+        (min_texts === 1 && max_texts === 1) ||
+        (min_images === 1 && max_images === 1) ||
+        (min_texts === 1 && min_images === 1) ||
+        (args_type && (min_texts === 1 || min_images === 1))
 
       if (!isValid) {
         return true
       }
-
 
       await Rule.meme(e, memeKey, memeInfo, '')
     } catch (error) {

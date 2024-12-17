@@ -29,7 +29,7 @@ const Rule = {
       /**
        * 针对仅图片类型表情作特殊处理
        */
-      if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
+      if (min_images >= 1 && min_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\s*\d+(\s*@\s*\d+)*$/.test(userText.trim())
         if (!isValidInput) {
           return false

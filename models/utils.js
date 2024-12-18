@@ -151,6 +151,20 @@ const Utils = {
     const results = await Promise.all(qqList.map((qq) => downloadAvatar(qq)))
     return qqList.length === 1 ? results[0] : results
   },
+  /**
+   * 获取用户昵称
+   */
+  async getNickname (qq) {
+    if (!qq) throw new Error('QQ 号不能为空')
+
+    try {
+      const userInfo = await Bot.pickUser(qq).getInfo()
+      return userInfo.nickname
+    } catch (error) {
+      logger.error(`[清语表情] 获取用户昵称失败: QQ=${qq}, 错误: ${error.message}`)
+      return '未知'
+    }
+  },
 
   /**
    * 获取图片

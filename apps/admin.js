@@ -87,7 +87,7 @@ export class setting extends plugin {
     let cfg = Config.getCfg()
     cfg.setAll = (await redis.get('Yz:sweet-star:setAll')) == 1
 
-    const img = await Render.render(
+    return Render.render(
       'admin/index',
       {
         schema,
@@ -95,7 +95,5 @@ export class setting extends plugin {
       },
       { e, scale: 1.4 }
     )
-    await e.reply(img)
-    return true
   }
 }

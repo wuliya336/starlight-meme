@@ -29,7 +29,7 @@ const Rule = {
       /**
        * 针对仅图片类型表情作特殊处理
        */
-      if (min_images >= 1 && min_texts === 0 && args_type === null && userText) {
+      if (min_texts === 0 && max_texts === 0 && args_type === null && userText) {
         const isValidInput = /^@\s*\d+(\s*@\s*\d+)*$/.test(userText.trim())
         if (!isValidInput) {
           return false
@@ -125,9 +125,8 @@ const Rule = {
         })
       }
 
-
       /**
-       * 处理文本类型表情包
+       * 处理文本类型表情
        */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
@@ -135,11 +134,27 @@ const Rule = {
           finalTexts = splitTexts.slice(0, max_texts)
         }
 
-        if (finalTexts.length === 0 && Config.meme.defaultText === 1) {
-          finalTexts.push(e.sender.nickname || '未知')
-        } else if (
+
+        if (finalTexts.length === 0 && Config.meme.userName && userAvatars.length === 2) {
+          const firstAtUser = userAvatars[0]
+          try {
+            const firstAtUserNickname = await Utils.getNickname(firstAtUser)
+            finalTexts.push(firstAtUserNickname || '未知')
+          } catch (error) {
+            finalTexts.push('未知')
+          }
+        }
+        else if (finalTexts.length === 0 && Config.meme.userName) {
+          try {
+            const senderNickname = await Utils.getNickname(e.sender.user_id)
+            finalTexts.push(senderNickname || '未知')
+          } catch (error) {
+            finalTexts.push('未知')
+          }
+        }
+        else if (
           finalTexts.length === 0 &&
-          Config.meme.defaultText === 0 &&
+          !Config.meme.userName &&
           default_texts &&
           default_texts.length > 0
         ) {
@@ -148,7 +163,12 @@ const Rule = {
         }
 
         if (finalTexts.length === 0) {
-          finalTexts.push(e.sender.nickname || '未知')
+          try {
+            const senderNickname = await Utils.getNickname(e.sender.user_id)
+            finalTexts.push(senderNickname || '未知')
+          } catch (error) {
+            finalTexts.push('未知')
+          }
         }
 
         if (finalTexts.length < min_texts) {

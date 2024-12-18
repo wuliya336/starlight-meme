@@ -29,15 +29,13 @@ export class list extends plugin {
 
       const emojiList = keys.map(key => infoMap[key].keywords.join(', '))
 
-      const img = await Render.render(
+      return Render.render(
         'meme/index',
         {
           title: '清语表情列表',
           emojiList: emojiList
         }
       )
-      await e.reply(img)
-      return true
     } catch (error) {
       logger.error('加载表情列表失败:', error)
       await e.reply('加载表情列表失败，请稍后重试', true)

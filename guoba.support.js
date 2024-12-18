@@ -58,21 +58,10 @@ export function supportGuoba () {
           bottomHelpMessage: '是否开启引用回复'
         },
         {
-          field: 'meme.defaultText',
-          label: '默认文本方案',
-          component: 'Select',
-          componentProps: {
-            options: [
-              {
-                label: '表情自带',
-                value: 0
-              },
-              {
-                label: '用户昵称',
-                value: 1
-              }
-            ]
-         },
+          field: 'meme.userName',
+          label: '用户昵称',
+          component: 'Switch',
+          bottomHelpMessage: '是否开启默认使用用户昵称'
         },
         {
           field: 'meme.forceSharp',

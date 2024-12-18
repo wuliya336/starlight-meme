@@ -264,28 +264,24 @@ const Utils = {
       }
     }
 
-    if (!source || !source.message || !Array.isArray(source.message))
+    if (!source || !source.message || !Array.isArray(source.message)) {
       return []
+    }
 
     const imgArr = source.message
       .filter((msg) => msg.type === 'image')
       .map((img) => img.url)
-
-    if (imgArr.length > 0 && source.message.length > imgArr.length) {
-      try {
-        const avatarBuffer = await this.getAvatar([source.sender.user_id])
-        return avatarBuffer
-      } catch (error) {
-        return []
-      }
-    }
-    else if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
+    if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
       return imgArr
     }
-    else if (source.sender?.user_id) {
+
+    if (source.sender?.user_id) {
       try {
-        const avatarBuffer = await this.getAvatar([source.sender.user_id])
-        return avatarBuffer
+        const avatarBuffers = await this.getAvatar([source.sender.user_id])
+        if (Array.isArray(avatarBuffers) && avatarBuffers.length > 0) {
+          return [avatarBuffers[0]]
+        }
+        return []
       } catch (error) {
         return []
       }
@@ -293,7 +289,6 @@ const Utils = {
 
     return []
   }
-
 
 }
 

@@ -45,7 +45,7 @@ export const cfgSchema = {
         title: "用户昵称",
         key: "用户昵称",
         def: false,
-        desc: "设置开启使用用户昵称，不开则默认使用表情名称",
+        desc: "是否开启使用用户昵称，不开则默认使用表情名称",
         type: "boolean",
         fileName: "meme",
       },

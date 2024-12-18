@@ -99,18 +99,18 @@ const Rule = {
         if (userAvatars.length > 0) {
           for (const userAvatar of userAvatars) {
             const avatarBuffer = await Utils.getAvatar(userAvatar)
-            if (avatarBuffer) images.push(avatarBuffer)
+            if (avatarBuffer) images.push(...avatarBuffer)
           }
 
           if (images.length < min_images && !shouldProtect) {
             const triggerAvatar = await Utils.getAvatar(e.user_id)
-            if (triggerAvatar) images.unshift(triggerAvatar)
+            if (triggerAvatar) images.unshift(...triggerAvatar)
           }
         } else {
           images = await Utils.getImage(e, userText, max_images, min_images)
           if (images.length < min_images && !shouldProtect) {
             const triggerAvatar = await Utils.getAvatar(e.user_id)
-            if (triggerAvatar) images.unshift(triggerAvatar)
+            if (triggerAvatar) images.unshift(...triggerAvatar)
           }
         }
 
@@ -217,6 +217,7 @@ const Rule = {
       return true
     }
   }
+
 }
 
 export default Rule

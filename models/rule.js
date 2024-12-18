@@ -126,17 +126,18 @@ const Rule = {
       }
 
       /**
-       * 处理文本类型表情
-       */
+     * 处理文本类型表情
+     */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
           const splitTexts = userText.split('/').map(text => text.trim())
           finalTexts = splitTexts.slice(0, max_texts)
         }
 
+        const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
 
-        if (finalTexts.length === 0 && Config.meme.userName && userAvatars.length === 2) {
-          const firstAtUser = userAvatars[0]
+        if (finalTexts.length === 0 && Config.meme.userName && (userAvatars.length === 2 || ats.length === 2)) {
+          const firstAtUser = userAvatars[0] || ats[0]
           try {
             const firstAtUserNickname = await Utils.getNickname(firstAtUser)
             finalTexts.push(firstAtUserNickname || '未知')

@@ -1,3 +1,4 @@
+// Utils.js
 import fs from 'fs'
 import { Version, Data, Config } from '../components/index.js'
 import Request from './request.js'
@@ -149,7 +150,7 @@ const Utils = {
 
 
     const results = await Promise.all(qqList.map((qq) => downloadAvatar(qq)))
-    return qqList.length === 1 ? results[0] : results
+    return results
   },
   /**
    * 获取用户昵称
@@ -209,14 +210,32 @@ const Utils = {
      * 艾特用户头像(长按艾特)
      */
     if (quotedImagesOrAvatar.length === 0 && ats.length > 0) {
-      tasks.push(...ats.map((qq) => this.getAvatar(qq)))
+      const avatarBuffers = await Promise.all(ats.map((qq) => this.getAvatar(qq)))
+      avatarBuffers.forEach(avatarList => {
+        if (Array.isArray(avatarList)) {
+          avatarList.forEach(avatar => {
+            if (avatar) images.push(avatar)
+          })
+        } else if(avatarList) {
+          images.push(avatarList)
+        }
+      })
     }
 
     /**
      * 手动输入的艾特(@+数字)
      */
     if (manualAtQQs.length > 0) {
-      tasks.push(...manualAtQQs.map((qq) => this.getAvatar(qq)))
+      const avatarBuffers = await Promise.all(manualAtQQs.map((qq) => this.getAvatar(qq)))
+      avatarBuffers.forEach(avatarList => {
+        if (Array.isArray(avatarList)) {
+          avatarList.forEach(avatar => {
+            if (avatar) images.push(avatar)
+          })
+        } else if(avatarList) {
+          images.push(avatarList)
+        }
+      })
     }
 
     const results = await Promise.allSettled(tasks)
@@ -228,6 +247,7 @@ const Utils = {
 
     return images.slice(0, max_images)
   },
+
 
   /**
    * 获取引用消息
@@ -251,13 +271,21 @@ const Utils = {
       .filter((msg) => msg.type === 'image')
       .map((img) => img.url)
 
-    if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
-      return imgArr
-    } else if (source.sender?.user_id) {
-
+    if (imgArr.length > 0 && source.message.length > imgArr.length) {
       try {
         const avatarBuffer = await this.getAvatar([source.sender.user_id])
-        return [avatarBuffer]
+        return avatarBuffer
+      } catch (error) {
+        return []
+      }
+    }
+    else if (imgArr.length > 0 && source.message.every(msg => msg.type === 'image')) {
+      return imgArr
+    }
+    else if (source.sender?.user_id) {
+      try {
+        const avatarBuffer = await this.getAvatar([source.sender.user_id])
+        return avatarBuffer
       } catch (error) {
         return []
       }
@@ -265,6 +293,7 @@ const Utils = {
 
     return []
   }
+
 
 }
 

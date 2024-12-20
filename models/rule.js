@@ -126,34 +126,24 @@ const Rule = {
       }
 
       /**
-     * 处理文本类型表情
-     */
+ * 处理文本类型表情
+ */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
-          const splitTexts = userText.split('/').map(text => text.trim())
+          const splitTexts = userText.split('/').map((text) => text.trim())
           finalTexts = splitTexts.slice(0, max_texts)
         }
 
         const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
 
-        if (finalTexts.length === 0 && Config.meme.userName && (userAvatars.length === 2 || ats.length >= 1)) {
-          const firstAtUser = userAvatars[0] || ats[0]
-          try {
-            const firstAtUserNickname = await Utils.getNickname(firstAtUser)
-            finalTexts.push(firstAtUserNickname || '未知')
-          } catch (error) {
-            finalTexts.push('未知')
-          }
-        }
-        else if (finalTexts.length === 0 && Config.meme.userName) {
-          try {
-            const senderNickname = await Utils.getNickname(e.sender.user_id)
-            finalTexts.push(senderNickname || '未知')
-          } catch (error) {
-            finalTexts.push('未知')
-          }
-        }
-        else if (
+        if (finalTexts.length === 0 && ats.length >= 1) {
+          const firstAtUser = ats[0]
+          const firstAtUserNickname = await Utils.getNickname(firstAtUser, e)
+          finalTexts.push(firstAtUserNickname)
+        } else if (finalTexts.length === 0 && Config.meme.userName) {
+          const senderNickname = await Utils.getNickname(e.sender.user_id, e)
+          finalTexts.push(senderNickname)
+        } else if (
           finalTexts.length === 0 &&
           !Config.meme.userName &&
           default_texts &&
@@ -164,22 +154,20 @@ const Rule = {
         }
 
         if (finalTexts.length === 0) {
-          try {
-            const senderNickname = await Utils.getNickname(e.sender.user_id)
-            finalTexts.push(senderNickname || '未知')
-          } catch (error) {
-            finalTexts.push('未知')
-          }
+          const senderNickname = await Utils.getNickname(e.sender.user_id, e)
+          finalTexts.push(senderNickname)
         }
 
         if (finalTexts.length < min_texts) {
           return e.reply(`该表情至少需要 ${min_texts} 个文字描述`, true)
         }
 
-        finalTexts.forEach(text => {
+        finalTexts.forEach((text) => {
           formData.append('texts', text)
         })
       }
+
+
 
       /**
        * 检查是否包含所需的内容

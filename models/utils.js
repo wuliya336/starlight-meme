@@ -1,4 +1,3 @@
-// Utils.js
 import fs from 'fs'
 import { Version, Data, Config } from '../components/index.js'
 import Request from './request.js'
@@ -152,17 +151,34 @@ const Utils = {
     const results = await Promise.all(qqList.map((qq) => downloadAvatar(qq)))
     return results
   },
-  /**
-   * 获取用户昵称
-   */
-  async getNickname (qq) {
-    if (!qq) throw new Error('QQ 号不能为空')
+
+  async getNickname (qq, e) {
+    if (!qq || !e) return '未知'
 
     try {
-      const userInfo = await Bot.pickUser(qq).getInfo()
-      return userInfo.nickname
+
+      if (e.isGroup) {
+        const groupId = e.group_id
+        if (!groupId) return '未知'
+
+        const group = Bot.pickGroup(groupId)
+        if (!group) return '未知'
+
+        const memberMap = await group.getMemberMap()
+        if (!memberMap) return '未知'
+
+        const member = memberMap.get(qq)
+        if (member) {
+          return member.card || member.nickname || '未知'
+        }
+
+        return '未知'
+      } else {
+        const userNickname = e.nickname || '未知'
+        return userNickname
+      }
     } catch (error) {
-      logger.error(`[清语表情] 获取用户昵称失败: QQ=${qq}, 错误: ${error.message}`)
+      console.error(`获取昵称失败: QQ=${qq}, 群ID=${e.group_id}, 错误: ${error.message}`)
       return '未知'
     }
   },

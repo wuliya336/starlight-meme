@@ -152,36 +152,56 @@ const Utils = {
     return results
   },
 
+  /**
+   * 获取用户昵称
+   */
   async getNickname (qq, e) {
     if (!qq || !e) return '未知'
 
     try {
+      const adapter = Bot[e.self_id]?.version?.name || '未知'
+
+      if (adapter !== 'ICQQ') {
+        if (e.isGroup) {
+          const group = Bot.pickGroup(e.group_id)
+          if (group) {
+            const memberMap = await group.getMemberMap()
+            for (const [userId, memberInfo] of memberMap) {
+              if (userId === parseInt(qq)) {
+                return memberInfo.card || memberInfo.nickname ||'未知' // 优先群名片
+              }
+            }
+          }
+        }
+        const user = Bot.pickUser(qq)
+        if (user) {
+          const userInfo = await user.getInfo()
+          return userInfo?.nickname || '未知'
+        }
+        return '未知'
+      }
 
       if (e.isGroup) {
-        const groupId = e.group_id
-        if (!groupId) return '未知'
-
-        const group = Bot.pickGroup(groupId)
-        if (!group) return '未知'
-
-        const memberMap = await group.getMemberMap()
-        if (!memberMap) return '未知'
-
-        const member = memberMap.get(qq)
-        if (member) {
-          return member.card || member.nickname || '未知'
+        const group = Bot.pickGroup(e.group_id)
+        if (group) {
+          const memberMap = await group.getMemberMap()
+          if (Array.isArray(memberMap)) {
+            for (const [userId, memberInfo] of memberMap) {
+              if (userId === parseInt(qq)) {
+                return memberInfo.card || memberInfo.nickname || '未知'
+              }
+            }
+          }
         }
-
         return '未知'
       } else {
-        const userNickname = e.nickname || '未知'
-        return userNickname
+        return e.nickname || '未知'
       }
     } catch (error) {
-      console.error(`获取昵称失败: QQ=${qq}, 群ID=${e.group_id}, 错误: ${error.message}`)
       return '未知'
     }
   },
+
 
   /**
    * 获取图片

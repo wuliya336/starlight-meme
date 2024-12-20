@@ -4,7 +4,7 @@ import chalk from 'chalk'
 
 const startTime = Date.now()
 
-let apps;
+let apps
 
 try {
   await Meme.load()
@@ -28,7 +28,7 @@ try {
     chalk.bold.rgb(255, 215, 0)('✨ 清语表情插件 ') +
     chalk.bold.rgb(255, 165, 0).italic(Version.ver) +
     chalk.rgb(255, 215, 0).bold(' 载入成功 ^_^')
-  );
+  )
   logger.info(loadTimeColor(`⏱️ 载入耗时：${loadTime} ms`))
   logger.info(chalk.cyan.bold('💬 雾里的小窝: 272040396'))
   logger.info(chalk.green.bold('========================='))

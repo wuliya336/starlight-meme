@@ -43,7 +43,7 @@ export function supportGuoba () {
           field: 'meme.url',
           label: '自定义地址',
           component: 'Input',
-          bottomHelpMessage: '自定义表情包地址,为空时使用自带',
+          bottomHelpMessage: '自定义表情包地址,为空时使用自带'
         },
         {
           field: 'meme.cache',
@@ -98,7 +98,7 @@ export function supportGuoba () {
               },
               {
                 label: '黑名单',
-               value: 1
+                value: 1
               }
             ]
           }
@@ -107,13 +107,13 @@ export function supportGuoba () {
           field: 'access.userWhiteList',
           label: '用户白名单',
           component: 'GTags',
-          bottomHelpMessage: '白名单，白名单模式时生效',
+          bottomHelpMessage: '白名单，白名单模式时生效'
         },
         {
           field: 'access.userBlackList',
           label: '用户黑名单',
           component: 'GTags',
-          bottomHelpMessage: '黑名单，黑名单模式时生效',
+          bottomHelpMessage: '黑名单，黑名单模式时生效'
         },
         {
           field: 'access.blackList',
@@ -124,7 +124,7 @@ export function supportGuoba () {
             options: Array.from(new Set(
               Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
             )).map(keyword => ({ label: keyword, value: keyword })),
-            mode: "multiple",
+            mode: 'multiple',
             allowClear: true
           }
         },
@@ -154,7 +154,7 @@ export function supportGuoba () {
           field: 'protect.user',
           label: '用户保护列表',
           component: 'GTags',
-          bottomHelpMessage: '其他用户的保护列表',
+          bottomHelpMessage: '其他用户的保护列表'
         },
         {
           field: 'protect.list',
@@ -165,7 +165,7 @@ export function supportGuoba () {
             options: Array.from(new Set(
               Object.values(Meme.infoMap || {}).flatMap(info => info.keywords)
             )).map(keyword => ({ label: keyword, value: keyword })),
-            mode: "multiple",
+            mode: 'multiple',
             allowClear: true
           }
         },
@@ -191,7 +191,7 @@ export function supportGuoba () {
           label: '重启',
           component: 'Switch',
           bottomHelpMessage: '是否开启资源更新默认重启'
-        },
+        }
       ],
       getConfigData () {
         return {

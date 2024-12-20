@@ -168,7 +168,7 @@ const Utils = {
             const memberMap = await group.getMemberMap()
             for (const [userId, memberInfo] of memberMap) {
               if (userId === parseInt(qq)) {
-                return memberInfo.card || memberInfo.nickname ||'未知' // 优先群名片
+                return memberInfo.card || memberInfo.nickname ||'未知'
               }
             }
           }

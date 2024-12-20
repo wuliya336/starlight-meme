@@ -180,10 +180,12 @@ class Config {
     let other = this.getDefOrConfig('other')
     let meme = this.getDefOrConfig('meme')
     let access = this.getDefOrConfig('access')
+    let protect = this.getDefOrConfig('protect')
     return {
       ...other,
       ...meme,
-      ...access
+      ...access,
+      ...protect
     }
   }
 

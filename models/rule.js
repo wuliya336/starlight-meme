@@ -136,7 +136,7 @@ const Rule = {
 
         const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
 
-        if (finalTexts.length === 0 && Config.meme.userName && (userAvatars.length === 2 || ats.length === 2)) {
+        if (finalTexts.length === 0 && Config.meme.userName && (userAvatars.length === 2 || ats.length >= 1)) {
           const firstAtUser = userAvatars[0] || ats[0]
           try {
             const firstAtUserNickname = await Utils.getNickname(firstAtUser)

@@ -75,7 +75,7 @@ export class help extends plugin {
         ...themeData,
         element: 'default'
       },
-      { e, scale: 1.2 }
+      { e }
     )
   }
 
@@ -87,7 +87,7 @@ export class help extends plugin {
         changelogs: Version.logs,
         elem: 'elem'
       },
-      { e, scale: 1.2 }
+      { e }
     )
   }
 }

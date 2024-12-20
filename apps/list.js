@@ -34,7 +34,8 @@ export class list extends plugin {
         {
           title: '清语表情列表',
           emojiList: emojiList
-        }
+        },
+        { e }
       )
     } catch (error) {
       logger.error('加载表情列表失败:', error)

@@ -67,7 +67,6 @@ pnpm install --filter=clarity-meme
 - [x] 参数支持
 - [x] 锅巴兼容
 - [ ] 修改渲染
-- [ ] 上下文监听(bushi)
 
 
 # 资源

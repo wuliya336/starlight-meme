@@ -28,7 +28,7 @@ const Meme = {
         response.split('\n').filter(line => line).map(line => line.split('='))
       )
       if (traceMap.loc != 'CN') {
-        Url = 'https://meme.wuliya336.top'
+        Url = 'https://meme.wuliya.xin'
       }
     } catch (error) {
       logger.error(`获取IP地址出错，使用默认 URL: ${error.message}`)

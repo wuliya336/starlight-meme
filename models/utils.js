@@ -153,44 +153,37 @@ const Utils = {
   },
 
   /**
-   * 获取用户昵称
-   */
+ * 获取用户昵称
+ */
   async getNickname (qq, e) {
-    if (!qq || !e) return '未知'
+    if (!qq || !e) {
+      return '未知'
+    }
 
     try {
       const adapter = Bot[e.self_id]?.version?.name || '未知'
-
       if (adapter !== 'ICQQ') {
         if (e.isGroup) {
           const group = Bot.pickGroup(e.group_id)
-          if (group) {
-            const memberMap = await group.getMemberMap()
-            for (const [userId, memberInfo] of memberMap) {
-              if (userId === parseInt(qq)) {
-                return memberInfo.card || memberInfo.nickname ||'未知'
-              }
+          const memberMap = await group.getMemberMap()
+          for (const [userId, memberInfo] of memberMap) {
+            if (userId === parseInt(qq)) {
+              return memberInfo.card || memberInfo.nickname || '未知'
             }
           }
         }
+
         const user = Bot.pickUser(qq)
-        if (user) {
-          const userInfo = await user.getInfo()
-          return userInfo?.nickname || '未知'
-        }
-        return '未知'
+        const userInfo = await user.getInfo()
+        return userInfo?.nickname || '未知'
       }
 
       if (e.isGroup) {
         const group = Bot.pickGroup(e.group_id)
-        if (group) {
-          const memberMap = await group.getMemberMap()
-          if (Array.isArray(memberMap)) {
-            for (const [userId, memberInfo] of memberMap) {
-              if (userId === parseInt(qq)) {
-                return memberInfo.card || memberInfo.nickname || '未知'
-              }
-            }
+        const memberMap = await group.getMemberMap()
+        for (const [userId, memberInfo] of memberMap) {
+          if (userId === parseInt(qq)) {
+            return memberInfo.card || memberInfo.nickname || '未知'
           }
         }
         return '未知'
@@ -201,7 +194,6 @@ const Utils = {
       return '未知'
     }
   },
-
 
   /**
    * 获取图片

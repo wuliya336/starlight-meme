@@ -6,7 +6,8 @@
 
 {{block 'main'}}
 <div class="info_box">
-  <div class="label">{{title}}</div>
+  <div class="label">清语表情列表</div>
+  <div class="total">表情总数：{{total}}</div>
   <div class="cfg-box">
     {{each emojiList item index}}
       {{if index % 80 === 0}}
@@ -14,7 +15,20 @@
         <div class="cfg-column">
           <ul class="cfg-ul">
       {{/if}}
-      <li class="cfg-li">{{item}}</li>
+      <li class="cfg-li">
+        <div class="icons">
+          {{if item.types.includes('text')}}
+            <img src="{{_res_path}}/meme/imgs/icons/text.svg" alt="text" />
+          {{/if}}
+          {{if item.types.includes('image')}}
+            <img src="{{_res_path}}/meme/imgs/icons/image.svg" alt="image" />
+          {{/if}}
+          {{if item.types.includes('arg')}}
+            <img src="{{_res_path}}/meme/imgs/icons/arg.svg" alt="arg" />
+          {{/if}}
+        </div>
+        <span>{{item.name}}</span>
+      </li>
     {{/each}}
     </ul>
     </div>

@@ -17,7 +17,7 @@ export class list extends plugin {
   }
 
   async list (e) {
-    if(!Config.meme.Enable) return false
+    if (!Config.meme.Enable) return false
     try {
       const infoMap = Meme.infoMap || {}
       const keys = Object.keys(infoMap)
@@ -27,14 +27,26 @@ export class list extends plugin {
         return true
       }
 
-      const emojiList = keys.map(key => infoMap[key].keywords.join(', '))
+      const emojiList = keys.flatMap(key => {
+        const emoji = infoMap[key]
+        const { min_texts, min_images, args_type } = emoji.params_type || {}
+
+        const types = []
+        if (min_texts >= 1) types.push('text')
+        if (min_images >= 1) types.push('image')
+        if (args_type !== null) types.push('arg')
+
+        return emoji.keywords.map(keyword => ({
+          name: keyword,
+          types
+        }))
+      })
+
+      const total = emojiList.length
 
       return Render.render(
         'meme/index',
-        {
-          title: '清语表情列表',
-          emojiList: emojiList
-        },
+        { emojiList, total },
         { e }
       )
     } catch (error) {

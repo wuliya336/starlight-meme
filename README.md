@@ -1,8 +1,8 @@
 # <center>清语表情</center>
 
 ![清语表情](https://count.kjchmc.cn/get/@clarity-meme?theme=moebooru)<br>
-[![Github](https://img.shields.io/badge/Github-清语表情-black?style=flat-square&logo=github)](https://github.com/wuliya336/clarity-meme)[![云崽bot](https://img.shields.io/badge/云崽-v3.0.0-black?style=flat-square&logo=dependabot)](https://gitee.com/Le-niao/Yunzai-Bot)[![Q群](https://img.shields.io/badge/group-272040396-blue)](https://gitee.com/Le-niao/Yunzai-Bot)<br>
-`清语`是一个`Yunzai-Bot` | `Karin`(暂未完成)的扩展插件，提供表情包合成等功能<br>
+[![Github](https://img.shields.io/badge/Github-清语表情-black?style=flat-square&logo=github)](https://github.com/wuliya336/clarity-meme)[![云崽bot](https://img.shields.io/badge/云崽-v3.0.0-black?style=flat-square&logo=dependabot)](https://gitee.com/Le-niao/Yunzai-Bot)[![Q群](https://img.shields.io/badge/group-272040396-blue)](https://qm.qq.com/q/gBs8Ri3nIQ)<br>
+`清语表情`是一个`Yunzai-Bot` | `Karin`(暂未完成)的扩展插件，提供表情包合成等功能<br>
 
 ---
 
@@ -21,7 +21,7 @@ git clone --depth=1 https://github.com/wuliya336/clarity-meme ./plugins/clarity-
 #### 使用`Github`镜像
 
 ```bash
-git clone --depth=1 https://gh-proxy.com/github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
+git clone --depth=1 https://github.moeyy.xyz/https://github.com/wuliya336/clarity-meme ./plugins/clarity-meme/
 ```
 
 ### `手工安装`
@@ -43,7 +43,7 @@ git clone --depth=1 https://github.com/wuliya336/clarity-meme ./plugins/karin-pl
 ### 使用`Github`镜像
 
 ```bash
-git clone --depth=1 https://gh.wuliya336.top/github.com/wuliya336/clarity-meme ./plugins/karin-plugin-clarity-meme/
+git clone --depth=1 https://github.moeyy.xyz/https://github.com/wuliya336/clarity-meme ./plugins/karin-plugin-clarity-meme/
 ```
 
 ### `手工安装`

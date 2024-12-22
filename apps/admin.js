@@ -20,9 +20,7 @@ export class setting extends plugin {
   }
 
   async setting (e) {
-    if (!this.e.isMaster) {
-      return true
-    }
+    if (!this.e.isMaster) return true
 
     let regRet = sysCfgReg.exec(e.msg) || []
     let cfgSchemaMap = Config.getCfgSchemaMap()

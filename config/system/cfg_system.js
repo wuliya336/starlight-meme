@@ -145,6 +145,22 @@ export const cfgSchema = {
   other: {
     title: '其他设置',
     cfg: {
+      restart: {
+        title: '重启',
+        key: '重启',
+        type: 'boolean',
+        def: true,
+        desc: '是否开启资源更新默认重启',
+        fileName: 'other'
+      },
+      checkRepo: {
+        title: '仓库更新检测',
+        key: '仓库更新检测',
+        type: 'boolean',
+        def: true,
+        desc: '是否开启仓库更新检测',
+        fileName: 'other'
+      },
       renderScale: {
         title: '渲染精度',
         key: '渲染精度',
@@ -152,14 +168,6 @@ export const cfgSchema = {
         def: 100,
         input: (n) => Math.min(200, Math.max(50, n * 1 || 100)),
         desc: '可选值50~200，建议100。设置高精度会提高图片的精细度，但因图片较大可能会影响渲染与发送速度',
-        fileName: 'other'
-      },
-      restart: {
-        title: '重启',
-        key: '重启',
-        type: 'boolean',
-        def: true,
-        desc: '是否开启资源更新默认重启',
         fileName: 'other'
       }
     }

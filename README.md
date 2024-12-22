@@ -71,6 +71,13 @@ pnpm install --filter=clarity-meme
 - [x] 支持`其他协议`从艾特中获取昵称
 - [ ] 添加`表情调用统计`
 
+## 贡献者
+
+<a href="https://github.com/wuliya336/clarity-meme/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=wuliya336/clarity-meme" />
+</a>
+
+![Alt](https://repobeats.axiom.co/api/embed/2e908b34c5972605ff83c4b7f40cbc05992a8720.svg "Repobeats analytics image")
 
 # 资源
 

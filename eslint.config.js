@@ -1,5 +1,8 @@
-import globals from 'globals'
-import neostandard from 'neostandard'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+
+const globals = require('globals')
+const neostandard = require('neostandard')
 
 export default [{
   languageOptions: {

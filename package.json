@@ -16,16 +16,11 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "app/**/*.js": [
-      "eslint --fix"
-    ],
-    "components/**/*.js": [
-      "eslint --fix"
-    ],
-    "models/**/*.js": [
+    "*.js": [
       "eslint --fix"
     ]
   }

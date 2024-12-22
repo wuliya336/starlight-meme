@@ -4,6 +4,23 @@ import Request from './request.js'
 import Meme from './meme.js'
 
 const Utils = {
+  async isAbroad (){
+    const urls = [
+      'https://blog.cloudflare.com/cdn-cgi/trace',
+      'https://developers.cloudflare.com/cdn-cgi/trace'
+    ]
+
+    try {
+      const response = await Promise.any(urls.map(url => Request.get(url, {}, 'text')))
+      const traceMap = Object.fromEntries(
+        response.split('\n').filter(line => line).map(line => line.split('='))
+      )
+      return traceMap.loc !== 'CN'
+    } catch (error) {
+      logger.error(`获取IP所在地区错误: ${error.message}`)
+      return false
+    }
+  },
   /**
    * 获取远程表情包数据
    */

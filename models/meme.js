@@ -7,36 +7,39 @@ const Meme = {
   loaded: false,
   baseUrl: null,
 
+  /**
+   * 获取表情包请求地址
+   * @returns {string}
+   */
   async getBaseUrl () {
     if (this.baseUrl) {
       return this.baseUrl
     }
+
     if (Config.meme.url) {
       this.baseUrl = Config.meme.url.replace(/\/+$/, '')
       return this.baseUrl
     }
 
     let Url = 'https://meme.wuliya.cn'
-    const urls = [
-      'https://blog.cloudflare.com/cdn-cgi/trace',
-      'https://developers.cloudflare.com/cdn-cgi/trace'
-    ]
 
     try {
-      const response = await Promise.any(urls.map(url => Request.get(url, {}, 'text')))
-      const traceMap = Object.fromEntries(
-        response.split('\n').filter(line => line).map(line => line.split('='))
-      )
-      if (traceMap.loc != 'CN') {
+      const isAbroad = await Utils.isAbroad()
+      if (isAbroad) {
         Url = 'https://meme.wuliya.xin'
       }
     } catch (error) {
       logger.error(`获取IP地址出错，使用默认 URL: ${error.message}`)
     }
+
     this.baseUrl = Url
     return this.baseUrl
   },
 
+  /**
+   * 加载表情包数据
+   * @returns {Promise<void>}
+   */
   async load () {
     if (this.loaded) {
       logger.debug('表情数据已加载，跳过重复加载')
@@ -62,6 +65,9 @@ const Meme = {
     }
   },
 
+  /**、
+   * 获取表情包键值
+   */
   getKey (keyword) {
     if (!this.loaded) {
       this.load()
@@ -74,6 +80,10 @@ const Meme = {
     return null
   },
 
+  /**
+ * 获取表情包信息
+ * @param {string} memeKey
+ */
   getInfo (memeKey) {
     if (!this.loaded) {
       this.load()
@@ -81,6 +91,13 @@ const Meme = {
     return this.infoMap?.[memeKey] || null
   },
 
+  /**
+   * 发送表情包请求
+   * @param {string} endpoint 请求地址
+   * @param {object} params 请求参数
+   * @param {string} method 请求方法
+   * @param {string} responseType 响应类型
+   */
   async request (endpoint, params = {}, method = 'GET', responseType) {
     try {
       const baseUrl = await this.getBaseUrl()
@@ -98,6 +115,10 @@ const Meme = {
     }
   },
 
+  /**
+ * 获取表情包预览图片地址
+ * @param {string} memeKey
+ */
   async getPreviewUrl (memeKey) {
     if (!memeKey) {
       logger.error('表情键值不能为空')

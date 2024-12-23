@@ -136,26 +136,22 @@ const Rule = {
 
         const ats = e.message.filter((m) => m.type === 'at').map((at) => at.qq)
 
-        if (finalTexts.length === 0 && ats.length >= 1) {
-          const firstAtUser = ats[0]
-          const firstAtUserNickname = await Utils.getNickname(firstAtUser, e)
-          finalTexts.push(firstAtUserNickname)
-        } else if (finalTexts.length === 0 && Config.meme.userName) {
-          const senderNickname = await Utils.getNickname(e.sender.user_id, e)
-          finalTexts.push(senderNickname)
+        if (finalTexts.length === 0 && Config.meme.userName) {
+          if (ats.length >= 1) {
+            const User = ats[0]
+            const Nickname = await Utils.getNickname(User, e)
+            finalTexts.push(Nickname)
+          } else {
+            const Nickname = await Utils.getNickname(e.sender.user_id, e)
+            finalTexts.push(Nickname)
+          }
         } else if (
           finalTexts.length === 0 &&
-          !Config.meme.userName &&
           default_texts &&
           default_texts.length > 0
         ) {
           const randomIndex = Math.floor(Math.random() * default_texts.length)
           finalTexts.push(default_texts[randomIndex])
-        }
-
-        if (finalTexts.length === 0) {
-          const senderNickname = await Utils.getNickname(e.sender.user_id, e)
-          finalTexts.push(senderNickname)
         }
 
         if (finalTexts.length < min_texts) {
@@ -166,6 +162,8 @@ const Rule = {
           formData.append('texts', text)
         })
       }
+
+
 
       /**
        * 检查是否包含所需的内容

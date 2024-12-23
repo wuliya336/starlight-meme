@@ -58,7 +58,6 @@ pnpm install --filter=clarity-meme
 ```
 
 ## 使用帮助
-<mark>文档暂未完工</mark><br>
 其他内容请查看[官方文档](https://docs.wuliya.cn)
 
 ## 更新计划
@@ -73,6 +72,7 @@ pnpm install --filter=clarity-meme
 - [x] 添加`仓库更新检查推送`
 - [ ] 添加`自动更新表情包数据`
 - [ ] 动态重载表情包数据
+
 ## 贡献者
 
 <a href="https://github.com/wuliya336/clarity-meme/graphs/contributors">

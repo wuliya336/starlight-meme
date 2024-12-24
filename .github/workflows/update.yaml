@@ -1,0 +1,55 @@
+name: Update Version
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump version
+        id: bump
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          minor: true
+          tag-prefix: "v"
+          update-package-json: true
+          commit: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Branch
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git checkout -b version/${{ steps.bump.outputs.new_version }}
+
+      - name: Commit changes
+        run: |
+          git add package.json
+          git commit -m "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
+
+      - name: Push Branch
+        run: |
+          git push origin version/${{ steps.bump.outputs.new_version }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
+          title: "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
+          body: "更新项目版本号 `${{ steps.bump.outputs.new_version }}`"
+          branch: "version/${{ steps.bump.outputs.new_version }}"
+          delete-branch: true

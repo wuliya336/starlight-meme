@@ -1,3 +1,4 @@
+name: Issues Greetings
 on:
   issues:
     types: [labeled]

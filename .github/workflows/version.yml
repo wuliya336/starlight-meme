@@ -1,0 +1,84 @@
+name: 项目版本更新
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 更新版本号
+        id: bump_version
+        run: |
+          current_version=$(grep -oP '"version":\s*"\K[0-9]+\.[0-9]+\.[0-9]+' package.json)
+          IFS='.' read -r major minor patch <<< "$current_version"
+          minor=$((minor + 1))
+          patch=0
+          new_version="$major.$minor.$patch"
+          sed -i "s/\"version\": \"$current_version\"/\"version\": \"$new_version\"/" package.json
+          echo "new_version=$new_version" >> $GITHUB_ENV
+          echo "branch_name=version/v$new_version" >> $GITHUB_ENV
+
+      - name: 提交并推送更改
+        id: commit_and_push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${{ env.branch_name }}"
+          git add package.json
+          git commit -m "版本更新至 ${{ env.new_version }} 🎉"
+          git tag -f "v${{ env.new_version }}"
+          git push origin -f "${{ env.branch_name }}"
+          git push origin -f "v${{ env.new_version }}"
+
+      - name: 检查是否已有 Pull Request
+        id: check_pr
+        run: |
+          existing_pr=$(curl -s \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ env.branch_name }}&state=open")
+
+          if [[ "$existing_pr" == "[]" ]]; then
+            echo "Pull Request 不存在，跳过创建。"
+            echo "pr_exists=true" >> $GITHUB_ENV
+          else
+            echo "Pull Request 已存在，可以创建。"
+            echo "pr_exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: 创建 Pull Request
+        if: env.pr_exists == 'false'
+        run: |
+          status_code=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d "$(cat << EOF
+          {
+            "title": "版本更新至 ${new_version} 🎉",
+            "head": "${branch_name}",
+            "base": "main",
+            "body": "项目版本更新\n此PR是自动更新内容。\n请审核并合并。"
+          }
+          EOF
+          )")
+
+          if [ "$status_code" -eq 201 ]; then
+            echo "Pull Request 创建成功！"
+          else
+            echo "Pull Request 创建失败，HTTP 状态码: $status_code"
+            exit 1
+          fi

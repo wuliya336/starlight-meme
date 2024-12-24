@@ -14,42 +14,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 检出代码
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Bump version
-        id: bump
-        uses: 'phips28/gh-action-bump-version@master'
-        with:
-          minor: true
-          tag-prefix: "v"
-          update-package-json: true
-          commit: false
+      # 自动更新版本号（基于 Git 标签）
+      - id: bumper
+        uses: tomerfi/version-bumper-action@2.0.3
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          bump: minor
 
+      - name: Update package.json version
+        run: |
+          sed -i 's/"version": ".*"/"version": "${{ steps.bumper.outputs.next }}"/' package.json
+
+      # 创建新分支
       - name: Create Branch
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git checkout -b version/${{ steps.bump.outputs.new_version }}
+          git checkout -b version/v${{ steps.bumper.outputs.next }}
 
+      # 提交更改
       - name: Commit changes
         run: |
           git add package.json
-          git commit -m "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
+          git commit -m "chore: bump version to v${{ steps.bumper.outputs.next }}"
 
+      # 推送新分支
       - name: Push Branch
         run: |
-          git push origin version/${{ steps.bump.outputs.new_version }}
+          git push origin version/v${{ steps.bumper.outputs.next }}
 
+      # 创建标签
+      - name: Create Tag
+        run: |
+          git tag v${{ steps.bumper.outputs.next }}
+          git push origin v${{ steps.bumper.outputs.next }}
+
+      # 创建 Pull Request
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
-          title: "chore: 更新版本号 ${{ steps.bump.outputs.new_version }}"
-          body: "更新项目版本号 `${{ steps.bump.outputs.new_version }}`"
-          branch: "version/${{ steps.bump.outputs.new_version }}"
+          commit-message: "chore: bump version to v${{ steps.bumper.outputs.next }}"
+          title: "chore: bump version to v${{ steps.bumper.outputs.next }}"
+          body: "This PR updates the project version to v${{ steps.bumper.outputs.next }}."
+          branch: "version/v${{ steps.bumper.outputs.next }}"
           delete-branch: true

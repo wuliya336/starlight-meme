@@ -65,50 +65,19 @@ const Rule = {
        * 处理图片类型表情
        */
       if (!(min_images === 0 && max_images === 0)) {
-        let shouldProtect = false
-        if (Config.protect.enable) {
-          const protectList = []
-          for (const item of Config.protect.list) {
-            const key = Meme.getKey(item)
-            if (key) {
-              protectList.push(key.toLowerCase())
-            } else {
-              const keywordKey = Meme.getKey(item)
-              if (keywordKey) {
-                protectList.push(keywordKey.toLowerCase())
-              }
-            }
-          }
-          const isProtectedMeme = protectList.includes(memeKey.toLowerCase())
-
-          /**
-           * 主人保护
-           */
-          if (Config.protect.master && isProtectedMeme && e.user_id !== Config.masterQQ) {
-            shouldProtect = true
-          }
-          /**
-           * 用户保护
-
-           */
-          if (!shouldProtect && Config.protect.userEnable && isProtectedMeme && Config.protect.user.includes(e.user_id.toString())) {
-            shouldProtect = true
-          }
-        }
-
         if (userAvatars.length > 0) {
           for (const userAvatar of userAvatars) {
             const avatarBuffer = await Utils.getAvatar(userAvatar)
             if (avatarBuffer) images.push(...avatarBuffer)
           }
 
-          if (images.length < min_images && !shouldProtect) {
+          if (images.length < min_images) {
             const triggerAvatar = await Utils.getAvatar(e.user_id)
             if (triggerAvatar) images.unshift(...triggerAvatar)
           }
         } else {
           images = await Utils.getImage(e, userText, max_images, min_images)
-          if (images.length < min_images && !shouldProtect) {
+          if (images.length < min_images) {
             const triggerAvatar = await Utils.getAvatar(e.user_id)
             if (triggerAvatar) images.unshift(...triggerAvatar)
           }
@@ -126,8 +95,8 @@ const Rule = {
       }
 
       /**
- * 处理文本类型表情
- */
+       * 处理文本类型表情
+       */
       if (!(min_texts === 0 && max_texts === 0)) {
         if (userText) {
           const splitTexts = userText.split('/').map((text) => text.trim())
@@ -162,8 +131,6 @@ const Rule = {
           formData.append('texts', text)
         })
       }
-
-
 
       /**
        * 检查是否包含所需的内容

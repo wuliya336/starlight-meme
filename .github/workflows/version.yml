@@ -51,16 +51,17 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/pulls?head=${{ github.repository_owner }}:${{ env.branch_name }}&state=open")
 
           if [[ "$existing_pr" == "[]" ]]; then
-            echo "Pull Request 不存在，跳过创建。"
-            echo "pr_exists=true" >> $GITHUB_ENV
-          else
-            echo "Pull Request 已存在，可以创建。"
+            echo "Pull Request 不存在，可以创建。"
             echo "pr_exists=false" >> $GITHUB_ENV
+          else
+            echo "Pull Request 已存在，跳过创建。"
+            echo "pr_exists=true" >> $GITHUB_ENV
           fi
 
       - name: 创建 Pull Request
         if: env.pr_exists == 'false'
         run: |
+          # 创建 Pull Request
           status_code=$(curl -s -o /dev/null -w "%{http_code}" \
             -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
@@ -68,14 +69,13 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/pulls \
             -d "$(cat << EOF
           {
-            "title": "版本更新至 ${new_version} 🎉",
-            "head": "${branch_name}",
+            "title": "版本更新至 ${{ env.new_version }} 🎉",
+            "head": "${{ env.branch_name }}",
             "base": "main",
-            "body": "项目版本更新\n此PR是自动更新内容。\n请审核并合并。"
+            "body": "项目版本更新\n此 PR 是自动更新内容。\n请审核并合并。"
           }
           EOF
           )")
-
           if [ "$status_code" -eq 201 ]; then
             echo "Pull Request 创建成功！"
           else

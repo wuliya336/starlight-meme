@@ -1,5 +1,5 @@
 import { Config } from '../components/index.js'
-import { Meme, Rule } from '../models/index.js'
+import { Meme, Rule, Tools } from '../models/index.js'
 
 export class meme extends plugin {
   constructor () {
@@ -37,14 +37,13 @@ export class meme extends plugin {
 
     if (!matchedKeyword) return false
 
-
-
-    const memeKey = Meme.getKey(matchedKeyword)
+    const memeKey = await Tools.keywordToKey(matchedKeyword)
 
     if (!memeKey) {
       return false
     }
 
+    // 用户权限检查
     if (Config.access.enable) {
       const userId = e.user_id
 
@@ -67,17 +66,14 @@ export class meme extends plugin {
         }
       }
     }
+
     /**
      * 禁用表情列表
      */
-    if (Config.access.blackListEnable) {
-      if (
-        Config.access.blackList.includes(matchedKeyword.toLowerCase()) ||
-        Config.access.blackList.includes(memeKey.toLowerCase())
-      ) {
-        return true
-      }
+    if (Config.access.blackListEnable && await Tools.isBlacklisted(matchedKeyword)) {
+      return true
     }
+
     if (!Meme.getInfo(memeKey)) {
       return false
     }

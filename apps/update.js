@@ -1,7 +1,7 @@
 import { Version, Config } from '../components/index.js'
 import { update as Update } from '../../other/update.js'
 import { Restart } from '../../other/restart.js'
-import { Utils, checkRepo } from '../models/index.js'
+import { Tools, checkRepo } from '../models/index.js'
 
 export class update extends plugin {
   constructor () {
@@ -58,9 +58,9 @@ export class update extends plugin {
   async updateRes (e) {
     try {
       if (!Config.meme.url) {
-        await Utils.downloadMemeData(true)
+        await Tools.downloadMemeData(true)
       } else {
-        await Utils.generateMemeData(true)
+        await Tools.generateMemeData(true)
       }
 
       if (Config.other.restart) {

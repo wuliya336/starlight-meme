@@ -1,80 +1,9 @@
 import fs from 'fs'
 import { Version, Data, Config } from '../components/index.js'
 import Request from './request.js'
-import Meme from './meme.js'
 
 const Utils = {
-  async isAbroad (){
-    const urls = [
-      'https://blog.cloudflare.com/cdn-cgi/trace',
-      'https://developers.cloudflare.com/cdn-cgi/trace'
-    ]
 
-    try {
-      const response = await Promise.any(urls.map(url => Request.get(url, {}, 'text')))
-      const traceMap = Object.fromEntries(
-        response.split('\n').filter(line => line).map(line => line.split('='))
-      )
-      return traceMap.loc !== 'CN'
-    } catch (error) {
-      logger.error(`获取IP所在地区错误: ${error.message}`)
-      return false
-    }
-  },
-  /**
-   * 获取远程表情包数据
-   */
-  async downloadMemeData (forceUpdate = false) {
-    try {
-      const filePath = `${Version.Plugin_Path}/data/meme.json`
-      Data.createDir('data')
-      if (fs.existsSync(filePath) && !forceUpdate) {
-        logger.debug('远程表情包数据已存在，跳过下载')
-        return
-      }
-      if (forceUpdate && fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath)
-      }
-      const response = await Request.get('https://pan.wuliya.cn/d/Yunzai-Bot/data/meme.json')
-      Data.writeJSON('data/meme.json', response)
-      logger.debug('远程表情包数据下载完成')
-    } catch (error) {
-      logger.error(`下载远程表情包数据失败: ${error.message}`)
-      throw error
-    }
-  },
-
-  async generateMemeData (forceUpdate = false) {
-    try {
-      const filePath = `${Version.Plugin_Path}/data/custom/meme.json`
-      Data.createDir('data/custom', '', false)
-      if (fs.existsSync(filePath) && !forceUpdate) {
-        logger.debug('本地表情包数据已存在，跳过生成')
-        return
-      }
-      if (forceUpdate && fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath)
-      }
-
-      const baseUrl = await Meme.getBaseUrl()
-      if (!baseUrl) {
-        throw new Error('无法获取基础URL')
-      }
-      const keysResponse = await Request.get(`${baseUrl}/memes/keys`)
-      const memeData = {}
-
-      for (const key of keysResponse) {
-        const infoResponse = await Request.get(`${baseUrl}/memes/${key}/info`)
-        memeData[key] = infoResponse
-      }
-
-      Data.writeJSON('data/custom/meme.json', memeData, 2)
-      logger.debug('本地表情包数据生成完成')
-    } catch (error) {
-      logger.error(`生成本地表情包数据失败: ${error.message}`)
-      throw error
-    }
-  },
   /**
    * 获取图片 Buffer
    */

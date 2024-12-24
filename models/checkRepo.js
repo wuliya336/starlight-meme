@@ -1,5 +1,5 @@
 import { Version } from '../components/index.js'
-import Utils from './utils.js'
+import Tools from './tools.js'
 import Request from './request.js'
 
 const checkRepo = {
@@ -7,7 +7,7 @@ const checkRepo = {
    * 获取 GitHub API 地址
    */
   async getGitApi () {
-    const isAbroad = await Utils.isAbroad()
+    const isAbroad = await Tools.isAbroad()
     return isAbroad ? 'https://api.github.com' : 'https://gh.llkk.cc/https://api.github.com'
   },
 

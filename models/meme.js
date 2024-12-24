@@ -1,5 +1,5 @@
 import { Data, Config } from '../components/index.js'
-import Utils from './utils.js'
+import Tools from './tools.js'
 import Request from './request.js'
 
 const Meme = {
@@ -24,7 +24,7 @@ const Meme = {
     let Url = 'https://meme.wuliya.cn'
 
     try {
-      const isAbroad = await Utils.isAbroad()
+      const isAbroad = await Tools.isAbroad()
       if (isAbroad) {
         Url = 'https://meme.wuliya.xin'
       }
@@ -48,10 +48,10 @@ const Meme = {
 
     try {
       if (!Config.meme.url) {
-        await Utils.downloadMemeData()
+        await Tools.downloadMemeData()
         this.infoMap = Data.readJSON('data/meme.json')
       } else {
-        await Utils.generateMemeData()
+        await Tools.generateMemeData()
         this.infoMap = Data.readJSON('data/custom/meme.json')
       }
 
